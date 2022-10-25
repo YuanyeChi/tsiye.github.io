@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>
+      
+    Machine Learning Lecture 03 Locally Weighted & Logistic Regression - Yuanye Chi's Blog
+    
+    </title>
+    <link rel="shortcut icon" href="https://i.loli.net/2019/02/20/5c6cf0555ffe6.jpeg" type="image/png" />
+
+    
+    
+    <link href="atom.xml" rel="alternate" title="Yuanye Chi's Blog" type="application/atom+xml">
+    <link rel="stylesheet" href="asset/css/style.min.css">
+    <link rel="stylesheet" href="asset/css/doc.css">
+    <script src="asset/app.js"></script>
+</head>
+  <body>
+    <section class="hero">
+      <div class="hero-head">
+          <nav class="navbar" role="navigation" aria-label="main navigation">
+              <div class="container">
+              <div class="navbar-brand">
+                
+                <a target="_self" class="navbar-item " href="index.html">Home</a>
+                
+                <a target="_self" class="navbar-item " href="archives.html">Archives</a>
+                
+                <a target="_self" class="navbar-item " href="about.html">About</a>
+                
+                <a target="_self" class="navbar-item " href="https://chiyuanye-com-old-site.onrender.com/">OldSite</a>
+                
+
+                <a role="button" id="navbarSNSRssSwitchBtn" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarSNSRssButtons">
+                  <span aria-hidden="true"></span>
+                  <span aria-hidden="true"></span>
+                  <span aria-hidden="true"></span>
+                </a>
+              </div>
+            
+              <div id="navbarSNSRssButtons" class="navbar-menu">
+                <div class="navbar-start">
+                  
+                </div>
+            
+                <div class="navbar-end">
+                  <div class="navbar-item">
+                    <!--buttons start-->
+                    <div class="buttons">
+                      
+                        
+                        
+                        
+                        <a href="https://github.com/tsiye" target="_blank" title="github">
+                            <span class="icon is-large has-text-grey-darker">
+                               <svg class="svg-inline--fa fa-github fa-w-16 fa-lg" aria-hidden="true" focusable="false" data-prefix="fab" data-icon="github" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512" data-fa-i2svg=""><path fill="currentColor" d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"></path></svg><!-- <i class="fab fa-github fa-lg"></i> -->
+                            </span>
+                          </a>
+                        
+                        
+                      
+                      <a href="atom.xml" target="_blank" title="RSS">
+                          <span class="icon is-large has-text-black-bis">
+                              <svg class="svg-inline--fa fa-rss fa-w-14 fa-lg" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="rss" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" data-fa-i2svg=""><path fill="currentColor" d="M128.081 415.959c0 35.369-28.672 64.041-64.041 64.041S0 451.328 0 415.959s28.672-64.041 64.041-64.041 64.04 28.673 64.04 64.041zm175.66 47.25c-8.354-154.6-132.185-278.587-286.95-286.95C7.656 175.765 0 183.105 0 192.253v48.069c0 8.415 6.49 15.472 14.887 16.018 111.832 7.284 201.473 96.702 208.772 208.772.547 8.397 7.604 14.887 16.018 14.887h48.069c9.149.001 16.489-7.655 15.995-16.79zm144.249.288C439.596 229.677 251.465 40.445 16.503 32.01 7.473 31.686 0 38.981 0 48.016v48.068c0 8.625 6.835 15.645 15.453 15.999 191.179 7.839 344.627 161.316 352.465 352.465.353 8.618 7.373 15.453 15.999 15.453h48.068c9.034-.001 16.329-7.474 16.005-16.504z"></path></svg><!-- <i class="fas fa-rss fa-lg"></i> -->
+                          </span>
+                      </a>
+                    </div>
+                    <!--buttons end-->
+
+                  </div>
+                </div>
+                </div>
+              </div>
+            </nav>
+      </div>
+
+ <div class="hero-body ct-body"></div>
+      
+    </section>
+    <section class="ct-body">
+      <div class="container">
+          <div class="columns is-variable bd-klmn-columns is-4 is-centered">
+              <div class="column is-four-fifths">
+                  <div class="post-body single-content">
+                    
+                    <h1 class="title">
+                            Machine Learning Lecture 03 Locally Weighted & Logistic Regression   
+                      </h1>
+                     
+                    
+                      <div class="media">
+                            
+                            <figure class="media-left">
+                              <p class="image is-48x48">
+                                
+                                  <img class="is-rounded" src="https://i.loli.net/2019/02/20/5c6cf0e7a42f9.jpg">
+                                
+                              </p>
+                            </figure>
+                            
+                            <div class="media-content">
+                              <div class="content">
+                                <p>
+                                 <span class="date">2022/01/29 10:29 AM</span>
+                                  <span class="tran-posted-in">posted in</span>&nbsp; 
+                                  
+                                      <span class="posted-in"><a href='Stanford%20CS229.html'>Stanford CS229</a></span>
+                                         
+                                  
+                                    &nbsp;&nbsp;<a href="16434701815205.html#disqus_thread"><span class="tran-disqus-comments">comments</span></a>
+                                  
+
+                                   
+                                      
+                                  <br />
+                                  <span class="tran-tags">Tags:</span>&nbsp;
+                                  
+                                    <a class="tag is-link is-light" href='tag_Stanford%20CS229.html'>#Stanford CS229</a>
+                                     
+
+                                </p>
+                              </div>
+                            </div>
+                         
+                    </div>
+                </div>
+                  <article class="markdown-body single-content">
+                    <ul>
+<li>Linear Regression (recap)</li>
+<li>Locally weighted regression</li>
+<li>Probabilitic interpretation</li>
+<li>Logistic regression</li>
+<li>Newton's method</li>
+</ul>
+<h2><a id="recap" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Recap</h2>
+<ul>
+<li>\((x^{(i)},y^{(i)})\)  ith example</li>
+<li>\(x^{(i)} \in \mathbb{R}^{n+1}, y^{(i)} \in \mathbb{R}, x_0=1\)</li>
+<li>m = #example, n = #features.</li>
+<li>\(h_{0}(x)=\sum_{j=0}^{n} \theta_{j} x_{j}=\theta^{\top} x\)</li>
+<li>\(J(\theta)=\frac{1}{2} \sum_{i=1}^{m}\left(h_{0}\left(x^{(i)}\right)-y^{(i)}\right)^{2}\)</li>
+</ul>
+<h2><a id="feature-selection" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Feature Selection</h2>
+<p><img src="media/16434701815205/16434717734293.jpg" alt="" class="mw_img_center" style="width:500px;display: block; clear:both; margin: 0 auto;" /><br />
+To fit the curve in graph. We need to select appropriate feature to fit.</p>
+<p><img src="media/16434701815205/16434718897298.jpg" alt="" class="mw_img_center" style="width:500px;display: block; clear:both; margin: 0 auto;" /></p>
+<p>Feature: # different x. x1, x2... xm.</p>
+<h2><a id="locally-weighted-linear-regression" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Locally Weighted (Linear)  Regression</h2>
+<blockquote>
+<p>Another problem different to address whether the data fit well or not by just a straight line.</p>
+</blockquote>
+<p><img src="media/16434701815205/16434723824971.jpg" alt="" class="mw_img_center" style="width:500px;display: block; clear:both; margin: 0 auto;" /><br />
+It is slightly difficult to find a curve to fit the whole line.</p>
+<ul>
+<li>Paramatric Learning Algorithms
+<ul>
+<li>Fit fixed set of parameters(\(\theta_i\)) to data.</li>
+</ul>
+</li>
+<li>Non-parametric Learning Algorithms
+<ul>
+<li>Amount of data you need to keep grows with size of data.</li>
+</ul>
+</li>
+</ul>
+<p><img src="media/16434701815205/16434732253357.jpg" alt="" class="mw_img_center" style="width:500px;display: block; clear:both; margin: 0 auto;" /><br />
+To make a prediction of a certain value of x.</p>
+<ul>
+<li>
+<p>What we do in LR: fit \(\theta\) to minimize cost function \(\frac{1}{2} \sum_{i}\left(y^{(i)} \cdot \theta^{T} x^{(i)}\right)^{2}\). Then return \(\theta^T x\)</p>
+</li>
+<li>
+<p>In locally weighted regression: fit \(\theta\) to minimize \(\sum_{i=1}^{M} \omega^{(i)}\left(y^{(i)}-\theta_{x}^{\top(i)}\right)^{2}\). Where \(w^{(i)}\) is a weight function.</p>
+<p><img src="media/16434701815205/16434747104669.jpg" alt="" class="mw_img_center" style="width:400px;display: block; clear:both; margin: 0 auto;" /></p>
+</li>
+<li>
+<p>If \(|x^{(i)}-x|\) is small. \(w^{(i)}\approx1\). x is the location where we want to make a prediction, \(x^{(i)}\) is the input x for your ith training example.<br />
+w's value is between 0 and 1. Tells you how much you should pay attention to the \((x^{(i)},y^{(i)})\)</p>
+</li>
+<li>
+<p>If \(|x^{(i)}-x|\) is large. \(w^{(i)}\approx0\).</p>
+</li>
+</ul>
+<p>When \(x^{(i)}\) is too far away  from x, \(w^{(i)}\) will set the whole term to 0.<br />
+<img src="media/16434701815205/16434769676711.jpg" alt="" class="mw_img_center" style="width:500px;display: block; clear:both; margin: 0 auto;" /><br />
+Just like in the green line, the effect of red line will be eliminated to the least.</p>
+<p>Lets see a smaller training set.<br />
+<img src="media/16434701815205/16434779631455.jpg" alt="" class="mw_img_center" style="width:500px;display: block; clear:both; margin: 0 auto;" /><br />
+The shape of \(w^{(i)}\) looks like green line. (shape of Gaussian)<br />
+<img src="media/16434701815205/16434780838240.jpg" alt="" class="mw_img_center" style="width:500px;display: block; clear:both; margin: 0 auto;" /></p>
+<p>One last thing: How to choose the wigth of Gaussian density?</p>
+<ul>
+<li>Now we introfuce the bandwidth parameter \(\tau\)</li>
+<li>\(w^{(i)}=\exp \left(-\frac{\left(x^{(i)}-x\right)^{2}}{2 \tau^{2}}\right)\)</li>
+<li>We will play with \(\tau\) to fit with data set.</li>
+</ul>
+<p><strong>We tend to use locally weighted regression when we have a relatively low dimensional dataset.</strong> When the number of features is not too big.</p>
+<h2><a id="probabilistic-interpretation" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Probabilistic Interpretation</h2>
+<blockquote>
+<p>Why least squares in \(J(\theta)=\frac{1}{2} \sum_{i=1}^{m}\left(h_{0}\left(x^{(i)}\right)-y^{(i)}\right)^{2}\)?</p>
+</blockquote>
+<p>Assume \(y^{(i)}=\theta^{T} x^{(i)}+\epsilon^{(i)}\) \(\epsilon\) is an error term that denotes onmodel effects, random noise.<br />
+We also assume \(\epsilon^{(i)} \sim \mathcal{N}\left(0, \sigma^{2}\right)\)(Normal distribution, also we call this Gaussian distribution)<br />
+The probabily density of \(\epsilon^{(i)}\) is</p>
+\[p\left(\epsilon^{(i)}\right)=\frac{1}{\sqrt{2 \pi} \sigma} \exp \left(-\frac{\left(\epsilon^{(i)}\right)^{2}}{2 \sigma^{2}}\right)
+\]
+<p>This probability density integrates to 1.</p>
+<p>A huge assumption we are going to make is the \(\epsilon^{(i)}\) is IID(independently and identically distributed). Which means <em>the error term for one house is different from the error term for another.</em></p>
+<p>This implies</p>
+\[p\left(y^{(i)} \mid x^{(i)} ; \theta\right)=\frac{1}{\sqrt{2 \pi} \sigma} \exp \left(-\frac{\left(y^{(i)}-\theta^{T} x^{(i)}\right)^{2}}{2 \sigma^{2}}\right)
+\]
+<p>The notation \(p\left(y^{(i)} \mid x^{(i)} ; \theta\right)\) indicates that this is the distribution of \(y^{(i)}\) given \(x^{(i)}\) and parameterized by \(\theta\). We should not condition on \(\theta\) since \(\theta\) is not a random variable.<br />
+In other words, we can say:</p>
+\[y^{(i)} \mid x^{(i)} ; \theta \sim \mathcal{N}\left(\theta^{T} x^{(i)}, \sigma^{2}\right)
+\]
+<p>Which means given \(x^{(i)}\) and \(\theta\), the value of y will depends on Gaussian Distribution. \(\theta^{T} x^{(i)}\) is the true price and \(\sigma^{2}\) is the noise.</p>
+<h3><a id="likelihood-of-theta" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Likelihood of Theta</h3>
+<p>The likelyhood function of theta is:<br />
+\(L(\theta)=L(\theta ; X, \vec{y})=p(\vec{y} \mid X ; \theta)\)</p>
+<p>Note that by th eindependence assumption on the \(\epsilon^{(i)}\)'s, this can also be written:</p>
+\[\begin{aligned}
+L(\theta) &amp;=\prod_{i=1}^{n} p\left(y^{(i)} \mid x^{(i)} ; \theta\right) \\
+&amp;=\prod_{i=1}^{n} \frac{1}{\sqrt{2 \pi} \sigma} \exp \left(-\frac{\left(y^{(i)}-\theta^{T} x^{(i)}\right)^{2}}{2 \sigma^{2}}\right)
+\end{aligned}
+\]
+<blockquote>
+<p>What's the difference between <strong>likelihood</strong> and <strong>probability</strong>?<br />
+Ans: likelihood of the parameters is exactly the same thing as the probability of the data. The reason why we talk in two things is <em>if we think of the training set the data as a fixed thing and varying parameters theta</em> then we say likelihood. Whereas the <em>parameter theta is fixed and maybe varying the data</em>, then we say probability. <strong>likelihood is the function of parameters</strong> and <strong>probability is the function of data.</strong></p>
+<p>Attention: theta is not random variable.</p>
+</blockquote>
+<h3><a id="log-likelihood" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Log Likelihood</h3>
+<h4><a id="mle" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>MLE</h4>
+<blockquote>
+<p>One of the well-tested methods in statistics estimating parameters is to use <em>maximum likelihood estimation(MLE)</em>. Which means <strong>choose theta to maximize the likelihood \(L(\theta)\)</strong>.</p>
+</blockquote>
+<p>One natural way to choose theta is to choose whatever value of theta has a highest likelihood. In other words, choose a value of theta so that that value of theta maximizes the probability of the data.</p>
+<h4><a id="least-square-error" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Least Square Error</h4>
+<p>It's kindly easy to mazimize the log likelihood rather than the likelihood capital L.</p>
+\[\begin{aligned}
+\ell(\theta) &amp;=\log L(\theta) \\
+&amp;=\log \prod_{i=1}^{n} \frac{1}{\sqrt{2 \pi} \sigma} \exp \left(-\frac{\left(y^{(i)}-\theta^{T} x^{(i)}\right)^{2}}{2 \sigma^{2}}\right) \\
+&amp;=\sum_{i=1}^{n} \log \frac{1}{\sqrt{2 \pi} \sigma} \exp \left(-\frac{\left(y^{(i)}-\theta^{T} x^{(i)}\right)^{2}}{2 \sigma^{2}}\right) \\
+&amp;=n \log \frac{1}{\sqrt{2 \pi} \sigma}-\frac{1}{\sigma^{2}} \cdot \frac{1}{2} \sum_{i=1}^{n}\left(y^{(i)}-\theta^{T} x^{(i)}\right)^{2}
+\end{aligned}
+\]
+<p>Since <em>log is a strictly monotonically increasing function.</em><br />
+The first term is a constant, because our variable is theta. What we should do is choose theta to make the second term largest. That is choose theta to minimize \(\frac{1}{2} \sum_{i=1}^{n}\left(y^{(i)}-\theta^{T} x^{(i)}\right)^2\). Which is just \(J(\theta)\), the cost function of linear regression.</p>
+<p>So the prove shows that, <em>choosing the value of theta to minimize the least squares errors, that is just finding the MLE for the parameters theta under this set of assumptions we made.</em>  Which means the MLE is completely equal to find the least squares errors. If you are willing to assume that error terms are Gaussian and IID and you are going to use MLE  then you should use least squares. <em>Most cases we can assume error terms are IID.</em></p>
+<h2><a id="classification-problem" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Classification Problem</h2>
+<h3><a id="binary-classification" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Binary Classification</h3>
+<blockquote>
+<p>\(y\in\{0,1\}\)</p>
+</blockquote>
+<p><img src="media/16434701815205/16434972845929.jpg" alt="" class="mw_img_center" style="width:450px;display: block; clear:both; margin: 0 auto;" /><br />
+In this graph, if we do lnear regression, we may draw a line like this.<br />
+<img src="media/16434701815205/16434973795318.jpg" alt="" class="mw_img_center" style="width:450px;display: block; clear:both; margin: 0 auto;" /><br />
+But when we add another point, we will see linear regression is not a good point for classfication.</p>
+<h3><a id="logistic-regression" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Logistic Regression</h3>
+<p>What we want is to let output value of \(h_\theta(x)\in[0,1]\)</p>
+\[h_{\theta}(x)=g\left(\theta^{T} x\right)=\frac{1}{1+e^{-\theta^{T} x}}
+\]
+<p>Where</p>
+\[g(z)=\frac{1}{1+e^{-z}}
+\]
+<p>is called the <strong>logistic function</strong> or <strong>sigmoid function</strong> Output values between 0 and 1.<br />
+In linear regression, \(h_\theta(x)=\theta^Tx\). What logistic regression will do is set \(\theta^Tx\) between 0 and 1.</p>
+<p>To design a learning algorithm, sometimes we have to choose <em>form of hypothesis.</em><br />
+So why do we just choose the logistic function?</p>
+\[\begin{aligned}
+&amp;P(y=1 \mid x ; \theta)=h_{\theta}(x) \\
+&amp;P(y=0 \mid x ; \theta)=1-h_{\theta}(x)
+\end{aligned}
+\]
+<p>These two equations can be compressed as one</p>
+\[p(y \mid x ; \theta)=\left(h_{\theta}(x)\right)^{y}\left(1-h_{\theta}(x)\right)^{1-y}
+\]
+<p>(Just think about y = 1 and y = 0 )<br />
+<img src="media/16434701815205/16435073079954.jpg" alt="-c500 " /></p>
+<p>So the likelihood \(L(\theta)\) will be like</p>
+\[\begin{aligned}
+L(\theta) &amp;=p(\vec{y} \mid X ; \theta) \\
+&amp;=\prod_{i=1}^{n} p\left(y^{(i)} \mid x^{(i)} ; \theta\right) \\
+&amp;=\prod_{i=1}^{n}\left(h_{\theta}\left(x^{(i)}\right)\right)^{y^{(i)}}\left(1-h_{\theta}\left(x^{(i)}\right)\right)^{1-y^{(i)}}
+\end{aligned}
+\]
+<p>Again, we come to the &quot;log likelihood&quot;. And end up with</p>
+\[\begin{aligned}
+\ell(\theta) &amp;=\log L(\theta) \\
+&amp;=\sum_{i=1}^{n} y^{(i)} \log h\left(x^{(i)}\right)+\left(1-y^{(i)}\right) \log \left(1-h\left(x^{(i)}\right)\right)
+\end{aligned}
+\]
+<p>Now we need to choose theta to maximize \(l(\theta)\). Which is called Batch gradient assent:</p>
+\[\theta_j := \theta_j + \alpha \frac {\partial} {\partial\theta_j} l(\theta)
+\]
+<p>What's the difference between this and linear regression we saw last time?</p>
+\[\theta_j := \theta_j - \alpha \frac {\partial} {\partial\theta_j} J(\theta)
+\]
+<ol>
+<li>\(l(\theta)\) and \(J(\theta)\)</li>
+<li>One is minimize and one is maximize.<br />
+<img src="media/16434701815205/16435091897542.jpg" alt="" class="mw_img_center" style="width:400px;display: block; clear:both; margin: 0 auto;" /><br />
+After calculating partial derivitive, we can get</li>
+</ol>
+\[\begin{aligned}
+\frac{\partial}{\partial \theta_{j}} \ell(\theta) &amp;=\left(y \frac{1}{g\left(\theta^{T} x\right)}-(1-y) \frac{1}{1-g\left(\theta^{T} x\right)}\right) \frac{\partial}{\partial \theta_{j}} g\left(\theta^{T} x\right) \\
+&amp;=\left(y \frac{1}{g\left(\theta^{T} x\right)}-(1-y) \frac{1}{1-g\left(\theta^{T} x\right)}\right) g\left(\theta^{T} x\right)\left(1-g\left(\theta^{T} x\right)\right) \frac{\partial}{\partial \theta_{j}} \theta^{T} x \\
+&amp;=\left(y\left(1-g\left(\theta^{T} x\right)\right)-(1-y) g\left(\theta^{T} x\right)\right) x_{j} \\
+&amp;=\left(y-h_{\theta}(x)\right) x_{j}
+\end{aligned}
+\]
+<p>Above, we used the fact that \(g'(z) = g(z)(1-g(z))\), the property of sigmoid function. Then we get</p>
+\[\theta_{j}:=\theta_{j}+\alpha\left(y^{(i)}-h_{\theta}\left(x^{(i)}\right)\right) x_{j}^{(i)}
+\]
+<p>We choose logarithm to ensure that there is no local optimal area but only global area.</p>
+<p>Now we can see though the \(h_\theta(x)\) becomes different, the surface level of equation turns out to be the same.</p>
+<p><em>This is a general property of much bigger class of algorithms called generalized linear models(GLM)</em>.</p>
+<p>We cannot use method like normal equations in linear regression to find the best value ot theta.<br />
+We should use an algorithm like <strong>iterative optimization algorithm  such as gradient ascent</strong> or we will see in the second <strong>Newton's method</strong>.</p>
+<h2><a id="newton-s-method" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Newton's Method</h2>
+<blockquote>
+<p>Gradient ascent is a good alg but it should take many baby step, whereas <em>Newton's method allow us to take much bigger jump.</em><br />
+Assume we need 100 0r 1000 iteration to get value in iteration, in Newton's Method, we only need 10 iterations to get very good value of theta.</p>
+</blockquote>
+<p>The problem Newton's Method solves would be: We have f, and we want to find a \(\theta\), st. \(f(\theta) = 0\)<br />
+What we really want is the maximize \(l(\theta)\). I.e., we want \(l'(\theta) = 0\)</p>
+<h3><a id="an-example-of-newton-s-method" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>An example of Newton's Method</h3>
+<p><img src="media/16434701815205/16435114459636.jpg" alt="" class="mw_img_center" style="width:500px;display: block; clear:both; margin: 0 auto;" /><br />
+We start at \(\theta^{(0)}\), and we want to find the goal.</p>
+<p><img src="media/16434701815205/16435116777567.jpg" alt="" class="mw_img_center" style="width:500px;display: block; clear:both; margin: 0 auto;" /></p>
+<p>We make tangent on the start point, and find the point of intersection of x axis and the tangent. Then use the point of intersection as the new point then make tangent.</p>
+<p><img src="media/16434701815205/16435118749535.jpg" alt="" class="mw_img_center" style="width:400px;display: block; clear:both; margin: 0 auto;" /><br />
+So \(\theta^{(1)} = \theta^{(0)} - \Delta\). \(f'(\theta^{(0)}) = \frac {f(\theta^{(0)})} {\Delta}\)</p>
+<p>Let \(f(\theta) = l'(\theta)\)</p>
+\[\theta:=\theta-\frac{\ell^{\prime}(\theta)}{\ell^{\prime \prime}(\theta)}
+\]
+<blockquote>
+<p>Newton's method is &quot;quadratic convergence&quot;<br />
+0.01 error --&gt; 0.0001 error --&gt; 0.00000001 error</p>
+</blockquote>
+<h3><a id="when-theta-is-a-vector" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>When theta is a vector:</h3>
+<blockquote>
+<p>Generalization of Newton's method to thsi multidimensional setting is given by<br />
+\(\theta:=\theta-H^{-1} \nabla_{\theta} \ell(\theta)\)</p>
+</blockquote>
+<p>H is an n*n matrix called the <strong>Hessian</strong>, whose entries are given by<br />
+\(H_{i j}=\frac{\partial^{2} \ell(\theta)}{\partial \theta_{i} \partial \theta_{j}}\)</p>
+<h3><a id="disadvantage" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Disadvantage</h3>
+<p>When in high dimensional, theta isa vector, each step of Newton's Method becomes much more expensive.</p>
+
+                  </article>
+                  <div class="comments-wrap">
+                    <div class="share-comments">
+                      
+
+                      
+                        <div id="disqus_thread"></div>
+                      
+
+                      
+                    </div>
+                  </div><!-- end comments wrap -->
+              </div>
+            </div><!-- end columns -->
+      </div><!-- end container -->
+    </section>
+
+
+
+    <footer class="footer">
+        <div class="content has-text-centered">
+          <p>
+              Copyright &copy; 2019
+              Powered by <a target="_blank" href="http://www.mweb.im">MWeb</a>,&nbsp; 
+              Theme used <a target="_blank" href="https://bulma.io/">Bulma CSS</a>.
+          </p>
+        </div>
+      </footer>
+
+
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/x-mathjax-config">MathJax.Hub.Config({TeX: { equationNumbers: { autoNumber: "AMS" } }});</script>
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="asset/prism.js"></script>
+
+
+
+
+<script type="text/javascript">
+    var disqus_shortname = 'chiyuanye'; 
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+
+<script type="text/javascript">
+var disqus_shortname = 'chiyuanye'; 
+
+(function () {
+var s = document.createElement('script'); s.async = true;
+s.type = 'text/javascript';
+s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+(document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+}());
+</script>
+  
+    
+
+
+
+
+  </body>
+</html>

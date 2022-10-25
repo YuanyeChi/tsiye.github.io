@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>
+      
+    Machine Learning Lecture 04 Perceptron & Generalized Linear Model - Yuanye Chi's Blog
+    
+    </title>
+    <link rel="shortcut icon" href="https://i.loli.net/2019/02/20/5c6cf0555ffe6.jpeg" type="image/png" />
+
+    
+    
+    <link href="atom.xml" rel="alternate" title="Yuanye Chi's Blog" type="application/atom+xml">
+    <link rel="stylesheet" href="asset/css/style.min.css">
+    <link rel="stylesheet" href="asset/css/doc.css">
+    <script src="asset/app.js"></script>
+</head>
+  <body>
+    <section class="hero">
+      <div class="hero-head">
+          <nav class="navbar" role="navigation" aria-label="main navigation">
+              <div class="container">
+              <div class="navbar-brand">
+                
+                <a target="_self" class="navbar-item " href="index.html">Home</a>
+                
+                <a target="_self" class="navbar-item " href="archives.html">Archives</a>
+                
+                <a target="_self" class="navbar-item " href="about.html">About</a>
+                
+                <a target="_self" class="navbar-item " href="https://chiyuanye-com-old-site.onrender.com/">OldSite</a>
+                
+
+                <a role="button" id="navbarSNSRssSwitchBtn" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarSNSRssButtons">
+                  <span aria-hidden="true"></span>
+                  <span aria-hidden="true"></span>
+                  <span aria-hidden="true"></span>
+                </a>
+              </div>
+            
+              <div id="navbarSNSRssButtons" class="navbar-menu">
+                <div class="navbar-start">
+                  
+                </div>
+            
+                <div class="navbar-end">
+                  <div class="navbar-item">
+                    <!--buttons start-->
+                    <div class="buttons">
+                      
+                        
+                        
+                        
+                        <a href="https://github.com/tsiye" target="_blank" title="github">
+                            <span class="icon is-large has-text-grey-darker">
+                               <svg class="svg-inline--fa fa-github fa-w-16 fa-lg" aria-hidden="true" focusable="false" data-prefix="fab" data-icon="github" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512" data-fa-i2svg=""><path fill="currentColor" d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"></path></svg><!-- <i class="fab fa-github fa-lg"></i> -->
+                            </span>
+                          </a>
+                        
+                        
+                      
+                      <a href="atom.xml" target="_blank" title="RSS">
+                          <span class="icon is-large has-text-black-bis">
+                              <svg class="svg-inline--fa fa-rss fa-w-14 fa-lg" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="rss" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" data-fa-i2svg=""><path fill="currentColor" d="M128.081 415.959c0 35.369-28.672 64.041-64.041 64.041S0 451.328 0 415.959s28.672-64.041 64.041-64.041 64.04 28.673 64.04 64.041zm175.66 47.25c-8.354-154.6-132.185-278.587-286.95-286.95C7.656 175.765 0 183.105 0 192.253v48.069c0 8.415 6.49 15.472 14.887 16.018 111.832 7.284 201.473 96.702 208.772 208.772.547 8.397 7.604 14.887 16.018 14.887h48.069c9.149.001 16.489-7.655 15.995-16.79zm144.249.288C439.596 229.677 251.465 40.445 16.503 32.01 7.473 31.686 0 38.981 0 48.016v48.068c0 8.625 6.835 15.645 15.453 15.999 191.179 7.839 344.627 161.316 352.465 352.465.353 8.618 7.373 15.453 15.999 15.453h48.068c9.034-.001 16.329-7.474 16.005-16.504z"></path></svg><!-- <i class="fas fa-rss fa-lg"></i> -->
+                          </span>
+                      </a>
+                    </div>
+                    <!--buttons end-->
+
+                  </div>
+                </div>
+                </div>
+              </div>
+            </nav>
+      </div>
+
+ <div class="hero-body ct-body"></div>
+      
+    </section>
+    <section class="ct-body">
+      <div class="container">
+          <div class="columns is-variable bd-klmn-columns is-4 is-centered">
+              <div class="column is-four-fifths">
+                  <div class="post-body single-content">
+                    
+                    <h1 class="title">
+                            Machine Learning Lecture 04 Perceptron & Generalized Linear Model   
+                      </h1>
+                     
+                    
+                      <div class="media">
+                            
+                            <figure class="media-left">
+                              <p class="image is-48x48">
+                                
+                                  <img class="is-rounded" src="https://i.loli.net/2019/02/20/5c6cf0e7a42f9.jpg">
+                                
+                              </p>
+                            </figure>
+                            
+                            <div class="media-content">
+                              <div class="content">
+                                <p>
+                                 <span class="date">2022/01/29 22:20 PM</span>
+                                  <span class="tran-posted-in">posted in</span>&nbsp; 
+                                  
+                                      <span class="posted-in"><a href='Stanford%20CS229.html'>Stanford CS229</a></span>
+                                         
+                                  
+                                    &nbsp;&nbsp;<a href="16435128248229.html#disqus_thread"><span class="tran-disqus-comments">comments</span></a>
+                                  
+
+                                   
+                                      
+                                  <br />
+                                  <span class="tran-tags">Tags:</span>&nbsp;
+                                  
+                                    <a class="tag is-link is-light" href='tag_Stanford%20CS229.html'>#Stanford CS229</a>
+                                     
+
+                                </p>
+                              </div>
+                            </div>
+                         
+                    </div>
+                </div>
+                  <article class="markdown-body single-content">
+                    <h2><a id="perceptron" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Perceptron</h2>
+<blockquote>
+<p>Not used in practice, we study it for historical reasons.</p>
+</blockquote>
+<h3><a id="logisticsigma-regression" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Logistic/Sigma Regression</h3>
+\[g(x) = \frac 1 {1+e^{-x}}
+\]
+<p>We will choose</p>
+\[h_\theta(x) = g(\theta^Tx) =  \frac 1 {1+e^{-\theta^Tx}}
+\]
+<p><img src="media/16435128248229/16444293196977.jpg" alt="" class="mw_img_center" style="width:400px;display: block; clear:both; margin: 0 auto;" /><br />
+g(z) tends to 1 as \(z \rightarrow \infty\)</p>
+<p><img src="media/16435128248229/16446199930316.jpg" alt="" class="mw_img_center" style="width:400px;display: block; clear:both; margin: 0 auto;" /><br />
+0 or 1 depending on the \(\theta\)</p>
+\[\theta_{j}:=\theta_{j}+\alpha\left(y^{(i)}-h_{\theta}(x)^{(i )}\right) x_{j}^{(i)}.
+\]
+<p>\(y^{(i)}-h_{\theta}(x)^{(i )}\) could be 0 if the algorithm got it already.<br />
+Could be +1 if wrong and \(y^{(i)} = 1\) and could be -1 if worng and \(y^{(i)} = 0\)</p>
+<p><img src="media/16435128248229/16446207602864.jpg" alt="" class="mw_img_center" style="width:500px;display: block; clear:both; margin: 0 auto;" /><br />
+The algorithm learn an example at a time and then new example comes in, which is not in true position.<br />
+<img src="media/16435128248229/16446208312264.jpg" alt="" class="mw_img_center" style="width:500px;display: block; clear:both; margin: 0 auto;" /></p>
+<p>The \(\theta\) would be perpendicular to the line(separation boundary).<br />
+<img src="media/16435128248229/16446321018151.jpg" alt="" class="mw_img_center" style="width:500px;display: block; clear:both; margin: 0 auto;" /><br />
+We can see the new x is misclassified.</p>
+<p>So the \(\theta\) will adds \(\alpha x\) then becomes \(\alpha'\)<br />
+<img src="media/16435128248229/16446352399945.jpg" alt="" class="mw_img_center" style="width:500px;display: block; clear:both; margin: 0 auto;" /></p>
+<p>\(\theta \approx x| y =1\) theta will be similar to x when y = 1<br />
+\(\theta * x | y = 0\) theta will be not similar to x when y = 0</p>
+<p>We want the decision boundary to seperate two classes of x.<br />
+Given x, we should make theta to move close to x.<br />
+<img src="media/16435128248229/16446357163486.jpg" alt="" class="mw_img_center" style="width:300px;display: block; clear:both; margin: 0 auto;" /><br />
+We just add a component of x, and make theta rotate in that way. To make second one close to the first one.</p>
+<p>The logistic regression is more like a soft way of perceptron.</p>
+<h2><a id="exponential-family" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Exponential Family</h2>
+\[p(y ; \eta)=b(y) \exp \left(\eta^{T} T(y)-a(\eta)\right) = \frac {b(y)\exp(\eta^TT(y))}{e^{a(\eta)}}
+\]
+<ul>
+<li>y is the data.</li>
+<li>\(\eta\) is called the natural parameter(canonical parameter). Can be a vector, also can be a scalar.</li>
+<li>T(y) is suffcient statistic. For all of the distributions we are going to see today, T(y) will be equal to just y.</li>
+<li>b(y) is called Base measure.</li>
+<li>\(a(\eta)\) is called log-partition function.</li>
+</ul>
+<p>\(\eta\) and T(y) need to match. For some T, a and b, the p will be the PDF of Gaussian.</p>
+<p>To show a distribution is in exponential family, the most straightforward way to do it is to write out the PDF of the distribution in a form that you know. Then do some algebraic massaging  to bring it to this form.</p>
+<h3><a id="examples" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Examples</h3>
+<h4><a id="bernoulli-distribution" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Bernoulli Distribution</h4>
+<blockquote>
+<p>Is used to find the binary data.</p>
+</blockquote>
+<p>\(\phi\) = probability of event</p>
+<p>We will take the PDF of Bernoulli into the form of exponential.<br />
+\(p(y;\phi) = \phi^y(1-\phi)^{(1-y)}\) (Just like programming writing if=else)</p>
+\[\begin{aligned}
+&amp;=\exp \left(\log \left(\phi^{y}(1-\phi)^{(1-y)}\right)\right) \\
+&amp;=\exp \left[\log \left(\frac{\phi}{1-\phi}\right) y+\log (1-\phi)\right]
+\end{aligned}
+\]
+\[\begin{aligned}
+&amp;=\underbrace{1}_{b(y)} \exp [\underbrace{\log \frac\phi{(1-\phi)}}_{\eta} \underbrace{y}_{T(y)}+\underbrace{\log (1-\phi)}_{\alpha(\eta)}] \\
+&amp;b(y)=1\\
+&amp;T(y)=y\\
+&amp;\eta=\log \frac\phi{(1-\phi)} \Rightarrow \phi = \frac 1 {1+e^{-\eta}}(\text{just like the sigmoid function})\\
+&amp;a(\eta)=-\log (1-\phi) \Rightarrow-\log \left(1-\frac{1}{1+e^{-\eta}}\right) = log(1+e^\eta)
+\end{aligned}
+\]
+<h4><a id="gaussian-with-fixed-variance" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Gaussian with fixed variance</h4>
+<p>Assume \(\sigma^2 = 1\)</p>
+\[\begin{aligned}
+p(y ; \mu) &amp;=\frac{1}{\sqrt{2 \pi}} \operatorname{exp}\left(-\frac{(y-\mu)^{2}}{2}\right) \\
+&amp;=\underbrace{\frac{1}{\sqrt{2 \pi}} e^{-\frac{y^{2}}{2}}}_{b(y)} \operatorname{exp}(\underbrace{\mu}_{\eta} \underbrace{y}_{T(y)}-\underbrace{\frac{1}{2} \mu^{2}}_{a(\eta)})\\
+b(y) &amp;=\frac{1}{\sqrt{2 \pi}} \operatorname{exp}\left(-\frac{y^{2}}{2}\right) \\
+T(y) &amp;=y \\
+\eta &amp;=\mu \\
+a(\eta) &amp;=\frac{\mu^{2}}{2}= \frac{\eta^{2}}{2}
+\end{aligned}
+\]
+<h3><a id="property" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Property</h3>
+<p>If we perform maximum likelihood on expotential family,</p>
+<ol>
+<li>MLE with respect to(wrt) \(\eta\) is concave<br />
+Negative log likelihood(NLL)  is convex</li>
+<li>\(E[y;\eta] = \frac {\partial a(\eta)}  {\partial \eta}\)</li>
+<li>\(Var[y;\eta] =  \frac {\partial^2 a(\eta)}  {\partial \eta^2}\)</li>
+</ol>
+<h3><a id="members-in-exponential-family" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Members in Exponential Family</h3>
+<ol>
+<li>Real number data like price of house in regression
+<ul>
+<li>We use Gaussian</li>
+</ul>
+</li>
+<li>Binary when output is 0 and 1 in classification
+<ul>
+<li>We use Bernoulli</li>
+</ul>
+</li>
+<li>Count(Non-negtive integers) like number of visitors just like a count
+<ul>
+<li>Poisson</li>
+</ul>
+</li>
+<li>Positive real value integers(\(R^+\))
+<ul>
+<li>Gamma, Exponential(this is the exponential distribution that is in exponential family.)</li>
+</ul>
+</li>
+<li>Probability distributions over probability distributioins
+<ul>
+<li>Beta, Dirchlet (Bayesian)</li>
+</ul>
+</li>
+</ol>
+<h2><a id="generalized-linear-models-glm" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Generalized Linear Models(GLM)</h2>
+<blockquote>
+<p>GLM is like a natural extension of exponential families to include covariates or include your input features in some way.  Since in exponential families, we are just dealing the y.<br />
+We can choose an appropriate family in the exponential family and plug it onto a linear model.</p>
+</blockquote>
+<p>The assumptions/design choices that are gonna take us from exponential families to GLM.</p>
+<ol>
+<li>\(y|x;\theta\) ~ Exponential Family(\(\eta\)) (Depending on the the situation, we can choose diffenrent distribution.)</li>
+<li>\(\eta = \theta^Tx\) \(\theta \in \mathbb{R}^{n}, \quad x \in \mathbb{R}^{n}\)</li>
+<li>Test time: output \(E[y|x;\theta]\)</li>
+</ol>
+<p>Given the x, we will get an exponential family distribution, and the mean of the distribution will be ths prediction that we make for a given x.<br />
+What we mean is \(h_\theta(x)=E[y|x;\theta]\)</p>
+<p><img src="media/16435128248229/16447232240754.jpg" alt="" class="mw_img_center" style="width:500px;display: block; clear:both; margin: 0 auto;" /><br />
+The left is the model and the right is the distribution. We give the x to the linear model and we will get \(\eta\) by \(\theta^Tx\). <em>The parameter of the distribution is the output of the linear model.</em> We need to choose appropriate b, a and T according to the problem we choose.</p>
+<p><img src="media/16435128248229/16447234683986.jpg" alt="" class="mw_img_center" style="width:500px;display: block; clear:both; margin: 0 auto;" /><br />
+\(E[y,\eta] = E[y,\theta^Tx] = h_\theta(x)\)</p>
+<p>We are just training \(\theta\) to predict the parameters of exponential family distribution whose mean is the prediction we are going to make for y.</p>
+<p>We do gradient descent on \(\theta\) in the model and get \(\eta\).<br />
+<img src="media/16435128248229/16447238400611.jpg" alt="" class="mw_img_center" style="width:500px;display: block; clear:both; margin: 0 auto;" /><br />
+That is what we do on test. In learning, we do <strong>maximum likelihood.</strong> \(\max _{\theta} \log P\left(y^{(i)}, \theta^{T} x^{(i)}\right)\) We are doing gradient descent on the p by taking gradients on \(\theta\).</p>
+<h3><a id="glm-training" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>GLM Training</h3>
+<blockquote>
+<p>No matter what choice we make on parameters, the learning update rule is the same.</p>
+</blockquote>
+<h4><a id="learning-update-rule" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Learning Update Rule</h4>
+<p>\(\theta_j := \theta_j + \alpha(y^{(i)} - h_\theta(x^{(i)}))x^{(i)}\)</p>
+<p>This is the algorithm we can straightly do learning without doing algebra on the gradients and the loss. We can go straight to the update rule and do our learning. <em>We plug in \(h_\theta(x)\) depending on the choice of distribution we make</em> and then we can start learning.</p>
+<p>The Newton Method is probably the most common you would use with GLMs, as long as the number of features is less than a few thousand.<br />
+No matter what method we do, the update rule is the same. We just change the \(h_\theta\) and do the learning.</p>
+<h3><a id="terminalogy" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Terminalogy</h3>
+<ul>
+<li>\(\eta\): natural parameter</li>
+<li>\(\mu:E[y;\eta] = g(\eta)\): Canonical Response Function \(g(\eta) =  \frac {\partial a(\eta)}  {\partial \eta}\)</li>
+<li>\(\eta = g^{-1}(\mu)\) Canonical Link Function</li>
+</ul>
+<h3><a id="3-parametization-in-3-spaces" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>3 parametization(in 3 spaces)</h3>
+<ol>
+<li>Model Param \(\theta\)</li>
+<li>Natural Param \(\eta\) for exponential family</li>
+<li>Canonical Param \(\phi\) for Bernoulli, \(\mu\sigma^2\) for Gaussian, \(\lambda\) for Poisson.</li>
+</ol>
+<p>When we learning GLM, \(\theta\) is the only thing we learn.</p>
+<p>Then we make design choice that using linear model \(\theta^Tx\) to get \(\eta\).</p>
+<p>Then we use \(g = \frac {\partial a(\eta)}  {\partial \eta}\) to from natural param to canonical param.</p>
+<p><img src="media/16435128248229/16447323696422.jpg" alt="" class="mw_img_center" style="width:500px;display: block; clear:both; margin: 0 auto;" /></p>
+<p>So we just can get the logistic regression in decent mode.<br />
+<img src="media/16435128248229/16447330199756.jpg" alt="" class="mw_img_center" style="width:500px;display: block; clear:both; margin: 0 auto;" /></p>
+<h3><a id="assumption" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Assumption</h3>
+<h4><a id="regression" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Regression</h4>
+<p>For every given x(could be multi numbers), we have a separation line.  And we can also see the Gaussian distribution whose variance is 1.<br />
+<img src="media/16435128248229/16447341410353.jpg" alt="" class="mw_img_center" style="width:500px;display: block; clear:both; margin: 0 auto;" /><br />
+<img src="media/16435128248229/16447342837130.jpg" alt="" class="mw_img_center" style="width:500px;display: block; clear:both; margin: 0 auto;" /><br />
+Our task is to find backwards to find the \(\theta\)<br />
+<img src="media/16435128248229/16447343837283.jpg" alt="" class="mw_img_center" style="width:500px;display: block; clear:both; margin: 0 auto;" /></p>
+<h4><a id="classification" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Classification</h4>
+<p><img src="media/16435128248229/16447346581881.jpg" alt="" class="mw_img_center" style="width:500px;display: block; clear:both; margin: 0 auto;" /></p>
+<h2><a id="softmax-regressioin-multiclass-classification-cross-entropy-minimization" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Softmax Regressioin(Multiclass Classification)(Cross Entropy Minimization)</h2>
+<p><img src="media/16435128248229/16447352293872.jpg" alt="" class="mw_img_center" style="width:500px;display: block; clear:both; margin: 0 auto;" /><br />
+<img src="media/16435128248229/16447353185357.jpg" alt="" class="mw_img_center" style="width:500px;display: block; clear:both; margin: 0 auto;" /><br />
+One-hot vector: the vector filled with 0s except with a 1 in one of the places.</p>
+<p>Now we have a set of parameters per class.</p>
+<p><img src="media/16435128248229/16447354851181.jpg" alt="" class="mw_img_center" style="width:500px;display: block; clear:both; margin: 0 auto;" /></p>
+<p>Given an example x, now we have classes.<br />
+<img src="media/16435128248229/16447355994669.jpg" alt="" class="mw_img_center" style="width:500px;display: block; clear:both; margin: 0 auto;" /><br />
+Now it is not 0 or 1 but real numbers.</p>
+<p>Then we take exponential, then make everything positive.</p>
+<p>Then we normalize them.   Then the sum of the heights will add up to 1.</p>
+<p>Now the true y will look like another shape.<br />
+<img src="media/16435128248229/16447359783536.jpg" alt="" class="mw_img_center" style="width:500px;display: block; clear:both; margin: 0 auto;" /></p>
+<p>Now the goal of learning approach is going to do is to minimize the distance between two distributions.<br />
+<img src="media/16435128248229/16447360420757.jpg" alt="" class="mw_img_center" style="width:500px;display: block; clear:both; margin: 0 auto;" /><br />
+We need to change the left to look like the right. Which is <em>minimize the cross entropy between the two distributions</em></p>
+<h3><a id="cross-entropy" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Cross Entropy</h3>
+<p><img src="media/16435128248229/16447363743053.jpg" alt="" class="mw_img_center" style="width:500px;display: block; clear:both; margin: 0 auto;" /><br />
+Then we treat it as loss and do gradient descent.</p>
+
+                  </article>
+                  <div class="comments-wrap">
+                    <div class="share-comments">
+                      
+
+                      
+                        <div id="disqus_thread"></div>
+                      
+
+                      
+                    </div>
+                  </div><!-- end comments wrap -->
+              </div>
+            </div><!-- end columns -->
+      </div><!-- end container -->
+    </section>
+
+
+
+    <footer class="footer">
+        <div class="content has-text-centered">
+          <p>
+              Copyright &copy; 2019
+              Powered by <a target="_blank" href="http://www.mweb.im">MWeb</a>,&nbsp; 
+              Theme used <a target="_blank" href="https://bulma.io/">Bulma CSS</a>.
+          </p>
+        </div>
+      </footer>
+
+
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/x-mathjax-config">MathJax.Hub.Config({TeX: { equationNumbers: { autoNumber: "AMS" } }});</script>
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="asset/prism.js"></script>
+
+
+
+
+<script type="text/javascript">
+    var disqus_shortname = 'chiyuanye'; 
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+
+<script type="text/javascript">
+var disqus_shortname = 'chiyuanye'; 
+
+(function () {
+var s = document.createElement('script'); s.async = true;
+s.type = 'text/javascript';
+s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+(document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+}());
+</script>
+  
+    
+
+
+
+
+  </body>
+</html>

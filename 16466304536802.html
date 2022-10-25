@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>
+      
+    Machine Learning  Lecture 11 - Introduction to Neural Networks - Yuanye Chi's Blog
+    
+    </title>
+    <link rel="shortcut icon" href="https://i.loli.net/2019/02/20/5c6cf0555ffe6.jpeg" type="image/png" />
+
+    
+    
+    <link href="atom.xml" rel="alternate" title="Yuanye Chi's Blog" type="application/atom+xml">
+    <link rel="stylesheet" href="asset/css/style.min.css">
+    <link rel="stylesheet" href="asset/css/doc.css">
+    <script src="asset/app.js"></script>
+</head>
+  <body>
+    <section class="hero">
+      <div class="hero-head">
+          <nav class="navbar" role="navigation" aria-label="main navigation">
+              <div class="container">
+              <div class="navbar-brand">
+                
+                <a target="_self" class="navbar-item " href="index.html">Home</a>
+                
+                <a target="_self" class="navbar-item " href="archives.html">Archives</a>
+                
+                <a target="_self" class="navbar-item " href="about.html">About</a>
+                
+                <a target="_self" class="navbar-item " href="https://chiyuanye-com-old-site.onrender.com/">OldSite</a>
+                
+
+                <a role="button" id="navbarSNSRssSwitchBtn" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarSNSRssButtons">
+                  <span aria-hidden="true"></span>
+                  <span aria-hidden="true"></span>
+                  <span aria-hidden="true"></span>
+                </a>
+              </div>
+            
+              <div id="navbarSNSRssButtons" class="navbar-menu">
+                <div class="navbar-start">
+                  
+                </div>
+            
+                <div class="navbar-end">
+                  <div class="navbar-item">
+                    <!--buttons start-->
+                    <div class="buttons">
+                      
+                        
+                        
+                        
+                        <a href="https://github.com/tsiye" target="_blank" title="github">
+                            <span class="icon is-large has-text-grey-darker">
+                               <svg class="svg-inline--fa fa-github fa-w-16 fa-lg" aria-hidden="true" focusable="false" data-prefix="fab" data-icon="github" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512" data-fa-i2svg=""><path fill="currentColor" d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"></path></svg><!-- <i class="fab fa-github fa-lg"></i> -->
+                            </span>
+                          </a>
+                        
+                        
+                      
+                      <a href="atom.xml" target="_blank" title="RSS">
+                          <span class="icon is-large has-text-black-bis">
+                              <svg class="svg-inline--fa fa-rss fa-w-14 fa-lg" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="rss" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" data-fa-i2svg=""><path fill="currentColor" d="M128.081 415.959c0 35.369-28.672 64.041-64.041 64.041S0 451.328 0 415.959s28.672-64.041 64.041-64.041 64.04 28.673 64.04 64.041zm175.66 47.25c-8.354-154.6-132.185-278.587-286.95-286.95C7.656 175.765 0 183.105 0 192.253v48.069c0 8.415 6.49 15.472 14.887 16.018 111.832 7.284 201.473 96.702 208.772 208.772.547 8.397 7.604 14.887 16.018 14.887h48.069c9.149.001 16.489-7.655 15.995-16.79zm144.249.288C439.596 229.677 251.465 40.445 16.503 32.01 7.473 31.686 0 38.981 0 48.016v48.068c0 8.625 6.835 15.645 15.453 15.999 191.179 7.839 344.627 161.316 352.465 352.465.353 8.618 7.373 15.453 15.999 15.453h48.068c9.034-.001 16.329-7.474 16.005-16.504z"></path></svg><!-- <i class="fas fa-rss fa-lg"></i> -->
+                          </span>
+                      </a>
+                    </div>
+                    <!--buttons end-->
+
+                  </div>
+                </div>
+                </div>
+              </div>
+            </nav>
+      </div>
+
+ <div class="hero-body ct-body"></div>
+      
+    </section>
+    <section class="ct-body">
+      <div class="container">
+          <div class="columns is-variable bd-klmn-columns is-4 is-centered">
+              <div class="column is-four-fifths">
+                  <div class="post-body single-content">
+                    
+                    <h1 class="title">
+                            Machine Learning  Lecture 11 - Introduction to Neural Networks   
+                      </h1>
+                     
+                    
+                      <div class="media">
+                            
+                            <figure class="media-left">
+                              <p class="image is-48x48">
+                                
+                                  <img class="is-rounded" src="https://i.loli.net/2019/02/20/5c6cf0e7a42f9.jpg">
+                                
+                              </p>
+                            </figure>
+                            
+                            <div class="media-content">
+                              <div class="content">
+                                <p>
+                                 <span class="date">2022/03/07 00:20 AM</span>
+                                  <span class="tran-posted-in">posted in</span>&nbsp; 
+                                  
+                                      <span class="posted-in"><a href='Stanford%20CS229.html'>Stanford CS229</a></span>
+                                         
+                                  
+                                    &nbsp;&nbsp;<a href="16466304536802.html#disqus_thread"><span class="tran-disqus-comments">comments</span></a>
+                                  
+
+                                   
+                                      
+                                  <br />
+                                  <span class="tran-tags">Tags:</span>&nbsp;
+                                  
+                                    <a class="tag is-link is-light" href='tag_Stanford%20CS229.html'>#Stanford CS229</a>
+                                     
+
+                                </p>
+                              </div>
+                            </div>
+                         
+                    </div>
+                </div>
+                  <article class="markdown-body single-content">
+                    <blockquote>
+<p>We will start from logistic regression.</p>
+</blockquote>
+<h2><a id="deep-learning" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Deep Learning</h2>
+<ul>
+<li>Computatinal expensive. Use GPU to compute.</li>
+<li>Data available has been growing after the growing of Internet.</li>
+<li>Algorithm</li>
+</ul>
+<h2><a id="logistic-regression" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Logistic Regression</h2>
+<h3><a id="goal-one" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Goal One</h3>
+<p>Goal: find cats in image. We will get an 1 for presence of a cat, and get a 0 for absense of a cat. (Assume only a cat)</p>
+<p>In computer science, a colored image can be recorded as a 3D matrix.<br />
+For 64 * 64 image, the matrix would be 64X64X3. 3 is for the RGB channel, red, green and blue.<br />
+<img src="media/16466304536802/16466751002507.jpg" alt="" class="mw_img_center" style="width:400px;display: block; clear:both; margin: 0 auto;" /><br />
+We will take all the numbers in the matrix and flatten them in a vector.</p>
+<p>Once I have a vector input, I can operate the logistici regression.<br />
+<img src="media/16466304536802/16466752451371.jpg" alt="-c400 " /><br />
+<code>x is (64*64*3,1) = 12,288</code><br />
+<code>w would be (1, 12288)</code><br />
+<img src="media/16466304536802/16466754040771.jpg" alt="" class="mw_img_center" style="width:400px;display: block; clear:both; margin: 0 auto;" /><br />
+Once we have the process, we are gonna to train.</p>
+<ol>
+<li>Initialize our parameters. w and b(weights and bias)</li>
+<li>Find the optimal w,b.</li>
+<li>Then we use the  \(\bar{y} = \sigma(wx + b)\) to predict.</li>
+</ol>
+<p>In machine learning, we often know the function that we going to use to predict, but we do not know the parameters, so we use a proxy to be our loss function. When we manage to minimize the loss function, we will find the right parameters.</p>
+<p>The loss function will be \(L = -[ylog\bar{y} + (1-y)log(1-\bar{y})]\)<br />
+We want to find w and b to minimize the loss function.  And we are going to use the gradient descent algorithm.</p>
+\[\left\{\begin{array}{l}
+w:=w-\alpha \frac{\partial L}{\partial w} \\
+b:=b-\alpha \frac{\partial L}{\partial b}
+\end{array}\right.
+\]
+<p>How many parameters does this model have?</p>
+<ul>
+<li>12288 weights and 1 bias, which can be counted from drawing by the number of edges + 1. Every circle has a bias, every edge has a weight.</li>
+</ul>
+<h2><a id="two-equations" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Two Equations</h2>
+<ol>
+<li><strong>Neuron = linear + activation</strong>. In the example above, the linear part is wx + b and the activation part is sigmoid function.</li>
+<li><strong>model = architecture + parameter.</strong> In industry, a good model will have two files, one architecture file and one parameter file.</li>
+</ol>
+<h3><a id="goal-two" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Goal Two</h3>
+<p>Second goal would be find cat, lion and iguana in images.</p>
+<p>Now we just need to put two more circles here and do the same thing.</p>
+<p><img src="media/16466304536802/16467524807445.jpg" alt="" class="mw_img_center" style="width:500px;display: block; clear:both; margin: 0 auto;" /></p>
+<p>\(a_{1}^{[1]}\)<br />
+The [1] means the layer. There are three nodes at the first layer. In each layer, neurous do not communicate with each other.<br />
+The index one identify the neuron inside the layer.</p>
+<p>The parameters would be \(3*12288 + 3\)</p>
+<p>What dataset we need to train the logistic regression?</p>
+<ul>
+<li>Images and labels with three animals.(a vector with 3 elements.)</li>
+<li><img src="media/16466304536802/16467528088028.jpg" alt="" class="mw_img_center" style="width:500px;display: block; clear:both; margin: 0 auto;" /></li>
+</ul>
+<p><img src="media/16466304536802/16467529684816.jpg" alt="" class="mw_img_center" style="width:500px;display: block; clear:both; margin: 0 auto;" /><br />
+If we add lion, the first neuron could also detect cats. Because <em>neurons do not communicate with each other.</em> We can just train them independently. Also, <em>the sigmoid in one neuron is independent with the sigmoid in another neuron.</em></p>
+<p>It is just three logistic regression yet, we could not call it neuron networks.</p>
+<p>If the train dataset does not have enough specific type of data, then that neuron would not get enough trained. So we should use a new model like put weight on specific neuron.<br />
+We could also create interaction among them to let the nodes learn together.</p>
+<h3><a id="goal-3-0-softmax-multi-class-network" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Goal 3.0(Softmax Multi-class Network)</h3>
+<blockquote>
+<p>Add constraint that add unique animal on an image. We just assume at least there is one class.</p>
+</blockquote>
+<p>Instead, we will use softmax function as output.</p>
+<p>Also we change the noation. \(Z_1^{[1]}\) is the linear part of the first neuron.<br />
+<img src="media/16466304536802/16467537179323.jpg" alt="" class="mw_img_center" style="width:500px;display: block; clear:both; margin: 0 auto;" /></p>
+<p>We use the softmax is because <em>the sum of the outputs of the network have to sum up to 1.</em></p>
+<p>We will get the probabilistic distribution over all the classes. <em>If there is no cat and no lion, then there should very likely be an iguana.</em></p>
+<p>The parameter number is the same as the second.</p>
+<p>Now we are going to modify the loss function<br />
+<img src="media/16466304536802/16467558279209.jpg" alt="" class="mw_img_center" style="width:500px;display: block; clear:both; margin: 0 auto;" /></p>
+<p>Let's see the loss function of softmax function. Which is called <strong>softmax cross entropy.</strong></p>
+\[L_{CE}=-\sum_{k=1}^{3} y_{k} \log \hat{y}_{k}
+\]
+<h3><a id="goal-4-0" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Goal 4.0</h3>
+<p>Predict the age of cat.</p>
+<p>So we will not use the sigmoid function, instead, use the <strong>ReLU</strong>. (rectified linear units.)<br />
+<img src="media/16466304536802/16467567501414.jpg" alt="" class="mw_img_center" style="width:200px;display: block; clear:both; margin: 0 auto;" /></p>
+<p>For linear task we have two loss functions. One is \(|\hat{y} - y|\), the other is \(||\hat{y} - y||^2\) in L2 norm.<br />
+In optimization, <em>the L2 norm is much easier to optimize in a regression task than it is for a classification task and vice versa.</em></p>
+<h2><a id="neural-networks" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Neural Networks</h2>
+<p>Our first goal: Given an image --&gt; Cat vs. No cat.</p>
+<p><img src="media/16466304536802/16467571747723.jpg" alt="" class="mw_img_center" style="width:500px;display: block; clear:both; margin: 0 auto;" /></p>
+<p><img src="media/16466304536802/16467578432490.jpg" alt="" class="mw_img_center" style="width:500px;display: block; clear:both; margin: 0 auto;" /><br />
+The parameters would be <code>3n+3, x*3 + 3, 2*1 + 1</code>. So most of the parameters are in input layer.<br />
+Each neuron in one layer will not connect to each other.</p>
+<p>Input layer: the first layer.<br />
+Output layer: the last layer.<br />
+Hidden layer: layers between input layer and putput layer.</p>
+<p>The first layer is going to understand the fundamental concepts of images, which is the edges in picture.<br />
+The input layer will send what they found to second layer. And neuron in second layer will use the adges that these guys found to figure out that there is there ears, mouths and stuff like that.<br />
+The output layer may going to construct the face.</p>
+<p><img src="media/16466304536802/16467583179444.jpg" alt="" class="mw_img_center" style="width:500px;display: block; clear:both; margin: 0 auto;" /></p>
+<h3><a id="house-price-prediction-example" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>House price prediction example.</h3>
+<p>Inputs:</p>
+<ul>
+<li># bedromms</li>
+<li>size</li>
+<li>zip code</li>
+<li>wealth of neighbor</li>
+</ul>
+<p>We will build a network with three neuron at first layer and one neuron at second layer.</p>
+<p>The zipcode and wealth will tell us the scholl quality around that area.</p>
+<p>The zipcode is going to tell us if the neighborhood is walkable or not.</p>
+<p>The size and the number of bedroom is telling us the family size that can fit in house.</p>
+<p>This time we give human knowledge to the network to get the result.<br />
+<img src="media/16466304536802/16467595359360.jpg" alt="" class="mw_img_center" style="width:500px;display: block; clear:both; margin: 0 auto;" /></p>
+<p>Whereas for the cat, we use <em>fully connected network.</em> That means we will let networks figure these out. That is why the neural networks are called blackbox model.</p>
+<p><strong>End to end learning</strong>: just give the input and output, then train the whole network. Which is black box model.</p>
+<h2><a id="propagation-equation" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Propagation Equation</h2>
+<p><img src="media/16466304536802/16467600764709.jpg" alt="" class="mw_img_center" style="width:500px;display: block; clear:both; margin: 0 auto;" /></p>
+<p><img src="media/16466304536802/16467604956557.jpg" alt="" class="mw_img_center" style="width:500px;display: block; clear:both; margin: 0 auto;" /></p>
+<p>We do want to change the number of parameters. But the size of b cannot match the size of wx. So we will use <strong>broadcasting</strong>.<br />
+<img src="media/16466304536802/16467607140704.jpg" alt="" class="mw_img_center" style="width:500px;display: block; clear:both; margin: 0 auto;" /></p>
+<p>How to design our NN?</p>
+<ul>
+<li>Nobody know the right answer. We have to test it.</li>
+<li>The more data we have, the deeper network we should build.</li>
+</ul>
+<h2><a id="optimizing-problem" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Optimizing Problem</h2>
+<p>We need to find several parameters.</p>
+<p>Define out loss(one example)/cost(multi example) function.</p>
+<p>The cost function would be</p>
+\[J(\hat{y},y) = \frac1m \sum^m_{i=1}L^{(i)}
+\]
+<p>We are going for batch GD. Calculate the cost function. With \(L^{(i)} =-[y^{(i)}log\hat{y}^{(i)}+(1-y^{(i)})log(1-\hat{y}^{(i)})]\)</p>
+<p>As for <img src="media/16466304536802/16467620648969.jpg" alt="" class="mw_img_center" style="width:200px;display: block; clear:both; margin: 0 auto;" /><br />
+The complexity is the same.</p>
+<h2><a id="backward-propagation" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Backward Propagation</h2>
+<p><img src="media/16466304536802/16467622175852.jpg" alt="" class="mw_img_center" style="width:500px;display: block; clear:both; margin: 0 auto;" /><br />
+We want to optimize every parameter.</p>
+<p>Which w should we start with?</p>
+<ul>
+<li>w3. Because w3 is the closest to the loss function. It is much harder for us to know w1's influence on loss function than w3.</li>
+<li>Once we compute \(\frac{\partial J}{\partial w^{(3)}}\), then we compute \(\frac{\partial J}{\partial w^{(2)}}\).</li>
+</ul>
+<p>While doing calculation, we are trying to depend on the ** **.<br />
+<img src="media/16466304536802/16467625870677.jpg" alt="" class="mw_img_center" style="width:500px;display: block; clear:both; margin: 0 auto;" /></p>
+<p><img src="media/16466304536802/16467626510144.jpg" alt="" class="mw_img_center" style="width:500px;display: block; clear:both; margin: 0 auto;" /><br />
+<img src="media/16466304536802/16467626999075.jpg" alt="" class="mw_img_center" style="width:500px;display: block; clear:both; margin: 0 auto;" /></p>
+<p>The chain rule helps al lot.</p>
+
+                  </article>
+                  <div class="comments-wrap">
+                    <div class="share-comments">
+                      
+
+                      
+                        <div id="disqus_thread"></div>
+                      
+
+                      
+                    </div>
+                  </div><!-- end comments wrap -->
+              </div>
+            </div><!-- end columns -->
+      </div><!-- end container -->
+    </section>
+
+
+
+    <footer class="footer">
+        <div class="content has-text-centered">
+          <p>
+              Copyright &copy; 2019
+              Powered by <a target="_blank" href="http://www.mweb.im">MWeb</a>,&nbsp; 
+              Theme used <a target="_blank" href="https://bulma.io/">Bulma CSS</a>.
+          </p>
+        </div>
+      </footer>
+
+
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/x-mathjax-config">MathJax.Hub.Config({TeX: { equationNumbers: { autoNumber: "AMS" } }});</script>
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="asset/prism.js"></script>
+
+
+
+
+<script type="text/javascript">
+    var disqus_shortname = 'chiyuanye'; 
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+
+<script type="text/javascript">
+var disqus_shortname = 'chiyuanye'; 
+
+(function () {
+var s = document.createElement('script'); s.async = true;
+s.type = 'text/javascript';
+s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+(document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+}());
+</script>
+  
+    
+
+
+
+
+  </body>
+</html>

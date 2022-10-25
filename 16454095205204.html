@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>
+      
+    Machine Learning Lecture 06  Support Vector Machines - Yuanye Chi's Blog
+    
+    </title>
+    <link rel="shortcut icon" href="https://i.loli.net/2019/02/20/5c6cf0555ffe6.jpeg" type="image/png" />
+
+    
+    
+    <link href="atom.xml" rel="alternate" title="Yuanye Chi's Blog" type="application/atom+xml">
+    <link rel="stylesheet" href="asset/css/style.min.css">
+    <link rel="stylesheet" href="asset/css/doc.css">
+    <script src="asset/app.js"></script>
+</head>
+  <body>
+    <section class="hero">
+      <div class="hero-head">
+          <nav class="navbar" role="navigation" aria-label="main navigation">
+              <div class="container">
+              <div class="navbar-brand">
+                
+                <a target="_self" class="navbar-item " href="index.html">Home</a>
+                
+                <a target="_self" class="navbar-item " href="archives.html">Archives</a>
+                
+                <a target="_self" class="navbar-item " href="about.html">About</a>
+                
+                <a target="_self" class="navbar-item " href="https://chiyuanye-com-old-site.onrender.com/">OldSite</a>
+                
+
+                <a role="button" id="navbarSNSRssSwitchBtn" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarSNSRssButtons">
+                  <span aria-hidden="true"></span>
+                  <span aria-hidden="true"></span>
+                  <span aria-hidden="true"></span>
+                </a>
+              </div>
+            
+              <div id="navbarSNSRssButtons" class="navbar-menu">
+                <div class="navbar-start">
+                  
+                </div>
+            
+                <div class="navbar-end">
+                  <div class="navbar-item">
+                    <!--buttons start-->
+                    <div class="buttons">
+                      
+                        
+                        
+                        
+                        <a href="https://github.com/tsiye" target="_blank" title="github">
+                            <span class="icon is-large has-text-grey-darker">
+                               <svg class="svg-inline--fa fa-github fa-w-16 fa-lg" aria-hidden="true" focusable="false" data-prefix="fab" data-icon="github" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512" data-fa-i2svg=""><path fill="currentColor" d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"></path></svg><!-- <i class="fab fa-github fa-lg"></i> -->
+                            </span>
+                          </a>
+                        
+                        
+                      
+                      <a href="atom.xml" target="_blank" title="RSS">
+                          <span class="icon is-large has-text-black-bis">
+                              <svg class="svg-inline--fa fa-rss fa-w-14 fa-lg" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="rss" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" data-fa-i2svg=""><path fill="currentColor" d="M128.081 415.959c0 35.369-28.672 64.041-64.041 64.041S0 451.328 0 415.959s28.672-64.041 64.041-64.041 64.04 28.673 64.04 64.041zm175.66 47.25c-8.354-154.6-132.185-278.587-286.95-286.95C7.656 175.765 0 183.105 0 192.253v48.069c0 8.415 6.49 15.472 14.887 16.018 111.832 7.284 201.473 96.702 208.772 208.772.547 8.397 7.604 14.887 16.018 14.887h48.069c9.149.001 16.489-7.655 15.995-16.79zm144.249.288C439.596 229.677 251.465 40.445 16.503 32.01 7.473 31.686 0 38.981 0 48.016v48.068c0 8.625 6.835 15.645 15.453 15.999 191.179 7.839 344.627 161.316 352.465 352.465.353 8.618 7.373 15.453 15.999 15.453h48.068c9.034-.001 16.329-7.474 16.005-16.504z"></path></svg><!-- <i class="fas fa-rss fa-lg"></i> -->
+                          </span>
+                      </a>
+                    </div>
+                    <!--buttons end-->
+
+                  </div>
+                </div>
+                </div>
+              </div>
+            </nav>
+      </div>
+
+ <div class="hero-body ct-body"></div>
+      
+    </section>
+    <section class="ct-body">
+      <div class="container">
+          <div class="columns is-variable bd-klmn-columns is-4 is-centered">
+              <div class="column is-four-fifths">
+                  <div class="post-body single-content">
+                    
+                    <h1 class="title">
+                            Machine Learning Lecture 06  Support Vector Machines   
+                      </h1>
+                     
+                    
+                      <div class="media">
+                            
+                            <figure class="media-left">
+                              <p class="image is-48x48">
+                                
+                                  <img class="is-rounded" src="https://i.loli.net/2019/02/20/5c6cf0e7a42f9.jpg">
+                                
+                              </p>
+                            </figure>
+                            
+                            <div class="media-content">
+                              <div class="content">
+                                <p>
+                                 <span class="date">2022/02/20 21:12 PM</span>
+                                  <span class="tran-posted-in">posted in</span>&nbsp; 
+                                  
+                                      <span class="posted-in"><a href='Stanford%20CS229.html'>Stanford CS229</a></span>
+                                         
+                                  
+                                    &nbsp;&nbsp;<a href="16454095205204.html#disqus_thread"><span class="tran-disqus-comments">comments</span></a>
+                                  
+
+                                   
+                                      
+                                  <br />
+                                  <span class="tran-tags">Tags:</span>&nbsp;
+                                  
+                                    <a class="tag is-link is-light" href='tag_Stanford%20CS229.html'>#Stanford CS229</a>
+                                     
+
+                                </p>
+                              </div>
+                            </div>
+                         
+                    </div>
+                </div>
+                  <article class="markdown-body single-content">
+                    <h2><a id="naive-bayes" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Naive Bayes</h2>
+<p><img src="media/16454095205204/16461106627625.jpg" alt="" class="mw_img_center" style="width:400px;display: block; clear:both; margin: 0 auto;" /><br />
+\(x_j = 1\{\text{word k appears in email}\}\)</p>
+<p>Now build a generative model for this,<br />
+Gaussian model for p(x|y) and Bernoulli for p(y).</p>
+\[ \begin{aligned}
+p(x|y) =\prod ^d_{j=1}p(x_j|y)
+ \end{aligned}
+\]
+<p>So the parameters for Naive Bayes model are,</p>
+<ol>
+<li>\(\phi_y = P(y=1)\) is the class prior, what is the chance that y is equal to 1.</li>
+<li>\(P(x_j=1|y=0) = \phi_{j|y=0}\)</li>
+<li>\(P(x_j=1|y=1) = \phi_{j|y=1}\)</li>
+</ol>
+\[\begin{aligned}
+\phi &amp;=\frac{1}{n} \sum_{i=1}^{n} 1\left\{y^{(i)}=1\right\} \\
+\mu_{0} &amp;=\frac{\sum_{i= 1}^{n} 1\left\{y^{(i)}=0\right\} x^{(i)}}{\sum_{i=1}^{n} 1\left\{y^{(i)}=0\right\}} \\
+\mu_{1} &amp;=\frac{\sum_{i=1}^{n} 1\left\{y^{(i)}=1\right\} x^{(i)}}{\sum_{i=1}^{n} 1\left\{y^{(i)}=1\right\}} \\
+\Sigma &amp;=\frac{1}{n} \sum_{i=1}^{n}\left(x^{(i)}-\mu_{y^{(i)}}\right)\left(x^{(i)}-\mu_{y^{(i)}}\right)^{T} .
+\end{aligned}
+\]
+\[\begin{aligned}
+\phi_{j \mid y=1} &amp;=\frac{\sum_{i=1}^{n} 1\left\{x_{j}^{(i)}=1 \wedge y^{(i)}=1\right\}}{\sum_{i=1}^{n} 1\left\{y^{(i)}=1\right\}} \\
+\phi_{j \mid y=0} &amp;=\frac{\sum_{i=1}^{n} 1\left\{x_{j}^{(i)}=1 \wedge y^{(i)}=0\right\}}{\sum_{i=1}^{n} 1\left\{y^{(i)}=0\right\}} \\
+\phi_{y} &amp;=\frac{\sum_{i=1}^{n} 1\left\{y^{(i)}=1\right\}}{n}
+\end{aligned}
+\]
+<p>Than in prediction time, we use Bayes rule:</p>
+\[P(y=1|x) = \frac {P(x|y=1)\cdot P(y=1)}{P(x)}
+\]
+<p>Where</p>
+\[P(x) = P(x|y=1)P(y=1) +P(x|y=0)P(y=0)
+\]
+<p>This algorithm will almost work, but here is where it breaks down.</p>
+<p>Contradiction:<br />
+NIPS, whose position is j = 6017.<br />
+\(P(x_{6017} = 1|y=1) = \frac{0}{\#\{y=1\}}\)<br />
+\(P(x_{6017} = 1|y=0) = \frac{0}{\#\{y=0\}}\)<br />
+Here we see the probability is zero. However, we cannot say the probability is zero just because we haven't seen it.<br />
+<img src="media/16454095205204/16461925396747.jpg" alt="" class="mw_img_center" style="width:500px;display: block; clear:both; margin: 0 auto;" /></p>
+<p>So Laplace Smoothing is used to describe to address this 0 divided by 0 problem.</p>
+<h3><a id="laplace-smoothing" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Laplace Smoothing</h3>
+<p>The game Standard football team played and we are going to predict the game on 12/31.<br />
+<img src="media/16454095205204/16461929873260.jpg" alt="" class="mw_img_center" style="width:500px;display: block; clear:both; margin: 0 auto;" /><br />
+So the win or not is our x.<br />
+So \(P(x=1) = \frac{\#'1's}{\#'1's + \#'0's} = \frac{0}{0+4} = 0\)<br />
+This is kind of mean, we cannot say they cannot win the last game just because they lost the first 4 games.</p>
+<p>So what Laplace Smoothing did is <em>add 1 on the number of 1s and the number of 0s</em></p>
+<p>So \(P(x=1) = \frac{\#'1's}{\#'1's + \#'0's} = \frac{1}{1+5} = 1/6 \)</p>
+<p>More generally, for \(x\in\{1,...k\}\)<br />
+We estimate</p>
+\[P(x=j)=\frac{\sum_{j=1}^{M} 1\left\{x^{(i)}=j\right\}+1}{M + k}
+\]
+\[\begin{aligned}
+\phi_{j \mid y=0} &amp;=\frac{\sum_{i=1}^{n} 1\left\{x_{j}^{(i)}=1 , y^{(i)}=0\right\}+1}{\sum_{i=1}^{n} 1\left\{y^{(i)}=0\right\}+2} 
+\end{aligned}
+\]
+<p><img src="media/16454095205204/16461948283751.jpg" alt="" class="mw_img_center" style="width:500px;display: block; clear:both; margin: 0 auto;" /><br />
+Now we can discretize a continuous valued feature to a discrete value feature.<br />
+\(P(x|y) = \prod^m_{j=1}P(x_j|y)\) This is a multinomial probability.</p>
+<p>In practice, we often divide the value into 10 buckets, it works well enough.</p>
+<h3><a id="multivirate-bernoulli-event-model-and-multinomial-event-model" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Multivirate Bernoulli Event  Model and Multinomial Event Model</h3>
+<h4><a id="multivirate-bernoulli-event-model" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Multivirate Bernoulli Event  Model</h4>
+<p>“Drugs! Buy drugs now!”<br />
+<img src="media/16454095205204/16461997787861.jpg" alt="" class="mw_img_center" style="width:500px;display: block; clear:both; margin: 0 auto;" /></p>
+<h4><a id="multinomial-event-model" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Multinomial Event Model</h4>
+<p><img src="media/16454095205204/16462002784514.jpg" alt="-c500  " /></p>
+<p>With the Multinomial Event Model, we have \(P(x,y) = P(x|y)P(y)\)</p>
+\[\begin{aligned}
+P(x,y) &amp;= P(x|y)P(y) \\
+&amp;= \prod^n_{j=1}P(x_j|y) P(y)
+\end{aligned}
+\]
+<h3><a id="event-models" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Event Models</h3>
+<h2><a id="comments-on-apply-ml" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Comments on apply ML</h2>
+<h2><a id="svm-intros" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>SVM intros</h2>
+<p>Sometimes we want to find non-linear boundary.<br />
+<img src="media/16454095205204/16490979432305.jpg" alt="" class="mw_img_center" style="width:400px;display: block; clear:both; margin: 0 auto;" /></p>
+<p>We just map the \(x_1, x_2\) to high dimension vector \(\phi(x) = [x_1,x_2,x_1^2,x_2^2,x_1x_2,...]\). If we send this vector to logistic regression, logistic regression can learn non-linear decision boundaries.</p>
+<p>Randomly choosing these features is a little bit of pain.</p>
+<p>SVM now has very robust tool package for us, we can just run and chooese.<br />
+SVM does not need so many parameters.</p>
+<ul>
+<li>Optimal margin classifier(separable case)<br />
+<img src="media/16454095205204/16490985703907.jpg" alt="" class="mw_img_center" style="width:400px;display: block; clear:both; margin: 0 auto;" /></li>
+<li>Kernels<br />
+- When we map x to \(\phi(x)\) from \(\mathbb{R}^2\rightarrow\mathbb{R}^{10000}\).  Kernels will help us with such mapping.</li>
+<li>Ineperable case.</li>
+</ul>
+<h3><a id="optimal-margin-classifier" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Optimal Margin Classifier</h3>
+<h4><a id="functional-margin" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Functional Margin</h4>
+<p>The functional margin of the classifier is how  confidently and accurately do you classify an example.</p>
+\[h_\theta(x) = g(\theta^Tx)
+\]
+<p>We get &quot;1&quot; if \(\theta^Tx &gt; 0\)(\(h_\theta(x) = g(\theta^Tx) &gt; 0.5\) ), get &quot;0&quot; if \(\theta^Tx &lt; 0\).</p>
+<p>If \(y^{(i)} = 1\), hope that \(\theta^Tx^{(i)} &gt;&gt; 0\);<br />
+If \(y^{(i)} = 0\), hope that \(\theta^Tx^{(i)} &lt;&lt; 0\)</p>
+<h4><a id="geometric-margin" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Geometric Margin</h4>
+<p><img src="media/16454095205204/16491003895688.jpg" alt="" class="mw_img_center" style="width:500px;display: block; clear:both; margin: 0 auto;" /><br />
+The green line looks much better than the  red line.<br />
+We call the gree line the geometric margin.</p>
+<h4><a id="notation" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Notation</h4>
+<ol>
+<li>Labels: \(y\in\{-1,+1\}\). We will have h output values in \(\{-1,+1\}\)
+\[g(z)=\left\{\begin{aligned}
+1 &amp; \text { if } z \geqslant 0 \\
+-1 &amp; \text { otherise }
+\end{aligned}\right.
+\]
+</li>
+<li>The parameters of SVM will be w and b.
+\[h_{w,b}(x) = g(w^Tx + b)
+\]
+\(x\in\mathbb{R}^n, b \in \mathbb{R}\)<br />
+<img src="media/16454095205204/16491044325663.jpg" alt="" class="mw_img_center" style="width:500px;display: block; clear:both; margin: 0 auto;" /><br />
+\(W^TX = \sum^n_{i=1} w_ix_i + b\) Since we get rid of \(x_0\)</li>
+</ol>
+<h3><a id="functional-margin" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Functional Margin</h3>
+<h4><a id="single-training-example" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Single Training Example</h4>
+<p>functional margin of hyperplane(just a staight line, a linear classifier) defined by (w,b)  with respect to \((x^{(i)},y^{(i)})\):</p>
+\[\hat\gamma^{(i)} = y^{(i)}(w^Tx^{(i)} + b)
+\]
+<ul>
+<li>If \(y^{(i)} = 1\), want \(w^Tx^{(i)} + b &gt;&gt; 0\)</li>
+<li>If \(y^{(i)} = -1\), want \(w^Tx^{(i)} + b &lt;&lt; 0\)</li>
+<li>So we want <strong>\(\hat\gamma^{(i)}&gt;&gt;0\)</strong></li>
+<li>If  \(\hat\gamma^{(i)}&gt;0\), that means \(h(x^{(i)}) = y^{(i)}\). That at least prove this logistic example is correct. At least the prediction is above 0.5.</li>
+</ul>
+<h4><a id="the-whole-training-sets-how-well-are-you-doing-on-the-worst-example-in-your-traning-set" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>The whole training sets(how well are you doing on the worst example in your traning set)</h4>
+<p>Functional margin wrt training set:</p>
+\[\hat\gamma = \min_i \hat\gamma^{(i)}
+\]
+<p><em>we assume the training set is linearly separable</em></p>
+<p>One thing the functional margin has is it can be treated by just scaling the parameters.<br />
+In \(\hat\gamma^{(i)} = y^{(i)}(w^Tx^{(i)} + b)\), we can just simply scale w and b to get the functional margin scale same times. <em>But it doesn't change any decision boundary. Doesn't do any better in classification.</em></p>
+<p>So we can do</p>
+\[\begin{aligned}
+&amp;\|\omega\| =1 \\
+&amp;(\omega, b) \rightarrow\left(\frac{\omega}{\| \omega||} \frac{b}{\lfloor\omega \|}\right)
+\end{aligned}
+\]
+<p>to prevent such cheating.</p>
+<h3><a id="geometric-margin" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Geometric Margin</h3>
+<blockquote>
+<p>To find the functional margin, let's define the geometric margin.</p>
+</blockquote>
+<p><img src="media/16454095205204/16491205354699.jpg" alt="" class="mw_img_center" style="width:500px;display: block; clear:both; margin: 0 auto;" /><br />
+Geometric margin is defined as the Euclidean distance from the point we classifying to the line.</p>
+<p>Geometric margin of hyperplane (w,b) with respect to \((x^{(i)}, y^{(i )})\)</p>
+\[y^{(i)}=\frac{\omega^{\top} x^{(i)}+b}{\|\omega\|} 
+\]
+<h3><a id="the-relation-between-geometric-gamma-i-functional-margin-gamma-i-w" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>The relation between geometric(\(\gamma^{(i)}\)) &amp; functional margin(\(\gamma^{(i)}/||w||\))</h3>
+\[\gamma = \min_i \gamma^{(i)}
+\]
+<h3><a id="optimal-margin-classifier" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Optimal Margin Classifier</h3>
+<p><strong>Choose w,b to maximize the \gamma</strong></p>
+<blockquote>
+<p>The optimal margin classifier is the baby SVM.</p>
+</blockquote>
+<p>We want to have</p>
+\[\max_{\gamma,w,b} \gamma
+\]
+\[s.t. \frac{y^{(i)}\left(\omega^{\top} x^{(1)}+b\right)}{\|\omega\|} \geq \gamma \quad i=1, \ldots, m
+\]
+<p>We want to set Gamma as big as possible, which means we are maximizing the worst-case geometric margin.<br />
+Such problem is a convex optimization problem, it is difficult to solve it without gradient descent and initially known local optima and so on.</p>
+<p>After several steps, we can rewrite the formula to the following:</p>
+\[\min_{w,b} ||w||^2
+\]
+\[s.t. y^{(i)}(w^Tx^{(i)} + b) \geq 1
+\]
+<p>s.t.: subject to</p>
+
+                  </article>
+                  <div class="comments-wrap">
+                    <div class="share-comments">
+                      
+
+                      
+                        <div id="disqus_thread"></div>
+                      
+
+                      
+                    </div>
+                  </div><!-- end comments wrap -->
+              </div>
+            </div><!-- end columns -->
+      </div><!-- end container -->
+    </section>
+
+
+
+    <footer class="footer">
+        <div class="content has-text-centered">
+          <p>
+              Copyright &copy; 2019
+              Powered by <a target="_blank" href="http://www.mweb.im">MWeb</a>,&nbsp; 
+              Theme used <a target="_blank" href="https://bulma.io/">Bulma CSS</a>.
+          </p>
+        </div>
+      </footer>
+
+
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/x-mathjax-config">MathJax.Hub.Config({TeX: { equationNumbers: { autoNumber: "AMS" } }});</script>
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="asset/prism.js"></script>
+
+
+
+
+<script type="text/javascript">
+    var disqus_shortname = 'chiyuanye'; 
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+
+<script type="text/javascript">
+var disqus_shortname = 'chiyuanye'; 
+
+(function () {
+var s = document.createElement('script'); s.async = true;
+s.type = 'text/javascript';
+s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+(document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+}());
+</script>
+  
+    
+
+
+
+
+  </body>
+</html>

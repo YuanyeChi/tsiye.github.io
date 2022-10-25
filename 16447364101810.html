@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>
+      
+    Machine Learning Lecture 05 GDA & Naive Bayes - Yuanye Chi's Blog
+    
+    </title>
+    <link rel="shortcut icon" href="https://i.loli.net/2019/02/20/5c6cf0555ffe6.jpeg" type="image/png" />
+
+    
+    
+    <link href="atom.xml" rel="alternate" title="Yuanye Chi's Blog" type="application/atom+xml">
+    <link rel="stylesheet" href="asset/css/style.min.css">
+    <link rel="stylesheet" href="asset/css/doc.css">
+    <script src="asset/app.js"></script>
+</head>
+  <body>
+    <section class="hero">
+      <div class="hero-head">
+          <nav class="navbar" role="navigation" aria-label="main navigation">
+              <div class="container">
+              <div class="navbar-brand">
+                
+                <a target="_self" class="navbar-item " href="index.html">Home</a>
+                
+                <a target="_self" class="navbar-item " href="archives.html">Archives</a>
+                
+                <a target="_self" class="navbar-item " href="about.html">About</a>
+                
+                <a target="_self" class="navbar-item " href="https://chiyuanye-com-old-site.onrender.com/">OldSite</a>
+                
+
+                <a role="button" id="navbarSNSRssSwitchBtn" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarSNSRssButtons">
+                  <span aria-hidden="true"></span>
+                  <span aria-hidden="true"></span>
+                  <span aria-hidden="true"></span>
+                </a>
+              </div>
+            
+              <div id="navbarSNSRssButtons" class="navbar-menu">
+                <div class="navbar-start">
+                  
+                </div>
+            
+                <div class="navbar-end">
+                  <div class="navbar-item">
+                    <!--buttons start-->
+                    <div class="buttons">
+                      
+                        
+                        
+                        
+                        <a href="https://github.com/tsiye" target="_blank" title="github">
+                            <span class="icon is-large has-text-grey-darker">
+                               <svg class="svg-inline--fa fa-github fa-w-16 fa-lg" aria-hidden="true" focusable="false" data-prefix="fab" data-icon="github" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512" data-fa-i2svg=""><path fill="currentColor" d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"></path></svg><!-- <i class="fab fa-github fa-lg"></i> -->
+                            </span>
+                          </a>
+                        
+                        
+                      
+                      <a href="atom.xml" target="_blank" title="RSS">
+                          <span class="icon is-large has-text-black-bis">
+                              <svg class="svg-inline--fa fa-rss fa-w-14 fa-lg" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="rss" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" data-fa-i2svg=""><path fill="currentColor" d="M128.081 415.959c0 35.369-28.672 64.041-64.041 64.041S0 451.328 0 415.959s28.672-64.041 64.041-64.041 64.04 28.673 64.04 64.041zm175.66 47.25c-8.354-154.6-132.185-278.587-286.95-286.95C7.656 175.765 0 183.105 0 192.253v48.069c0 8.415 6.49 15.472 14.887 16.018 111.832 7.284 201.473 96.702 208.772 208.772.547 8.397 7.604 14.887 16.018 14.887h48.069c9.149.001 16.489-7.655 15.995-16.79zm144.249.288C439.596 229.677 251.465 40.445 16.503 32.01 7.473 31.686 0 38.981 0 48.016v48.068c0 8.625 6.835 15.645 15.453 15.999 191.179 7.839 344.627 161.316 352.465 352.465.353 8.618 7.373 15.453 15.999 15.453h48.068c9.034-.001 16.329-7.474 16.005-16.504z"></path></svg><!-- <i class="fas fa-rss fa-lg"></i> -->
+                          </span>
+                      </a>
+                    </div>
+                    <!--buttons end-->
+
+                  </div>
+                </div>
+                </div>
+              </div>
+            </nav>
+      </div>
+
+ <div class="hero-body ct-body"></div>
+      
+    </section>
+    <section class="ct-body">
+      <div class="container">
+          <div class="columns is-variable bd-klmn-columns is-4 is-centered">
+              <div class="column is-four-fifths">
+                  <div class="post-body single-content">
+                    
+                    <h1 class="title">
+                            Machine Learning Lecture 05 GDA & Naive Bayes   
+                      </h1>
+                     
+                    
+                      <div class="media">
+                            
+                            <figure class="media-left">
+                              <p class="image is-48x48">
+                                
+                                  <img class="is-rounded" src="https://i.loli.net/2019/02/20/5c6cf0e7a42f9.jpg">
+                                
+                              </p>
+                            </figure>
+                            
+                            <div class="media-content">
+                              <div class="content">
+                                <p>
+                                 <span class="date">2022/02/13 02:13 AM</span>
+                                  <span class="tran-posted-in">posted in</span>&nbsp; 
+                                  
+                                      <span class="posted-in"><a href='Stanford%20CS229.html'>Stanford CS229</a></span>
+                                         
+                                  
+                                    &nbsp;&nbsp;<a href="16447364101810.html#disqus_thread"><span class="tran-disqus-comments">comments</span></a>
+                                  
+
+                                   
+                                      
+                                  <br />
+                                  <span class="tran-tags">Tags:</span>&nbsp;
+                                  
+                                    <a class="tag is-link is-light" href='tag_Stanford%20CS229.html'>#Stanford CS229</a>
+                                     
+
+                                </p>
+                              </div>
+                            </div>
+                         
+                    </div>
+                </div>
+                  <article class="markdown-body single-content">
+                    <blockquote>
+<p>All algorithms we have learnt so far are called discriminative learning algotithms.<br />
+Today we will show you how generative learning algorithms work.</p>
+</blockquote>
+<h2><a id="generative-vs-discrimitative-comparison" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Generative VS Discrimitative Comparison</h2>
+<p>Not like in logistic regression really searching a separation and searching the maximum likelihood the way we saw last weeks.</p>
+<p>Let's see the malignant tumors and benign tumors. Now the we just two eclipses to contain maliganant tumors and benign tumors and build two models. When we see new tumors, we just <em>compare it with the two models and see it look more like which one.</em></p>
+<p><img src="media/16447364101810/16452910241702.jpg" alt="" class="mw_img_center" style="width:500px;display: block; clear:both; margin: 0 auto;" /></p>
+<h3><a id="discriminative-algorithm" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Discriminative Algorithm</h3>
+<blockquote>
+<p>Learn \(p(y|x)\). Or just learn some mapping from x to y directly \(h_{\theta}(x)=\left\{\begin{array}{l} 0 \\ 1 \end{array}\right.\) We may use in SVM later.</p>
+</blockquote>
+<h3><a id="generative-learning-algorithm" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Generative Learning Algorithm</h3>
+<blockquote>
+<p>Learn \(p(x|y)\), which means what would the features look like given the class. i.e. Given the tumors benign, what will the x gonna be like; given the tumors malignant. what would the x gonna be like.<br />
+The algorithm will also learn \(p(y)\), which is also called class prior.(Before the patients walks into your office, what are the odds that their tymor is malignant versus benign.)</p>
+</blockquote>
+<p>Then we can use Bayes rule.</p>
+\[p(y=1|x) = \frac {p(x|y=1)\cdotp(y=1)}{p(x)}
+\]
+<p>Where</p>
+\[p(x) = p(x|y=1)p(y=1) +p(x|y=0)p(y=0)
+\]
+<h2><a id="gaussian-discriminant-analysis-gda" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Gaussian Discriminant Analysis (GDA)</h2>
+<blockquote>
+<p>A simpler and more computationally efficient algorithm to implement insome cases. Sometimes work better when we have very small data sets.</p>
+</blockquote>
+<p>We are gonna use \(x\in \mathbb{R}^n\)(drop \(x_0=1\) c onvention)</p>
+<p>Assume \(p(x|y)\) is Gaussian.</p>
+<h3><a id="multivariable-gaussian" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Multivariable Gaussian</h3>
+\[z \sim N(\vec{\mu},\sigma)
+\]
+<p>\(\mu\) is the mean vector(\(\mathbb{R}^n\)) and \(\sigma\)(\(\mathbb{R}^{n\times n}\)) is the covariance matrix. And \(z\in \mathbb{R}^n\)</p>
+\[\mathrm{E}[X]=\int_{x} x p(x ; \mu, \Sigma) d x=\mu
+\]
+\[Cov(Z) = E[(Z-E[Z])(Z-E[Z])^T ] = E[ZZ^T]-(E[Z])(E[Z])^T
+\]
+\[p(x ; \mu, \Sigma)=\frac{1}{(2 \pi)^{d / 2}|\Sigma|^{1 / 2}} \exp \left(-\frac{1}{2}(x-\mu)^{T} \Sigma^{-1}(x-\mu)\right)
+\]
+<p>The Multi Gaussian has two parameters: \(\mu\) and \(\sigma\), which control the mean ans the variance of the density.</p>
+<p>\(\mu\) now is a two-dimensinal parameter, and which is (0,0), which is why the Gaussian bump is centered at 0.<br />
+The covariance \(\Sigma=\left[\begin{array}{ll} 1 &amp; 0 \\ 0 &amp; 1 \end{array}\right]\) is the <strong>identity matrix.</strong></p>
+<p><img src="media/16447364101810/16452944455948.jpg" alt="" class="mw_img_center" style="width:400px;display: block; clear:both; margin: 0 auto;" /></p>
+<p>Then we are gonna to shrink it. Let's take a covariance marix and multiply it by a number less than 1.<br />
+<img src="media/16447364101810/16452945776384.jpg" alt="" class="mw_img_center" style="width:400px;display: block; clear:both; margin: 0 auto;" /><br />
+The the PDF becomes taller, since the integration under the function is always to 1.</p>
+<p>Then we will make it wider.<br />
+<img src="media/16447364101810/16452946815370.jpg" alt="" class="mw_img_center" style="width:400px;display: block; clear:both; margin: 0 auto;" /></p>
+<p>When we make off-diagonal values in \(\Sigma\) from 0 to 0.5.<br />
+<img src="media/16447364101810/16452947742321.jpg" alt="" class="mw_img_center" style="width:400px;display: block; clear:both; margin: 0 auto;" /><br />
+0.8<br />
+<img src="media/16447364101810/16452947795381.jpg" alt="" class="mw_img_center" style="width:400px;display: block; clear:both; margin: 0 auto;" /><br />
+Let's see the contours.<br />
+<img src="media/16447364101810/16452948235018.jpg" alt="" class="mw_img_center" style="width:400px;display: block; clear:both; margin: 0 auto;" /><br />
+These should be perfectly round circles.</p>
+<p>When covariance matrix is identity matrix,  z1 and z2 are uncorrelated.<br />
+When we increase the off-diagonal, z1 and z2 become positively correlated.<br />
+<img src="media/16447364101810/16452952966720.jpg" alt="" class="mw_img_center" style="width:400px;display: block; clear:both; margin: 0 auto;" /></p>
+<p>When we make the off-diagonal negative values, then z1 and z2 will be negative correlated.<br />
+<img src="media/16447364101810/16452954742375.jpg" alt="" class="mw_img_center" style="width:400px;display: block; clear:both; margin: 0 auto;" /><br />
+Every covariance matrix is symmetric.</p>
+<p>Let's move \(\mu\) around.<br />
+<img src="media/16447364101810/16452957250223.jpg" alt="" class="mw_img_center" style="width:400px;display: block; clear:both; margin: 0 auto;" /><br />
+<img src="media/16447364101810/16452960568750.jpg" alt="" class="mw_img_center" style="width:400px;display: block; clear:both; margin: 0 auto;" /></p>
+<h3><a id="gda-model" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>GDA Model</h3>
+<blockquote>
+<p>We have a classification problem in which the input features x are continuous-valued random variables, we then use GDA model.<br />
+\(\begin{aligned} y &amp; \sim \operatorname{Bernoulli}(\phi) \\ x \mid y=0 &amp; \sim \mathcal{N}\left(\mu_{0}, \Sigma\right) \\ x \mid y=1 &amp; \sim \mathcal{N}\left(\mu_{1}, \Sigma\right) \end{aligned}\)</p>
+</blockquote>
+<h4><a id="the-distributions" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>The Distributions</h4>
+\[\begin{aligned}
+p(y) &amp;=\phi^{y}(1-\phi)^{1-y} \\
+p(x \mid y=0) &amp;=\frac{1}{(2 \pi)^{d / 2}|\Sigma|^{1 / 2}} \exp \left(-\frac{1}{2}\left(x-\mu_{0}\right)^{T} \Sigma^{-1}\left(x-\mu_{0}\right)\right) \\
+p(x \mid y=1) &amp;=\frac{1}{(2 \pi)^{d / 2}|\Sigma|^{1 / 2}} \exp \left(-\frac{1}{2}\left(x-\mu_{1}\right)^{T} \Sigma^{-1}\left(x-\mu_{1}\right)\right)
+\end{aligned}
+\]
+<h4><a id="the-parameters" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>The Parameters</h4>
+<p>\(\mu_0,\mu_1, \Sigma,\phi\)<br />
+<img src="media/16447364101810/16452969690520.jpg" alt="" class="mw_img_center" style="width:300px;display: block; clear:both; margin: 0 auto;" /></p>
+<p>We use the same Sigma for both classes, but we use diffrent means for two Gaussian.</p>
+<p>Then we can use the Bayes to compute \(p(y=1|x)\).</p>
+<h4><a id="training" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Training</h4>
+<ul>
+<li>
+<p>The training set: \(\{x^{(i)},y^{(i)}\}^m_{i=1}\)</p>
+</li>
+<li>
+<p>We will do convergence according joint likelihood. The log-likelihood of the data will be like<br />
+\(\begin{aligned} \ell\left(\phi, \mu_{0}, \mu_{1}, \Sigma\right) &amp;=\log \prod_{i=1}^{n} p\left(x^{(i)}, y^{(i)} ; \phi, \mu_{0}, \mu_{1}, \Sigma\right) \\ &amp;=\log \prod_{i=1}^{n} p\left(x^{(i)} \mid y^{(i)} ; \mu_{0}, \mu_{1}, \Sigma\right) p\left(y^{(i)} ; \phi\right) \end{aligned}\)</p>
+</li>
+<li>
+<p>Whereas in the discrimination. Conditional likelihood:</p>
+</li>
+<li>
+<p>\(L(\theta) = \prod^m_{i=1}p(y^{(i)}|x^{(i)};\theta)\)</p>
+</li>
+<li>
+<p>In discriminative, we are going to choose \(\theta\) that maximize p of y given x.</p>
+</li>
+<li>
+<p>But for generative learning algorithms, we are going to choose parameters maximize p of x and y.</p>
+</li>
+</ul>
+<p>By maximizing l with respect  to the parameters, we take derivatives and set derivatives equal to 0. Then find the maximum likelihood estimate of the parameters to be:</p>
+\[\begin{aligned}
+\phi &amp;=\frac{1}{n} \sum_{i=1}^{n} 1\left\{y^{(i)}=1\right\} \\
+\mu_{0} &amp;=\frac{\sum_{i= 1}^{n} 1\left\{y^{(i)}=0\right\} x^{(i)}}{\sum_{i=1}^{n} 1\left\{y^{(i)}=0\right\}} \\
+\mu_{1} &amp;=\frac{\sum_{i=1}^{n} 1\left\{y^{(i)}=1\right\} x^{(i)}}{\sum_{i=1}^{n} 1\left\{y^{(i)}=1\right\}} \\
+\Sigma &amp;=\frac{1}{n} \sum_{i=1}^{n}\left(x^{(i)}-\mu_{y^{(i)}}\right)\left(x^{(i)}-\mu_{y^{(i)}}\right)^{T} .
+\end{aligned}
+\]
+<ul>
+<li>\(\phi\) is the estimate of probability of y being equal to 1. (Just like count up the fraction of heads you got.)
+<ul>
+<li><strong>Indicator notation</strong>: \( 1\left\{true\right\} = 1, 1\left\{false\right\} = 0\)</li>
+</ul>
+</li>
+<li>\(\mu_0\) comes from
+<ul>
+<li><img src="media/16447364101810/16453282546631.jpg" alt="" class="mw_img_center" style="width:300px;display: block; clear:both; margin: 0 auto;" /></li>
+<li>The denomitor is the total number of benign tumors in your training set.</li>
+<li>The nominator is the sum of feature vectors for all the examples with y = 0.</li>
+</ul>
+</li>
+<li>\(\mu_1\) is the same.</li>
+<li>The \(\Sigma\) try to fit the contour to the eclipse.
+<ul>
+<li><img src="media/16447364101810/16453294897950.jpg" alt="" class="mw_img_center" style="width:300px;display: block; clear:both; margin: 0 auto;" /></li>
+</ul>
+</li>
+</ul>
+<h4><a id="prediction" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Prediction</h4>
+<p><strong>arg notation:</strong> \(\min_z (z-5)^2 = 0\), then \(\arg\min_z(z-5)^2 = 5\). The argment is the value we need to achieve the maximum or minimum.</p>
+<p>If we want to predict the most likely class label.</p>
+\[\arg \max _{y} p(y \mid x) = \arg \max _{y} \frac{p(x|y)p(y)}{p(x)}
+\]
+<p>To y, p(x) is just a constant. So</p>
+\[\begin{aligned}
+\arg \max _{y} p(y \mid x) &amp;= \arg \max _{y} \frac{p(x|y)p(y)}{p(x)}
+\\
+&amp;= \arg \max_y p(x|y)p(y)
+\end{aligned}
+\]
+<h2><a id="difference-between-discriminative-learning-algorithm-and-generative-learning-algorithm-in-an-example" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Difference between Discriminative Learning Algorithm and Generative Learning Algorithm in an Example</h2>
+<h3><a id="discriminative-algorithm" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Discriminative Algorithm</h3>
+<p>Using gradient descend, we start here.<br />
+<img src="media/16447364101810/16453668950981.jpg" alt="" class="mw_img_center" style="width:400px;display: block; clear:both; margin: 0 auto;" /><br />
+Then with one iteration, we move the line.<br />
+<img src="media/16447364101810/16453679463323.jpg" alt="" class="mw_img_center" style="width:400px;display: block; clear:both; margin: 0 auto;" /><br />
+Two iterations<br />
+<img src="media/16447364101810/16453679885655.jpg" alt="" class="mw_img_center" style="width:400px;display: block; clear:both; margin: 0 auto;" /><br />
+After 20 iterations, it will converage.<br />
+<img src="media/16447364101810/16453680227004.jpg" alt="" class="mw_img_center" style="width:400px;display: block; clear:both; margin: 0 auto;" /></p>
+<h3><a id="generative-algorithm" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Generative Algorithm</h3>
+<p><img src="media/16447364101810/16453705422643.jpg" alt="" class="mw_img_center" style="width:400px;display: block; clear:both; margin: 0 auto;" /><br />
+What is worth mentioning is the covariance is the same in two Gaussians.<br />
+<img src="media/16447364101810/16453709204983.jpg" alt="" class="mw_img_center" style="width:400px;display: block; clear:both; margin: 0 auto;" /><br />
+<img src="media/16447364101810/16453709714246.jpg" alt="" class="mw_img_center" style="width:400px;display: block; clear:both; margin: 0 auto;" /><br />
+The green line comes from the logistic regression.</p>
+<p>Since we use the same covariance in Gaussians, we will finally get one straight line. If not, we will not get straight line.</p>
+<h2><a id="comparison-gda-to-logistic-regression" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Comparison GDA to Logistic Regression</h2>
+<p>For fixed \(\phi, \mu_0, \mu_1, \Sigma\), let's plot \(p(y=1|x;\phi,\mu_0,\mu_1, \Sigma)\) as a function of x.</p>
+\[\begin{aligned}
+&amp;p(y=1|x;\phi,\mu_0,\mu_1, \Sigma)
+\\=&amp;\frac{p(x|y=1;\mu,\Sigma)p(y=1;\phi)}{p(x;\phi,\mu_0.\mu_1,\Sigma)}
+\end{aligned}
+\]
+<p>\(p(x|y=1;\mu,\Sigma)\) is just a number, \(p(y=1;\phi)\) is a Bernoulli probability, so it is equal to \(\phi\).</p>
+<p><img src="media/16447364101810/16453725764517.jpg" alt="" class="mw_img_center" style="width:500px;display: block; clear:both; margin: 0 auto;" /><br />
+Let's see the 1D dataset.</p>
+<p><img src="media/16447364101810/16453729077920.jpg" alt="" class="mw_img_center" style="width:500px;display: block; clear:both; margin: 0 auto;" /><br />
+We will find the shape turns out that is exactly a shaped sigmoid function.</p>
+<p><img src="media/16447364101810/16453733950885.jpg" alt="" class="mw_img_center" style="width:500px;display: block; clear:both; margin: 0 auto;" /><br />
+GDA is stronger assumptions and logistic regression is weaker assumptions.</p>
+<p><em>If we make strongly modeling assumptions, and the assumptions are roughly correct, then model will do better, since we are telling more information to algorithm.</em></p>
+<p>Let's see</p>
+\[\begin{aligned}
+&amp;x|y=1 \sim Poisson(\lambda_1)\\
+&amp;x|y=0 \sim Poisson(\lambda_0)\\
+&amp;y\sim Ber(\phi) 
+\end{aligned}
+\]
+<p>We can also get \(p(y=1|x)\) is logistic.</p>
+<p><strong>This is true for any generalized linear model.</strong></p>
+<p>That means, if our model is fitted by Gaussian or Poisson, we can use logistic regression. But if our data is Gaussian and we use Poisson, then it will behave poorly.</p>
+<p>So when out dataset is really big, we may choose to use logistic. But when we are using a small compact database, Gaussian is a really good choice.</p>
+<p>The algorithm has two sources of knowledge, one is what did you tell it, the other is1  what you learnt from the data.</p>
+<p>GDA is a very efficient model.</p>
+<h2><a id="naive-bayes" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Naive Bayes</h2>
+<blockquote>
+<p>One more generative learning algorithm</p>
+</blockquote>
+<p>Given a piece of email, can you classify this is a spam or not?</p>
+<ol>
+<li>
+<p>First, we take a piece of email and first map it to a feature vector x. Maybe look up in email and find top 10000 words as our training set. <img src="media/16447364101810/16454067658872.jpg" alt="" class="mw_img_center" style="width:500px;display: block; clear:both; margin: 0 auto;" /></p>
+<p>\(x\in\{0,1\}^n\)<br />
+\(x_i=1\{\text{word i appears in email}\}\)<br />
+We want to model p(x|y), p(y). There are \(2^{1 0000}\) possible values of x.<br />
+Assume \(x_i\) are conditionally independent given y.</p>
+</li>
+<li>
+<p>By the chain rule property,</p>
+</li>
+</ol>
+\[ \begin{aligned}
+p(x_{1,...,10000}|y) &amp;= p(x_1|y)p(x_2|x_1,y)p(x_3|x_1,x_2,y)...p(x_{10000}...)\\
+&amp;\stackrel{assume}{=} p(x_1|y)p(x_2|y)...p(x_{10000}|y)\\
+&amp;=\prod ^d_{j=1}p(x_j|y)
+ \end{aligned}
+\]
+<h3><a id="parameters" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Parameters</h3>
+<p>\(\phi_{j|y=1} = p(x_j=1|y=1)\) If it is a spam email, what's the chance of xj occur in the spam email<br />
+\(\phi_{j|y=0} = p(x_j=1|y=0)\)<br />
+\(\phi_y=p(y=1)\)</p>
+<p>So the joint likelihood of these parameters is</p>
+\[\mathcal{L}\left(\phi_{y}, \phi_{j \mid y=0}, \phi_{j \mid y=1}\right)=\prod_{i=1}^{n} p\left(x^{(i)}, y^{(i)}\right)
+\]
+<p>Then the MLE would be</p>
+\[\begin{aligned}
+\phi_{j \mid y=1} &amp;=\frac{\sum_{i=1}^{n} 1\left\{x_{j}^{(i)}=1 \wedge y^{(i)}=1\right\}}{\sum_{i=1}^{n} 1\left\{y^{(i)}=1\right\}} \\
+\phi_{j \mid y=0} &amp;=\frac{\sum_{i=1}^{n} 1\left\{x_{j}^{(i)}=1 \wedge y^{(i)}=0\right\}}{\sum_{i=1}^{n} 1\left\{y^{(i)}=0\right\}} \\
+\phi_{y} &amp;=\frac{\sum_{i=1}^{n} 1\left\{y^{(i)}=1\right\}}{n}
+\end{aligned}
+\]
+<p>It is an efficient algorithm.</p>
+
+                  </article>
+                  <div class="comments-wrap">
+                    <div class="share-comments">
+                      
+
+                      
+                        <div id="disqus_thread"></div>
+                      
+
+                      
+                    </div>
+                  </div><!-- end comments wrap -->
+              </div>
+            </div><!-- end columns -->
+      </div><!-- end container -->
+    </section>
+
+
+
+    <footer class="footer">
+        <div class="content has-text-centered">
+          <p>
+              Copyright &copy; 2019
+              Powered by <a target="_blank" href="http://www.mweb.im">MWeb</a>,&nbsp; 
+              Theme used <a target="_blank" href="https://bulma.io/">Bulma CSS</a>.
+          </p>
+        </div>
+      </footer>
+
+
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/x-mathjax-config">MathJax.Hub.Config({TeX: { equationNumbers: { autoNumber: "AMS" } }});</script>
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="asset/prism.js"></script>
+
+
+
+
+<script type="text/javascript">
+    var disqus_shortname = 'chiyuanye'; 
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+
+<script type="text/javascript">
+var disqus_shortname = 'chiyuanye'; 
+
+(function () {
+var s = document.createElement('script'); s.async = true;
+s.type = 'text/javascript';
+s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+(document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+}());
+</script>
+  
+    
+
+
+
+
+  </body>
+</html>
