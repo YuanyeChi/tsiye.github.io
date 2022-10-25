@@ -7,8 +7,8 @@ var i18nZHData = {
       'tran-categories':'分类：',
       'tran-comments':'Comment',
       'tran-readmore':'keep reading...',
-      'tran-prev-page':'&laquo; prev page',
-      'tran-next-page':'next page &raquo;',
+      'tran-prev-page':'&laquo; prev',
+      'tran-next-page':'next &raquo;',
       'tran-disqus-comments':'Comment'
     };
 
