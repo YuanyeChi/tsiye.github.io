@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>
+      
+    Lecture 11 | 10/13 DNA Damage and Repair - Yuanye Chi's Blog
+    
+    </title>
+    <link rel="shortcut icon" href="https://i.loli.net/2019/02/20/5c6cf0555ffe6.jpeg" type="image/png" />
+
+    
+    
+    <link href="atom.xml" rel="alternate" title="Yuanye Chi's Blog" type="application/atom+xml">
+    <link rel="stylesheet" href="asset/css/style.min.css">
+    <link rel="stylesheet" href="asset/css/doc.css">
+    <script src="asset/app.js"></script>
+</head>
+  <body>
+    <section class="hero">
+      <div class="hero-head">
+          <nav class="navbar" role="navigation" aria-label="main navigation">
+              <div class="container">
+              <div class="navbar-brand">
+                
+                <a target="_self" class="navbar-item " href="index.html">Home</a>
+                
+                <a target="_self" class="navbar-item " href="archives.html">Archives</a>
+                
+                <a target="_self" class="navbar-item " href="about.html">About</a>
+                
+
+                <a role="button" id="navbarSNSRssSwitchBtn" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarSNSRssButtons">
+                  <span aria-hidden="true"></span>
+                  <span aria-hidden="true"></span>
+                  <span aria-hidden="true"></span>
+                </a>
+              </div>
+            
+              <div id="navbarSNSRssButtons" class="navbar-menu">
+                <div class="navbar-start">
+                  
+                </div>
+            
+                <div class="navbar-end">
+                  <div class="navbar-item">
+                    <!--buttons start-->
+                    <div class="buttons">
+                      
+                        
+                        
+                        
+                        <a href="https://github.com/tsiye" target="_blank" title="github">
+                            <span class="icon is-large has-text-grey-darker">
+                               <svg class="svg-inline--fa fa-github fa-w-16 fa-lg" aria-hidden="true" focusable="false" data-prefix="fab" data-icon="github" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512" data-fa-i2svg=""><path fill="currentColor" d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"></path></svg><!-- <i class="fab fa-github fa-lg"></i> -->
+                            </span>
+                          </a>
+                        
+                        
+                      
+                      <a href="atom.xml" target="_blank" title="RSS">
+                          <span class="icon is-large has-text-black-bis">
+                              <svg class="svg-inline--fa fa-rss fa-w-14 fa-lg" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="rss" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" data-fa-i2svg=""><path fill="currentColor" d="M128.081 415.959c0 35.369-28.672 64.041-64.041 64.041S0 451.328 0 415.959s28.672-64.041 64.041-64.041 64.04 28.673 64.04 64.041zm175.66 47.25c-8.354-154.6-132.185-278.587-286.95-286.95C7.656 175.765 0 183.105 0 192.253v48.069c0 8.415 6.49 15.472 14.887 16.018 111.832 7.284 201.473 96.702 208.772 208.772.547 8.397 7.604 14.887 16.018 14.887h48.069c9.149.001 16.489-7.655 15.995-16.79zm144.249.288C439.596 229.677 251.465 40.445 16.503 32.01 7.473 31.686 0 38.981 0 48.016v48.068c0 8.625 6.835 15.645 15.453 15.999 191.179 7.839 344.627 161.316 352.465 352.465.353 8.618 7.373 15.453 15.999 15.453h48.068c9.034-.001 16.329-7.474 16.005-16.504z"></path></svg><!-- <i class="fas fa-rss fa-lg"></i> -->
+                          </span>
+                      </a>
+                    </div>
+                    <!--buttons end-->
+
+                  </div>
+                </div>
+                </div>
+              </div>
+            </nav>
+      </div>
+
+ <div class="hero-body ct-body"></div>
+      
+    </section>
+    <section class="ct-body">
+      <div class="container">
+          <div class="columns is-variable bd-klmn-columns is-4 is-centered">
+              <div class="column is-four-fifths">
+                  <div class="post-body single-content">
+                    
+                    <h1 class="title">
+                            Lecture 11 | 10/13 DNA Damage and Repair   
+                      </h1>
+                     
+                    
+                      <div class="media">
+                            
+                            <figure class="media-left">
+                              <p class="image is-48x48">
+                                
+                                  <img class="is-rounded" src="https://i.loli.net/2019/02/20/5c6cf0e7a42f9.jpg">
+                                
+                              </p>
+                            </figure>
+                            
+                            <div class="media-content">
+                              <div class="content">
+                                <p>
+                                 <span class="date">2022/10/13 10:26 AM</span>
+                                  <span class="tran-posted-in">posted in</span>&nbsp; 
+                                  
+                                      <span class="posted-in"><a href='BIO105.html'>BIO105</a></span>
+                                         
+                                  
+                                    &nbsp;&nbsp;<a href="16656712081690.html#disqus_thread"><span class="tran-disqus-comments">comments</span></a>
+                                  
+
+                                   
+                                      
+                                  <br />
+                                  <span class="tran-tags">Tags:</span>&nbsp;
+                                  
+                                    <a class="tag is-link is-light" href='tag_BIO-105.html'>#BIO-105</a>
+                                     
+
+                                </p>
+                              </div>
+                            </div>
+                         
+                    </div>
+                </div>
+                  <article class="markdown-body single-content">
+                    <h2><a id="termination-of-replication-in-bacteria" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Termination of Replication in Bacteria</h2>
+<p><img src="media/16656712081690/16656718865508.jpg" alt="" class="mw_img_center" style="width:400px;display: block; clear:both; margin: 0 auto;" /></p>
+<h2><a id="replication-of-linear-chromosomes-the-end-replication-problem" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Replication of Linear Chromosomes : the End Replication Problem</h2>
+<p>The binding of polymerase needs 3' hydroxyl. But at the end of lagging strand(right), the 3' hydroxyl is missing.<br />
+<img src="media/16656712081690/16658936167626.jpg" alt="-c55 0" /></p>
+<h2><a id="problem" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Problem</h2>
+<p>Some biologists think that people who have shorter average telomere length have an older biological age.</p>
+<h2><a id="telomerase-can-extend-the-ends-of-eukaryotic-chromosomes" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Telomerase can extend the ends of eukaryotic chromosomes</h2>
+<p><img src="media/16656712081690/16659322718525.jpg" alt="" class="mw_img_center" style="width:400px;display: block; clear:both; margin: 0 auto;" /></p>
+<p>What tolemerase does isi it's basically a reverse transcriptase that can use an RNA template that comes prepackaged as a way to synthesize additional DNA.</p>
+<p><img src="media/16656712081690/16659322839127.jpg" alt="" class="mw_img_center" style="width:400px;display: block; clear:both; margin: 0 auto;" /><br />
+We can give enough run way for RNA primer.</p>
+<p>Some cancer cells just reactivate tolemerase and  they can get around the replication problem.</p>
+<h2><a id="mammalian-telomeres-form-t-loops-that-protect-telomeres-and-prevent-excessive-telomerase-extension" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Mammalian telomeres form T-loops that protect telomeres and prevent excessive telomerase extension</h2>
+<p><img src="media/16656712081690/16656729467626.jpg" alt="" class="mw_img_center" style="width:400px;display: block; clear:both; margin: 0 auto;" /><br />
+What the telomeres loops do is they basically take this 3' end of DNA, they bury it into another part of the telomere where it's duplex.</p>
+<p>By doing so, the T-loops and teh shelterin complex also prevent the accumulation of DNA damage at telomeres.</p>
+<h1><a id="dna-damage" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>DNA Damage</h1>
+<h2><a id="different-sources" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Different Sources</h2>
+<p><img src="media/16656712081690/16659367912689.jpg" alt="" class="mw_img_center" style="width:400px;display: block; clear:both; margin: 0 auto;" /></p>
+<ol>
+<li>Cellular Metabolism</li>
+<li>UV Light Exposure</li>
+<li>Ionizing Radiation</li>
+<li>Chemical Exposure</li>
+<li>Replication Errors</li>
+</ol>
+<h2><a id="poll-everywhere" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Poll Everywhere</h2>
+<p>You have discovered a mutant strain of bacteria with a hyperactive Dam methylase. Which of the following statements should be TRUE for this mutant strain?</p>
+<ul>
+<li class="task-list-item"><input type="checkbox" disabled="" /> A. Initiation of replication will be less frequent</li>
+<li class="task-list-item"><input type="checkbox" checked="" disabled="" /> B. Initiation of replication will be more frequent</li>
+<li class="task-list-item"><input type="checkbox" disabled="" /> C. The bacteria will be unable to initiate replication</li>
+<li class="task-list-item"><input type="checkbox" checked="" disabled="" /> D. Mutation frequency should be increased</li>
+<li class="task-list-item"><input type="checkbox" disabled="" /> E. Mutation frequency should be decreased</li>
+<li class="task-list-item"><input type="checkbox" disabled="" /> F. Mutation frequency should be unaffected</li>
+</ul>
+<p>Methylase will not only effect polymerase but also the MutH.</p>
+<h3><a id="mismatch-repair-in-e-coli" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Mismatch Repair in E.coli</h3>
+<p><img src="media/16656712081690/16659370318018.jpg" alt="" class="mw_img_center" style="width:400px;display: block; clear:both; margin: 0 auto;" /></p>
+<ol>
+<li>DNA polymerase misincorporates a nucleotide, crearing a mismatch. The newly synthesized GATC site is hemimethylated.</li>
+<li><strong>MutS</strong> binds the mismatch ad forms a complex with <strong>MutL</strong>.</li>
+<li><strong>MutS-MutL</strong> scan DNA bidirectionally, forming a loop.</li>
+<li><strong>MutS-MutL</strong> finds the nearest GATC site and recruits <strong>MutH</strong>, which cleaves the newly synthesized unmethlyated GATC sequence.</li>
+<li><strong>Helicase II</strong> and an <strong>exonuclease</strong> unwind and degrade the newly replicated DNA strand past the mismatch.</li>
+<li><strong>Polymerase III</strong> fills the gap, and <strong>ligase</strong> seals the DNA.</li>
+</ol>
+<h2><a id="common-dna-damage" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Common DNA Damage</h2>
+<h3><a id="1-water-and-nitrous-acid-from-nitrates-can-cause-deamination-of-bases" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>1. Water and Nitrous Acid(from Nitrates) Can Cause Deamination of Bases</h3>
+<p><img src="media/16656712081690/16664671427279.jpg" alt="" class="mw_img_center" style="width:350px;display: block; clear:both; margin: 0 auto;" /></p>
+<p>Which will cause the mutation:</p>
+<ol>
+<li>GC --&gt; AT</li>
+<li>TA --&gt; CG</li>
+<li>GC --&gt; AT</li>
+</ol>
+<p>It is difficult to deal with，because We are creating things that are naturally occurring.</p>
+<h3><a id="2-water-can-cause-depurinationdepyrimidination-loss-of-bases" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>2. Water can cause depurination/depyrimidination (loss of bases)</h3>
+<blockquote>
+<p>Transform purine and pyrimid to abasic site. So polymerase could potentially get confused.</p>
+</blockquote>
+<p><img src="media/16656712081690/16656741593543.jpg" alt="" class="mw_img_center" style="width:400px;display: block; clear:both; margin: 0 auto;" /></p>
+<h3><a id="3-reaction-of-oxygen-with-bases" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>3. Reaction of oxygen with bases</h3>
+<p>In this way, G cannot only be paired to C but also A.<br />
+<img src="media/16656712081690/16656742006338.jpg" alt="" /></p>
+<h3><a id="4-base-alkylation" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>4. Base Alkylation</h3>
+<p>GC --&gt; AT.<br />
+After adding a methyl group to the oxgen in the six position,  the G will do base pair with thymine.<br />
+<img src="media/16656712081690/16656741369150.jpg" alt="" class="mw_img_center" style="width:400px;display: block; clear:both; margin: 0 auto;" /></p>
+<h2><a id="summary-of-dna-damage-guanine-as-an-example" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Summary of DNA Damage Guanine As An Example</h2>
+<p><img src="media/16656712081690/16656742473184.jpg" alt="" class="mw_img_center" style="width:400px;display: block; clear:both; margin: 0 auto;" /></p>
+<h1><a id="three-general-strategies-for-dealing-with-dna-damage" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Three General Strategies  for Dealing with DNA Damage</h1>
+<h2><a id="1-direct-reversal" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>1. Direct Reversal</h2>
+<h3><a id="methyl-group-removal" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Methyl Group Removal</h3>
+<p><img src="media/16656712081690/16656745121792.jpg" alt="" class="mw_img_center" style="width:400px;display: block; clear:both; margin: 0 auto;" /></p>
+<p>The methyltransferase protien is not an enzyme. So, this method of repai is energetically very expensive.<br />
+The methyltransferase just scan through the genome to look for substrates that will fit into their active site.</p>
+<h2><a id="2-excise-damage-and-resynthesize" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>2. Excise Damage and Resynthesize</h2>
+<p><img src="media/16656712081690/16656747780061.jpg" alt="" class="mw_img_center" style="width:400px;display: block; clear:both; margin: 0 auto;" /></p>
+<h3><a id="base-excision-repair" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Base Excision Repair</h3>
+<h4><a id="an-example-of-ber-base-excision-repair-uracil-glycosylase-remember-okazaki-is-involved-in-excision-of-uracil-from-dna" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>An example of BER(Base excision repair): Uracil glycosylase (remember Okazaki?) is involved in excision of uracil from DNA</h4>
+<p><img src="media/16656712081690/16656750712687.jpg" alt="" class="mw_img_center" style="width:500px;display: block; clear:both; margin: 0 auto;" /></p>
+<h4><a id="base-excision-repair-using-uracil-glycosylase" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Base excision repair using uracil glycosylase</h4>
+<blockquote>
+<p>The glycosylase flips out the base. If it fits in the active site, it gets cleaved</p>
+</blockquote>
+<p><img src="media/16656712081690/16656752712114.jpg" alt="" class="mw_img_center" style="width:300px;display: block; clear:both; margin: 0 auto;" /></p>
+<h4><a id="an-in-vitro-experiment" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>An in-vitro experiment</h4>
+<ul>
+<li>Add dsDNA with a dU inserted at position 8 of a labeled strabd</li>
+<li>Add uracil glycoslase + AP endonuclease</li>
+<li>Electrophoresis the products using denaturing PAGE.</li>
+</ul>
+<p><img src="media/16656712081690/16659465117138.jpg" alt="-c400 " /></p>
+<h2><a id="a-special-type-of-dna-damage-ultraviolet-rediation-creates-covalent-bonds-between-bases" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>A special type of DNA damage: Ultraviolet rediation creates covalent bonds between bases</h2>
+<p><img src="media/16656712081690/16659473949666.jpg" alt="" class="mw_img_center" style="width:500px;display: block; clear:both; margin: 0 auto;" /></p>
+<p>There are two ways to tackle this</p>
+<h3><a id="1-photoreactivation-can-reverse-thymine-dimers" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>1. Photoreactivation can reverse thymine dimers</h3>
+<blockquote>
+<p>DNA photolyase uses energy from visible light to rearrange the bonds between the thymines.<br />
+Unlike methyltransferase, DNA photolyase is an enzyme.<br />
+However, phtolyase is not present in the genome of placental mammals.</p>
+</blockquote>
+<p><img src="media/16656712081690/16659475179697.jpg" alt="" class="mw_img_center" style="width:500px;display: block; clear:both; margin: 0 auto;" /></p>
+<h3><a id="2-nucleotide-excisioin-repair-ner-removes-dna-distroting-lesions" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>2. Nucleotide Excisioin Repair(NER) Removes DNA-distroting Lesions</h3>
+<h4><a id="bacteria" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Bacteria</h4>
+<blockquote>
+<p>In bacteria, the <strong>UvR</strong> stands for UV resistance can recognize thymine dimer. The reason itis called is because if tou mutate these genes, they are not UV resistance.<br />
+<strong>Uvr A/B</strong> will recognize the damage and bind very tightly to it.<br />
+UvrB will recuit the <strong>UvrC</strong>(excinuclease). UvrC will make nicks both 3' and 5'.</p>
+</blockquote>
+<p><img src="media/16656712081690/16659479987727.jpg" alt="" class="mw_img_center" style="width:500px;display: block; clear:both; margin: 0 auto;" /></p>
+<h4><a id="eukaryote" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Eukaryote</h4>
+<p>XPC will recognize thymine dimer and brings in proteins can make nicks.<br />
+<img src="media/16656712081690/16659481422161.jpg" alt="" class="mw_img_center" style="width:400px;display: block; clear:both; margin: 0 auto;" /></p>
+<h3><a id="poll-everwhere" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Poll Everwhere</h3>
+<p>Benzo[a]pyrene is a compound found in charred meat.<br />
+It can form adducts with guanine, causing large bulges in the DNA double helix.<br />
+Cells lacking which of the following proteins do you predict will be most sensitive to benzo[a]pyrene?</p>
+<ul>
+<li class="task-list-item"><input type="checkbox" disabled="" /> A. AP endonuclease</li>
+<li class="task-list-item"><input type="checkbox" disabled="" /> B. MutS</li>
+<li class="task-list-item"><input type="checkbox" disabled="" /> C. Photolyase</li>
+<li class="task-list-item"><input type="checkbox" disabled="" /> D. Uracil glycosylase</li>
+<li class="task-list-item"><input type="checkbox" checked="" disabled="" /> E. UvrA</li>
+</ul>
+<p><img src="media/16656712081690/16659483017033.jpg" alt="" class="mw_img_center" style="width:400px;display: block; clear:both; margin: 0 auto;" /></p>
+<h2><a id="3-temporarily-ignore-damage-and-carry-on" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>3. Temporarily Ignore Damage and &quot;Carry On&quot;</h2>
+
+                  </article>
+                  <div class="comments-wrap">
+                    <div class="share-comments">
+                      
+
+                      
+                        <div id="disqus_thread"></div>
+                      
+
+                      
+                    </div>
+                  </div><!-- end comments wrap -->
+              </div>
+            </div><!-- end columns -->
+      </div><!-- end container -->
+    </section>
+
+
+
+    <footer class="footer">
+        <div class="content has-text-centered">
+          <p>
+              Copyright &copy; 2019
+              Powered by <a target="_blank" href="http://www.mweb.im">MWeb</a>,&nbsp; 
+              Theme used <a target="_blank" href="https://bulma.io/">Bulma CSS</a>.
+          </p>
+        </div>
+      </footer>
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+    var disqus_shortname = 'chiyuanye'; 
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+
+<script type="text/javascript">
+var disqus_shortname = 'chiyuanye'; 
+
+(function () {
+var s = document.createElement('script'); s.async = true;
+s.type = 'text/javascript';
+s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+(document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+}());
+</script>
+  
+    
+
+
+
+
+  </body>
+</html>

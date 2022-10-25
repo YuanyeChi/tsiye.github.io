@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>
+      
+    Lecture 2 | 09/08 Nucleic acids and tools for analysis - Yuanye Chi's Blog
+    
+    </title>
+    <link rel="shortcut icon" href="https://i.loli.net/2019/02/20/5c6cf0555ffe6.jpeg" type="image/png" />
+
+    
+    
+    <link href="atom.xml" rel="alternate" title="Yuanye Chi's Blog" type="application/atom+xml">
+    <link rel="stylesheet" href="asset/css/style.min.css">
+    <link rel="stylesheet" href="asset/css/doc.css">
+    <script src="asset/app.js"></script>
+</head>
+  <body>
+    <section class="hero">
+      <div class="hero-head">
+          <nav class="navbar" role="navigation" aria-label="main navigation">
+              <div class="container">
+              <div class="navbar-brand">
+                
+                <a target="_self" class="navbar-item " href="index.html">Home</a>
+                
+                <a target="_self" class="navbar-item " href="archives.html">Archives</a>
+                
+                <a target="_self" class="navbar-item " href="about.html">About</a>
+                
+
+                <a role="button" id="navbarSNSRssSwitchBtn" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarSNSRssButtons">
+                  <span aria-hidden="true"></span>
+                  <span aria-hidden="true"></span>
+                  <span aria-hidden="true"></span>
+                </a>
+              </div>
+            
+              <div id="navbarSNSRssButtons" class="navbar-menu">
+                <div class="navbar-start">
+                  
+                </div>
+            
+                <div class="navbar-end">
+                  <div class="navbar-item">
+                    <!--buttons start-->
+                    <div class="buttons">
+                      
+                        
+                        
+                        
+                        <a href="https://github.com/tsiye" target="_blank" title="github">
+                            <span class="icon is-large has-text-grey-darker">
+                               <svg class="svg-inline--fa fa-github fa-w-16 fa-lg" aria-hidden="true" focusable="false" data-prefix="fab" data-icon="github" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512" data-fa-i2svg=""><path fill="currentColor" d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"></path></svg><!-- <i class="fab fa-github fa-lg"></i> -->
+                            </span>
+                          </a>
+                        
+                        
+                      
+                      <a href="atom.xml" target="_blank" title="RSS">
+                          <span class="icon is-large has-text-black-bis">
+                              <svg class="svg-inline--fa fa-rss fa-w-14 fa-lg" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="rss" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" data-fa-i2svg=""><path fill="currentColor" d="M128.081 415.959c0 35.369-28.672 64.041-64.041 64.041S0 451.328 0 415.959s28.672-64.041 64.041-64.041 64.04 28.673 64.04 64.041zm175.66 47.25c-8.354-154.6-132.185-278.587-286.95-286.95C7.656 175.765 0 183.105 0 192.253v48.069c0 8.415 6.49 15.472 14.887 16.018 111.832 7.284 201.473 96.702 208.772 208.772.547 8.397 7.604 14.887 16.018 14.887h48.069c9.149.001 16.489-7.655 15.995-16.79zm144.249.288C439.596 229.677 251.465 40.445 16.503 32.01 7.473 31.686 0 38.981 0 48.016v48.068c0 8.625 6.835 15.645 15.453 15.999 191.179 7.839 344.627 161.316 352.465 352.465.353 8.618 7.373 15.453 15.999 15.453h48.068c9.034-.001 16.329-7.474 16.005-16.504z"></path></svg><!-- <i class="fas fa-rss fa-lg"></i> -->
+                          </span>
+                      </a>
+                    </div>
+                    <!--buttons end-->
+
+                  </div>
+                </div>
+                </div>
+              </div>
+            </nav>
+      </div>
+
+ <div class="hero-body ct-body"></div>
+      
+    </section>
+    <section class="ct-body">
+      <div class="container">
+          <div class="columns is-variable bd-klmn-columns is-4 is-centered">
+              <div class="column is-four-fifths">
+                  <div class="post-body single-content">
+                    
+                    <h1 class="title">
+                            Lecture 2 | 09/08 Nucleic acids and tools for analysis   
+                      </h1>
+                     
+                    
+                      <div class="media">
+                            
+                            <figure class="media-left">
+                              <p class="image is-48x48">
+                                
+                                  <img class="is-rounded" src="https://i.loli.net/2019/02/20/5c6cf0e7a42f9.jpg">
+                                
+                              </p>
+                            </figure>
+                            
+                            <div class="media-content">
+                              <div class="content">
+                                <p>
+                                 <span class="date">2022/09/08 10:26 AM</span>
+                                  <span class="tran-posted-in">posted in</span>&nbsp; 
+                                  
+                                      <span class="posted-in"><a href='BIO105.html'>BIO105</a></span>
+                                         
+                                  
+                                    &nbsp;&nbsp;<a href="16626471919819.html#disqus_thread"><span class="tran-disqus-comments">comments</span></a>
+                                  
+
+                                   
+                                      
+                                  <br />
+                                  <span class="tran-tags">Tags:</span>&nbsp;
+                                  
+                                    <a class="tag is-link is-light" href='tag_BIO-105.html'>#BIO-105</a>
+                                     
+
+                                </p>
+                              </div>
+                            </div>
+                         
+                    </div>
+                </div>
+                  <article class="markdown-body single-content">
+                    <h2><a id="forms-of-dna" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Forms of DNA</h2>
+<p>A-form and B-form: right-hand helix<br />
+Dehydration of DNA drives it into the A form<br />
+Z-form DNA is Purine and Pyrimidine repeat. Normally, it takes 10 repeats to form z-form.</p>
+<hr />
+<h3><a id="poll-challeng-question" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Poll Challeng Question</h3>
+<p><img src="media/16626471919819/16626484824669.jpg" alt="" class="mw_img_center" style="width:300px;display: block; clear:both; margin: 0 auto;" /></p>
+<p>Is more likely to form Cruciform.</p>
+<h2><a id="c300-media1662647191981916626486372335-jpg-the-yellow-highlighted-part-is-the-evidence" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a><img src="media/16626471919819/16626486372335.jpg" alt="" class="mw_img_center" style="width:300px;display: block; clear:both; margin: 0 auto;" /><br />
+The yellow highlighted part is the evidence.</h2>
+<h2><a id="dna-secondary-structure" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>DNA Secondary Structure</h2>
+<h3><a id="triplex-dna" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Triplex DNA</h3>
+<h3><a id="hairpin-and-cruciform-structures" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Hairpin and Cruciform Structures</h3>
+<h3><a id="g-quadruplex-dna" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>G-quadruplex DNA</h3>
+<h2><a id="seperating-and-probing-nucleic-acids" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Seperating and Probing Nucleic Acids</h2>
+<h3><a id="methods" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Methods</h3>
+<ul>
+<li>Ultracentrifugation (by density)</li>
+<li>Non-denaturing gel electrophoresis (by size and shape)</li>
+<li>Denaturing gel electrophoresis (by size)</li>
+<li>2-D gel electrophoresis (by size, shape, and supercoiling)</li>
+</ul>
+<h3><a id="ultracentrifugation" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Ultracentrifugation</h3>
+<blockquote>
+<p>Based on density.</p>
+</blockquote>
+<h4><a id="advantage" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Advantage</h4>
+<p>Get very pure samples</p>
+<h4><a id="disadvantage" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Disadvantage</h4>
+<p>Takes a long time</p>
+<p>DNA can be seperated by different G-C percent.<br />
+G 151.13 g/mol<br />
+C 111.1 g/mol<br />
+A 135.13 g/mol<br />
+T 126.1133 g/mol</p>
+<p><em>A little density difference</em></p>
+<p>Example with yeast DNA:<br />
+3 distinct bands can be observed:</p>
+<ul>
+<li>Mitochondrial DNA (20% G-C)</li>
+<li>Chromosomal DNA (50% G-C)</li>
+<li>Ribosomal DNA (60% G-C)</li>
+</ul>
+<h3><a id="non-denaturing-gel-electrophoresis-seperates-nucleic-acids" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Non-denaturing gel electrophoresis seperates nucleic acids</h3>
+<blockquote>
+<p>Based on shapes and size.</p>
+</blockquote>
+<p><img src="media/16626471919819/16626495083463.jpg" alt="" class="mw_img_center" style="width:400px;display: block; clear:both; margin: 0 auto;" /></p>
+<h4><a id="the-shape-of-dna" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>The Shape of DNA</h4>
+<p>The DNA fragments have the same size  but different shape, the migrate in different speed.<br />
+<img src="media/16626471919819/16628334130100.jpg" alt="" class="mw_img_center" style="width:400px;display: block; clear:both; margin: 0 auto;" /></p>
+<h4><a id="visualization" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Visualization</h4>
+<ol>
+<li>
+<p>Using EtBr(Ethidium bromide ) to intercalating dyes to visualize nucleic acids under UV light.<br />
+<img src="media/16626471919819/16626499275229.jpg" alt="" class="mw_img_center" style="width:300px;display: block; clear:both; margin: 0 auto;" /></p>
+</li>
+<li>
+<p>Using radioactive labels and autoradiography.<br />
+<img src="media/16626471919819/16626499804923.jpg" alt="" class="mw_img_center" style="width:250px;display: block; clear:both; margin: 0 auto;" /><br />
+32P is fre</p>
+</li>
+</ol>
+<h3><a id="denaturing-gel-electrophoresis" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Denaturing gel electrophoresis</h3>
+<blockquote>
+<p>By size.</p>
+</blockquote>
+<h3><a id="dna-strands-must-be-seperated-to-identify-specific-dna-sequences" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>DNA Strands Must be Seperated to Identify Specific DNA Sequences.</h3>
+<ol>
+<li>Denaturation can be spontaneous or catalyzed by enzymes</li>
+<li>AT-rich regions (arrows) spontaneously denature first
+<ol>
+<li>Because there areonly two hydrogen bonds and C-G has 3.</li>
+</ol>
+</li>
+</ol>
+<h4><a id="dna-denaturation-can-be-measured-using-a-spectrophotometer" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>DNA Denaturation can be measured using a Spectrophotometer</h4>
+<p><img src="media/16626471919819/16626501379831.jpg" alt="" class="mw_img_center" style="width:400px;display: block; clear:both; margin: 0 auto;" /></p>
+<h4><a id="g-c-content-and-salt-concentration-can-affect-dna-denatuaration" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>G-C Content and Salt Concentration can Affect DNA Denatuaration</h4>
+<p><img src="media/16626471919819/16626505914063.jpg" alt="" class="mw_img_center" style="width:400px;display: block; clear:both; margin: 0 auto;" /><br />
+<em>Thesalt neutralizes the negative charges on the DNA backbone.</em></p>
+<p><strong>GC-rich and high salt -&gt; highest Tm<br />
+AT-rich and low salt -&gt; lowest Tm</strong></p>
+<h3><a id="poll-question" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Poll Question</h3>
+<p><img src="media/16626471919819/16626507174712.jpg" alt="" class="mw_img_center" style="width:300px;display: block; clear:both; margin: 0 auto;" /></p>
+<p>Answer: Sample 2<br />
+Just look at that figure</p>
+<h2><a id="methods-for-seperationidentification-of-nucleic-acids" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Methods for Seperation/Identification of Nucleic Acids</h2>
+<blockquote>
+<p>Labeled probes to single-stranded nucleic acids</p>
+</blockquote>
+<ul>
+<li>Southern blot</li>
+<li>Northen blot</li>
+<li>In situ hybridization</li>
+</ul>
+<h3><a id="visualizing-specific-nucleic-acid-sequences-southern-and-northern-blotting" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Visualizing Specific Nucleic Acid Sequences: Southern and Northern Blotting</h3>
+<blockquote>
+<p>Used to determine</p>
+<ul>
+<li>Presence or absence</li>
+<li>Relative levels</li>
+<li>Orientation(DNA)</li>
+</ul>
+</blockquote>
+<p><img src="media/16626471919819/16628350503080.jpg" alt="" class="mw_img_center" style="width:300px;display: block; clear:both; margin: 0 auto;" /><br />
+We just transfer gel to nitrocellulose because nitrocellulose is more stable than gel.</p>
+<p><img src="media/16626471919819/16628369775759.jpg" alt="" class="mw_img_center" style="width:400px;display: block; clear:both; margin: 0 auto;" /><br />
+There is an assumption that these organs is producing approximately the same amount of GAPDH messenger RNA. That is why we can use it as a loading control.<br />
+So now we could say, there is more PECAM-1 RBA in the kidney, the lung and the trachea</p>
+<h3><a id="microarray-quanitfy-multiple-dna-and-rna-molecules" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Microarray: Quanitfy Multiple DNA and RNA Molecules</h3>
+<blockquote>
+<p>Can quantify multiple DNA and RNA molecules.</p>
+</blockquote>
+<p>Why go back from RNA to DNA? Because DNAs are more stable than RNA in solutions.</p>
+<h3><a id="visualization-dna-in-cellstissues-in-situ-hybridization" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Visualization DNA in cells/tissues: in situ hybridization</h3>
+<blockquote>
+<p>Sometimes we want to know where are specific nucleic acid sequences in a chromosome or in a cell.</p>
+</blockquote>
+<h4><a id="steps" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Steps</h4>
+<ol>
+<li>Fix the cells/tissue in denaturing conditions</li>
+<li>Incubate with a probe complementary to the sequence that you want to visualize</li>
+<li>The probes can be radioactive or fluorescently labeled</li>
+</ol>
+<p><img src="media/16626471919819/16628375895960.jpg" alt="" class="mw_img_center" style="width:400px;display: block; clear:both; margin: 0 auto;" /><br />
+Why this picture has four dots?</p>
+<ul>
+<li>We are in metaphase spreads. We are in mitosis.</li>
+</ul>
+<h3><a id="poll-question" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Poll Question</h3>
+<p>If we only want to analysis the amount only one gene, we can juse use northern blot</p>
+
+                  </article>
+                  <div class="comments-wrap">
+                    <div class="share-comments">
+                      
+
+                      
+                        <div id="disqus_thread"></div>
+                      
+
+                      
+                    </div>
+                  </div><!-- end comments wrap -->
+              </div>
+            </div><!-- end columns -->
+      </div><!-- end container -->
+    </section>
+
+
+
+    <footer class="footer">
+        <div class="content has-text-centered">
+          <p>
+              Copyright &copy; 2019
+              Powered by <a target="_blank" href="http://www.mweb.im">MWeb</a>,&nbsp; 
+              Theme used <a target="_blank" href="https://bulma.io/">Bulma CSS</a>.
+          </p>
+        </div>
+      </footer>
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+    var disqus_shortname = 'chiyuanye'; 
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+
+<script type="text/javascript">
+var disqus_shortname = 'chiyuanye'; 
+
+(function () {
+var s = document.createElement('script'); s.async = true;
+s.type = 'text/javascript';
+s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+(document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+}());
+</script>
+  
+    
+
+
+
+
+  </body>
+</html>

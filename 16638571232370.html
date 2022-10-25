@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>
+      
+    Lecture 06 | 09/22 DNA Topology - Yuanye Chi's Blog
+    
+    </title>
+    <link rel="shortcut icon" href="https://i.loli.net/2019/02/20/5c6cf0555ffe6.jpeg" type="image/png" />
+
+    
+    
+    <link href="atom.xml" rel="alternate" title="Yuanye Chi's Blog" type="application/atom+xml">
+    <link rel="stylesheet" href="asset/css/style.min.css">
+    <link rel="stylesheet" href="asset/css/doc.css">
+    <script src="asset/app.js"></script>
+</head>
+  <body>
+    <section class="hero">
+      <div class="hero-head">
+          <nav class="navbar" role="navigation" aria-label="main navigation">
+              <div class="container">
+              <div class="navbar-brand">
+                
+                <a target="_self" class="navbar-item " href="index.html">Home</a>
+                
+                <a target="_self" class="navbar-item " href="archives.html">Archives</a>
+                
+                <a target="_self" class="navbar-item " href="about.html">About</a>
+                
+
+                <a role="button" id="navbarSNSRssSwitchBtn" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarSNSRssButtons">
+                  <span aria-hidden="true"></span>
+                  <span aria-hidden="true"></span>
+                  <span aria-hidden="true"></span>
+                </a>
+              </div>
+            
+              <div id="navbarSNSRssButtons" class="navbar-menu">
+                <div class="navbar-start">
+                  
+                </div>
+            
+                <div class="navbar-end">
+                  <div class="navbar-item">
+                    <!--buttons start-->
+                    <div class="buttons">
+                      
+                        
+                        
+                        
+                        <a href="https://github.com/tsiye" target="_blank" title="github">
+                            <span class="icon is-large has-text-grey-darker">
+                               <svg class="svg-inline--fa fa-github fa-w-16 fa-lg" aria-hidden="true" focusable="false" data-prefix="fab" data-icon="github" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512" data-fa-i2svg=""><path fill="currentColor" d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"></path></svg><!-- <i class="fab fa-github fa-lg"></i> -->
+                            </span>
+                          </a>
+                        
+                        
+                      
+                      <a href="atom.xml" target="_blank" title="RSS">
+                          <span class="icon is-large has-text-black-bis">
+                              <svg class="svg-inline--fa fa-rss fa-w-14 fa-lg" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="rss" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" data-fa-i2svg=""><path fill="currentColor" d="M128.081 415.959c0 35.369-28.672 64.041-64.041 64.041S0 451.328 0 415.959s28.672-64.041 64.041-64.041 64.04 28.673 64.04 64.041zm175.66 47.25c-8.354-154.6-132.185-278.587-286.95-286.95C7.656 175.765 0 183.105 0 192.253v48.069c0 8.415 6.49 15.472 14.887 16.018 111.832 7.284 201.473 96.702 208.772 208.772.547 8.397 7.604 14.887 16.018 14.887h48.069c9.149.001 16.489-7.655 15.995-16.79zm144.249.288C439.596 229.677 251.465 40.445 16.503 32.01 7.473 31.686 0 38.981 0 48.016v48.068c0 8.625 6.835 15.645 15.453 15.999 191.179 7.839 344.627 161.316 352.465 352.465.353 8.618 7.373 15.453 15.999 15.453h48.068c9.034-.001 16.329-7.474 16.005-16.504z"></path></svg><!-- <i class="fas fa-rss fa-lg"></i> -->
+                          </span>
+                      </a>
+                    </div>
+                    <!--buttons end-->
+
+                  </div>
+                </div>
+                </div>
+              </div>
+            </nav>
+      </div>
+
+ <div class="hero-body ct-body"></div>
+      
+    </section>
+    <section class="ct-body">
+      <div class="container">
+          <div class="columns is-variable bd-klmn-columns is-4 is-centered">
+              <div class="column is-four-fifths">
+                  <div class="post-body single-content">
+                    
+                    <h1 class="title">
+                            Lecture 06 | 09/22 DNA Topology   
+                      </h1>
+                     
+                    
+                      <div class="media">
+                            
+                            <figure class="media-left">
+                              <p class="image is-48x48">
+                                
+                                  <img class="is-rounded" src="https://i.loli.net/2019/02/20/5c6cf0e7a42f9.jpg">
+                                
+                              </p>
+                            </figure>
+                            
+                            <div class="media-content">
+                              <div class="content">
+                                <p>
+                                 <span class="date">2022/09/22 10:32 AM</span>
+                                  <span class="tran-posted-in">posted in</span>&nbsp; 
+                                  
+                                      <span class="posted-in"><a href='BIO105.html'>BIO105</a></span>
+                                         
+                                  
+                                    &nbsp;&nbsp;<a href="16638571232370.html#disqus_thread"><span class="tran-disqus-comments">comments</span></a>
+                                  
+
+                                   
+                                      
+                                  <br />
+                                  <span class="tran-tags">Tags:</span>&nbsp;
+                                  
+                                    <a class="tag is-link is-light" href='tag_BIO-105.html'>#BIO-105</a>
+                                     
+
+                                </p>
+                              </div>
+                            </div>
+                         
+                    </div>
+                </div>
+                  <article class="markdown-body single-content">
+                    <h2><a id="tasks" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Tasks</h2>
+<ol>
+<li>Problem Set 2 due by Sunday</li>
+<li>First journal club discussion will take place next Thursday.</li>
+</ol>
+<h2><a id="today%E2%80%99s-learning-objectives" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Today’s learning objectives</h2>
+<ol>
+<li>Define supercoiling and give examples of how it can be changed.</li>
+<li>Explain how linking number, twist, and writhe are related.</li>
+<li>Compare the mechanisms by which ethidium bromide, DNase I, and type I and type II topoisomerases change DNA linking number.</li>
+</ol>
+<p><em>ethidium bromide is used to visualize DNA.</em></p>
+<p>Compared to digested(linear) DNA, undigested DNA will run further because it is more compact.<br />
+<img src="media/16638571232370/16646799158610.jpg" alt="" class="mw_img_center" style="width:400px;display: block; clear:both; margin: 0 auto;" /><br />
+Monomer should be more compact than dimer. So monomer should run further than linearized plasmid. So this picture is a dimer since it is runing above the linearized plasmid.</p>
+<p><em>After</em> cutting the dimer into monomer, we still saw our undigested plasmid running above the linearized plasmid in all clones. What cause a monomer plasmid running above the linearized plasmid?</p>
+<ul>
+<li>Our plasmid has <strong>100 GAA repeats, which are able to form a stable secondary structure(triplex.) Triplex DNA releases negative supercoils.</strong> (<em>which means the twist do done, with Lk remains unchanged, the writhe will change from negative to neutral.</em>)</li>
+<li>Plasmids isolated from bactrria usually have a superhelical dsneiry of around 0.05.<br />
+<img src="media/16638571232370/16638583042401.jpg" alt="" class="mw_img_center" style="width:400px;display: block; clear:both; margin: 0 auto;" /><br />
+<em>Plasmids isolated from bacteria usually have a superhelical density of around -0.05.(negatively supercoiled)</em><br />
+<img src="media/16638571232370/16646838699732.jpg" alt="" class="mw_img_center" style="width:400px;display: block; clear:both; margin: 0 auto;" /><br />
+The triplex formed from (GAA)100 will relax the negatively supercoil.</li>
+</ul>
+<p>Supercoiled plasmid will run slower than lineared one.<br />
+<strong>Supercoil is related to twist.</strong> EtBr can relax supercoil. When it is intercalated, the area is unwinded or flatten. But with the Lk unchanged, the writhe number will increase.<br />
+<img src="media/16638571232370/16646842978796.jpg" alt="" class="mw_img_center" style="width:400px;display: block; clear:both; margin: 0 auto;" /></p>
+<h2><a id="ways-to-alter-supercoiling" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Ways to Alter Supercoiling</h2>
+<ol>
+<li>Treat with an enzyme that nicks/cuts the DNA</li>
+</ol>
+<ul>
+<li>this relaxes all supercoils and makes Lk undefined</li>
+</ul>
+<ol start="2">
+<li>Add intercalating agents (like ethidium bromide or chloroquine)</li>
+</ol>
+<ul>
+<li>this decreases twist and increases writhe</li>
+<li>intercalating agents do NOT change Lk</li>
+<li>can relax negative supercoils and create positive supercoils</li>
+</ul>
+<ol start="3">
+<li>Topoisomerases</li>
+</ol>
+<ul>
+<li>enzymes that change Lk</li>
+</ul>
+<p>Supercoiling DNA contains more energy.</p>
+<h3><a id="dnase-i-can-relax-negative-supercoiling" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>DNase I can relax negative supercoiling</h3>
+<p>In Gel, Nicked DNA always runs the <strong>slowest</strong>.<br />
+<img src="media/16638571232370/16638600451340.jpg" alt="" class="mw_img_center" style="width:400px;display: block; clear:both; margin: 0 auto;" /></p>
+<h3><a id="ethidium-bromide-etbr-relaxes-negative-supercoils" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Ethidium bromide (EtBr) relaxes negative supercoils</h3>
+<p><img src="media/16638571232370/16638602175965.jpg" alt="" class="mw_img_center" style="width:400px;display: block; clear:both; margin: 0 auto;" /><br />
+<em>DNA supercoiling refers to the amount of twist in a particular DNA strand,</em></p>
+<h3><a id="topoisomerases" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Topoisomerases</h3>
+<h3><a id="type-i" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Type I</h3>
+<p>Lk going to change by 1, and the twist also change by 1. The writh will remain unchanged.<br />
+<img src="media/16638571232370/16638603346892.jpg" alt="" class="mw_img_center" style="width:400px;display: block; clear:both; margin: 0 auto;" /></p>
+<p>Type I will get energy from DNA tightness</p>
+<h2><a id="type-ii" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Type II</h2>
+<blockquote>
+<ul>
+<li>Require ATP hydrolysis</li>
+<li>Some Type II topoisomerases can only relax supercoiled DNA.</li>
+<li>Some can create supercoils.</li>
+<li>Others are also useful for separating entwined DNA double helices</li>
+</ul>
+</blockquote>
+<p>topoisomerase inhibitors are used to inhibit the cancer cells' proliferation</p>
+
+                  </article>
+                  <div class="comments-wrap">
+                    <div class="share-comments">
+                      
+
+                      
+                        <div id="disqus_thread"></div>
+                      
+
+                      
+                    </div>
+                  </div><!-- end comments wrap -->
+              </div>
+            </div><!-- end columns -->
+      </div><!-- end container -->
+    </section>
+
+
+
+    <footer class="footer">
+        <div class="content has-text-centered">
+          <p>
+              Copyright &copy; 2019
+              Powered by <a target="_blank" href="http://www.mweb.im">MWeb</a>,&nbsp; 
+              Theme used <a target="_blank" href="https://bulma.io/">Bulma CSS</a>.
+          </p>
+        </div>
+      </footer>
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+    var disqus_shortname = 'chiyuanye'; 
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+
+<script type="text/javascript">
+var disqus_shortname = 'chiyuanye'; 
+
+(function () {
+var s = document.createElement('script'); s.async = true;
+s.type = 'text/javascript';
+s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+(document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+}());
+</script>
+  
+    
+
+
+
+
+  </body>
+</html>
