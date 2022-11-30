@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>
+      
+    Lecture 19 | 11/17 Translation - Yuanye Chi's Blog
+    
+    </title>
+    <link rel="shortcut icon" href="https://i.loli.net/2019/02/20/5c6cf0555ffe6.jpeg" type="image/png" />
+
+    
+    
+    <link href="atom.xml" rel="alternate" title="Yuanye Chi's Blog" type="application/atom+xml">
+    <link rel="stylesheet" href="asset/css/style.min.css">
+    <link rel="stylesheet" href="asset/css/doc.css">
+    <script src="asset/app.js"></script>
+</head>
+  <body>
+    <section class="hero">
+      <div class="hero-head">
+          <nav class="navbar" role="navigation" aria-label="main navigation">
+              <div class="container">
+              <div class="navbar-brand">
+                
+                <a target="_self" class="navbar-item " href="index.html">Home</a>
+                
+                <a target="_self" class="navbar-item " href="archives.html">Archives</a>
+                
+                <a target="_self" class="navbar-item " href="about.html">About</a>
+                
+                <a target="_self" class="navbar-item " href="https://chiyuanye-com-old-site.onrender.com/">OldSite</a>
+                
+
+                <a role="button" id="navbarSNSRssSwitchBtn" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarSNSRssButtons">
+                  <span aria-hidden="true"></span>
+                  <span aria-hidden="true"></span>
+                  <span aria-hidden="true"></span>
+                </a>
+              </div>
+            
+              <div id="navbarSNSRssButtons" class="navbar-menu">
+                <div class="navbar-start">
+                  
+                </div>
+            
+                <div class="navbar-end">
+                  <div class="navbar-item">
+                    <!--buttons start-->
+                    <div class="buttons">
+                      
+                        
+                        
+                        
+                        <a href="https://github.com/tsiye" target="_blank" title="github">
+                            <span class="icon is-large has-text-grey-darker">
+                               <svg class="svg-inline--fa fa-github fa-w-16 fa-lg" aria-hidden="true" focusable="false" data-prefix="fab" data-icon="github" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512" data-fa-i2svg=""><path fill="currentColor" d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"></path></svg><!-- <i class="fab fa-github fa-lg"></i> -->
+                            </span>
+                          </a>
+                        
+                        
+                      
+                      <a href="atom.xml" target="_blank" title="RSS">
+                          <span class="icon is-large has-text-black-bis">
+                              <svg class="svg-inline--fa fa-rss fa-w-14 fa-lg" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="rss" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" data-fa-i2svg=""><path fill="currentColor" d="M128.081 415.959c0 35.369-28.672 64.041-64.041 64.041S0 451.328 0 415.959s28.672-64.041 64.041-64.041 64.04 28.673 64.04 64.041zm175.66 47.25c-8.354-154.6-132.185-278.587-286.95-286.95C7.656 175.765 0 183.105 0 192.253v48.069c0 8.415 6.49 15.472 14.887 16.018 111.832 7.284 201.473 96.702 208.772 208.772.547 8.397 7.604 14.887 16.018 14.887h48.069c9.149.001 16.489-7.655 15.995-16.79zm144.249.288C439.596 229.677 251.465 40.445 16.503 32.01 7.473 31.686 0 38.981 0 48.016v48.068c0 8.625 6.835 15.645 15.453 15.999 191.179 7.839 344.627 161.316 352.465 352.465.353 8.618 7.373 15.453 15.999 15.453h48.068c9.034-.001 16.329-7.474 16.005-16.504z"></path></svg><!-- <i class="fas fa-rss fa-lg"></i> -->
+                          </span>
+                      </a>
+                    </div>
+                    <!--buttons end-->
+
+                  </div>
+                </div>
+                </div>
+              </div>
+            </nav>
+      </div>
+
+ <div class="hero-body ct-body"></div>
+      
+    </section>
+    <section class="ct-body">
+      <div class="container">
+          <div class="columns is-variable bd-klmn-columns is-4 is-centered">
+              <div class="column is-four-fifths">
+                  <div class="post-body single-content">
+                    
+                    <h1 class="title">
+                            Lecture 19 | 11/17 Translation   
+                      </h1>
+                     
+                    
+                      <div class="media">
+                            
+                            <figure class="media-left">
+                              <p class="image is-48x48">
+                                
+                                  <img class="is-rounded" src="https://i.loli.net/2019/02/20/5c6cf0e7a42f9.jpg">
+                                
+                              </p>
+                            </figure>
+                            
+                            <div class="media-content">
+                              <div class="content">
+                                <p>
+                                 <span class="date">2022/11/17 10:34 AM</span>
+                                  <span class="tran-posted-in">posted in</span>&nbsp; 
+                                  
+                                      <span class="posted-in"><a href='BIO105.html'>BIO105</a></span>
+                                         
+                                  
+                                    &nbsp;&nbsp;<a href="16686992981216.html#disqus_thread"><span class="tran-disqus-comments">comments</span></a>
+                                  
+
+                                   
+                                      
+                                  <br />
+                                  <span class="tran-tags">Tags:</span>&nbsp;
+                                  
+                                    <a class="tag is-link is-light" href='tag_BIO-105.html'>#BIO-105</a>
+                                     
+
+                                </p>
+                              </div>
+                            </div>
+                         
+                    </div>
+                </div>
+                  <article class="markdown-body single-content">
+                    <h2><a id="features-of-the-ribosome" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Features of the Ribosome</h2>
+<p><img src="media/16686992981216/16686994884470.jpg" alt="" class="mw_img_center" style="width:550px;display: block; clear:both; margin: 0 auto;" /></p>
+<h2><a id="three-binding-sites-for-trnas-in-the-ribosome-epa" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Three binding sites for tRNAs in the ribosome(EPA)</h2>
+<blockquote>
+<p>E = exit site<br />
+P = peptidyl-tRNA binding<br />
+A = aminoacyl-tRNA binding</p>
+</blockquote>
+<p><img src="media/16686992981216/16686995278400.jpg" alt="" class="mw_img_center" style="width:550px;display: block; clear:both; margin: 0 auto;" /></p>
+<h2><a id="the-shine-dalgarno-sequence-positions-the-small-subunit-in-the-correct-orientation" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>The Shine-Dalgarno sequence positions the small subunit in the correct orientation</h2>
+<p><img src="media/16686992981216/16686996024801.jpg" alt="" class="mw_img_center" style="width:550px;display: block; clear:both; margin: 0 auto;" /></p>
+<h2><a id="a-generic-translation-cycle" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>A Generic Translation Cycle</h2>
+<p><img src="media/16686992981216/16686996681348.jpg" alt="" class="mw_img_center" style="width:650px;display: block; clear:both; margin: 0 auto;" /></p>
+<h2><a id="overview-of-translation-initiation-in-bacteria" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Overview of translation initiation in bacteria</h2>
+<p><img src="media/16686992981216/16686998467856.jpg" alt="" class="mw_img_center" style="width:550px;display: block; clear:both; margin: 0 auto;" /></p>
+<h2><a id="poll-everywhere-analysis-question" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Poll Everywhere analysis question:</h2>
+<p>During our last class, we talked about how important the tRNAs are as the translators of the genetic code.<br />
+Which of these bacterial translation initiation factors could be considered the “guardian” of the initiator tRNA?</p>
+<ul>
+<li class="task-list-item"><input type="checkbox" disabled="" /> A. IF1</li>
+<li class="task-list-item"><input type="checkbox" checked="" disabled="" /> B. IF2</li>
+<li class="task-list-item"><input type="checkbox" disabled="" /> C. IF3</li>
+</ul>
+<ol>
+<li>IF-3 prevents the premature binding of the large subunit</li>
+<li>IF-1 prevents the binding of initiator tRNAs to the large subunit</li>
+<li>IF-2 escorts the fMet-tRNAfMet to the P site (carries formyl-methionine, which starts bacterial proteins)</li>
+<li></li>
+</ol>
+<h2><a id="gtp-hydrolysis-is-a-common-way-to-regulate-progression-of-translation" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>GTP hydrolysis is a common way to regulate progression of translation</h2>
+<p><img src="media/16686992981216/16687003120070.jpg" alt="" class="mw_img_center" style="width:300px;display: block; clear:both; margin: 0 auto;" /></p>
+<p>GTP hydrolysis is used by many translation-associated factors to induce conformational changes that promote their dissociation</p>
+<h2><a id="a-crucial-difference-initiation-in-eukaryotes-starts-with-assembly-of-proteins-at-the-5%E2%80%99-cap" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>A Crucial Difference: Initiation in eukaryotes starts with assembly of proteins at the 5’ cap</h2>
+<p>eIF4F is a complex containing</p>
+<ol>
+<li>eIF4A – RNA helicase</li>
+<li>eIF4E – binds 5’cap of mRNA</li>
+<li>eIF4G – binds eIF4E, eIF3, and PABP</li>
+</ol>
+<p><img src="media/16686992981216/16687004167304.jpg" alt="" class="mw_img_center" style="width:500px;display: block; clear:both; margin: 0 auto;" /></p>
+<h2><a id="initiation-of-translation-in-eukaryotes-involves-scanning-for-the-start-codon" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Initiation of translation in eukaryotes involves scanning for the start codon</h2>
+<p><img src="media/16686992981216/16687005065435.jpg" alt="" class="mw_img_center" style="width:600px;display: block; clear:both; margin: 0 auto;" /></p>
+<p>Circular RNA here is not found by Phosphate bond but hydrogen bond.</p>
+<h2><a id="experimental-evidence-for-eukaryotic-ribosome-scanning-the-toeprint-assay" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Experimental evidence for eukaryotic ribosome scanning: The toeprint assay</h2>
+<blockquote>
+<p>Basically, this is a primer extension assay using a <strong>mRNA</strong> as a template How far can the primer be extended by RT?<br />
+Shorter extension indicates the presence of proteins on the mRNA</p>
+</blockquote>
+<p><img src="media/16686992981216/16687006975634.jpg" alt="" class="mw_img_center" style="width:550px;display: block; clear:both; margin: 0 auto;" /></p>
+<p>ATP now is used for helicase.</p>
+<h2><a id="many-viruses-have-capless-rnas-that-are-translated" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Many Viruses Have Capless RNAs that are Translated</h2>
+<p><img src="media/16686992981216/16687011631421.jpg" alt="" class="mw_img_center" style="width:550px;display: block; clear:both; margin: 0 auto;" /></p>
+<blockquote>
+<p>How?<br />
+<em>They use internal ribosome entry sites (IRES), characterized by secondary structures in the 5’ UTR of the RNA.</em></p>
+</blockquote>
+<blockquote>
+<p>These are also used by some eukaryotic genes when cells are stressed. (IRES trans-acting factors)</p>
+</blockquote>
+<p><strong>ITAF: IRES trans-acting factors</strong></p>
+<h2><a id="what-results-would-you-expect-in-a-toeprint-assay-with-the-cricket-paralysis-virus-and-the-following-conditions" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>What results would you expect in a toeprint assay with the cricket paralysis virus and the following conditions?</h2>
+<p><img src="media/16686992981216/16687018349386.jpg" alt="" class="mw_img_center" style="width:550px;display: block; clear:both; margin: 0 auto;" /></p>
+<p><strong>Primer is radioactive.</strong></p>
+<h1><a id="elongation-and-termination" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Elongation and Termination</h1>
+<h2><a id="elongation-an-overview" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Elongation: an Overview</h2>
+<p><img src="media/16686992981216/16687019576204.jpg" alt="" class="mw_img_center" style="width:400px;display: block; clear:both; margin: 0 auto;" /><br />
+During elongation, additional tRNAs bind in the A site.<br />
+Accommodation allows tRNA to rotate so that amino acids are in the proper orientation for peptide bond formation.<br />
+The ribosomal RNAs are thought to promote the appropriate environment for catalysis.</p>
+<h2><a id="elongation-ef-tu-ensures-correct-aminoacyl-trna-incorporation-in-bacteria" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Elongation: EF-Tu ensures correct aminoacyl-tRNA incorporation in bacteria</h2>
+<ul>
+<li><strong>EF-Tu</strong> protects the linkage between the tRNA and the amino acid as it escorts the tRNA to the A site</li>
+<li>GTP hydrolysis results in accommodation, when the tRNA in the A site rotates towards the P site</li>
+</ul>
+<p><img src="media/16686992981216/16687021384758.jpg" alt="" class="mw_img_center" style="width:500px;display: block; clear:both; margin: 0 auto;" /></p>
+<h2><a id="elongation-the-23s-rrna-catalyzes-the-peptidyl-transferase-reaction" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Elongation: the 23S rRNA catalyzes the peptidyl transferase reaction</h2>
+<blockquote>
+<p>The rRNA in the large ribosomal subunit provides a favorable environment for catalysis</p>
+</blockquote>
+<p><img src="media/16686992981216/16687021918981.jpg" alt="" class="mw_img_center" style="width:500px;display: block; clear:both; margin: 0 auto;" /></p>
+<h2><a id="ef-g-drives-translocation-of-the-ribosome" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>EF-G drives translocation of the ribosome</h2>
+<blockquote>
+<p>Think of EF-G as a ‘shoehorn’ or a golf club head. It serves to kick the tRNAs to the next site in the ribosome<br />
+<strong>Needs GTP!!</strong></p>
+</blockquote>
+<p><img src="media/16686992981216/16687022167817.jpg" alt="" class="mw_img_center" style="width:500px;display: block; clear:both; margin: 0 auto;" /></p>
+<h2><a id="termination-of-translation-requires-protein-release-factors" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Termination of translation requires protein release factors</h2>
+<blockquote>
+<p>RF-1, RF-3</p>
+</blockquote>
+<p><img src="media/16686992981216/16687024858730.jpg" alt="" class="mw_img_center" style="width:500px;display: block; clear:both; margin: 0 auto;" /></p>
+<h2><a id="release-factors-1-and-2-use-peptide-anticodons-that%E2%80%9C-recognize%E2%80%9D-stop-codons" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Release factors 1 and 2 use peptide anticodons that “recognize” stop codons</h2>
+<p><img src="media/16686992981216/16687026064184.jpg" alt="" class="mw_img_center" style="width:550px;display: block; clear:both; margin: 0 auto;" /></p>
+<h2><a id="ribosome-recycling-separates-the-large-and-small-subunits" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Ribosome recycling separates the large and small subunits</h2>
+<blockquote>
+<p>RRF: ribosome recycling factor</p>
+</blockquote>
+<p><img src="media/16686992981216/16687026305050.jpg" alt="" class="mw_img_center" style="width:550px;display: block; clear:both; margin: 0 auto;" /></p>
+<h2><a id="poll-everywhere-thought-question" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Poll Everywhere thought question:</h2>
+<p>Which of these pairs of molecules would you predict to be most similar at the tertiary structure level?</p>
+<ul>
+<li class="task-list-item"><input type="checkbox" disabled="" /> A. mRNA &amp; tRNA</li>
+<li class="task-list-item"><input type="checkbox" checked="" disabled="" /> B. EF-Tu-tRNA &amp; EF-G</li>
+<li class="task-list-item"><input type="checkbox" disabled="" /> C. RF3 &amp; tRNA</li>
+<li class="task-list-item"><input type="checkbox" disabled="" /> D. rRNA &amp; ribosomal proteins</li>
+<li class="task-list-item"><input type="checkbox" disabled="" /> E. tRNA synthetase &amp; RRF</li>
+</ul>
+<h2><a id="many-antibiotics-interfere-with-various-stages-of-protein-synthesis" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Many antibiotics interfere with various stages of protein synthesis</h2>
+<p><img src="media/16686992981216/16687032580421.jpg" alt="" class="mw_img_center" style="width:550px;display: block; clear:both; margin: 0 auto;" /></p>
+
+                  </article>
+                  <div class="comments-wrap">
+                    <div class="share-comments">
+                      
+
+                      
+                        <div id="disqus_thread"></div>
+                      
+
+                      
+                    </div>
+                  </div><!-- end comments wrap -->
+              </div>
+            </div><!-- end columns -->
+      </div><!-- end container -->
+    </section>
+
+
+
+    <footer class="footer">
+        <div class="content has-text-centered">
+          <p>
+              Copyright &copy; 2019
+              Powered by <a target="_blank" href="http://www.mweb.im">MWeb</a>,&nbsp; 
+              Theme used <a target="_blank" href="https://bulma.io/">Bulma CSS</a>.
+          </p>
+        </div>
+      </footer>
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+    var disqus_shortname = 'chiyuanye'; 
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+
+<script type="text/javascript">
+var disqus_shortname = 'chiyuanye'; 
+
+(function () {
+var s = document.createElement('script'); s.async = true;
+s.type = 'text/javascript';
+s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+(document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+}());
+</script>
+  
+    
+
+
+
+
+  </body>
+</html>
