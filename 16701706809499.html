@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>
+      
+    Java Concurrency - Yuanye Chi's Blog
+    
+    </title>
+    <link rel="shortcut icon" href="https://i.loli.net/2019/02/20/5c6cf0555ffe6.jpeg" type="image/png" />
+
+    
+    
+    <link href="atom.xml" rel="alternate" title="Yuanye Chi's Blog" type="application/atom+xml">
+    <link rel="stylesheet" href="asset/css/style.min.css">
+    <link rel="stylesheet" href="asset/css/doc.css">
+    <script src="asset/app.js"></script>
+</head>
+  <body>
+    <section class="hero">
+      <div class="hero-head">
+          <nav class="navbar" role="navigation" aria-label="main navigation">
+              <div class="container">
+              <div class="navbar-brand">
+                
+                <a target="_self" class="navbar-item " href="index.html">Home</a>
+                
+                <a target="_self" class="navbar-item " href="archives.html">Archives</a>
+                
+                <a target="_self" class="navbar-item " href="about.html">About</a>
+                
+                <a target="_self" class="navbar-item " href="https://chiyuanye-com-old-site.onrender.com/">OldSite</a>
+                
+
+                <a role="button" id="navbarSNSRssSwitchBtn" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarSNSRssButtons">
+                  <span aria-hidden="true"></span>
+                  <span aria-hidden="true"></span>
+                  <span aria-hidden="true"></span>
+                </a>
+              </div>
+            
+              <div id="navbarSNSRssButtons" class="navbar-menu">
+                <div class="navbar-start">
+                  
+                </div>
+            
+                <div class="navbar-end">
+                  <div class="navbar-item">
+                    <!--buttons start-->
+                    <div class="buttons">
+                      
+                        
+                        
+                        
+                        <a href="https://github.com/tsiye" target="_blank" title="github">
+                            <span class="icon is-large has-text-grey-darker">
+                               <svg class="svg-inline--fa fa-github fa-w-16 fa-lg" aria-hidden="true" focusable="false" data-prefix="fab" data-icon="github" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512" data-fa-i2svg=""><path fill="currentColor" d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"></path></svg><!-- <i class="fab fa-github fa-lg"></i> -->
+                            </span>
+                          </a>
+                        
+                        
+                      
+                      <a href="atom.xml" target="_blank" title="RSS">
+                          <span class="icon is-large has-text-black-bis">
+                              <svg class="svg-inline--fa fa-rss fa-w-14 fa-lg" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="rss" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" data-fa-i2svg=""><path fill="currentColor" d="M128.081 415.959c0 35.369-28.672 64.041-64.041 64.041S0 451.328 0 415.959s28.672-64.041 64.041-64.041 64.04 28.673 64.04 64.041zm175.66 47.25c-8.354-154.6-132.185-278.587-286.95-286.95C7.656 175.765 0 183.105 0 192.253v48.069c0 8.415 6.49 15.472 14.887 16.018 111.832 7.284 201.473 96.702 208.772 208.772.547 8.397 7.604 14.887 16.018 14.887h48.069c9.149.001 16.489-7.655 15.995-16.79zm144.249.288C439.596 229.677 251.465 40.445 16.503 32.01 7.473 31.686 0 38.981 0 48.016v48.068c0 8.625 6.835 15.645 15.453 15.999 191.179 7.839 344.627 161.316 352.465 352.465.353 8.618 7.373 15.453 15.999 15.453h48.068c9.034-.001 16.329-7.474 16.005-16.504z"></path></svg><!-- <i class="fas fa-rss fa-lg"></i> -->
+                          </span>
+                      </a>
+                    </div>
+                    <!--buttons end-->
+
+                  </div>
+                </div>
+                </div>
+              </div>
+            </nav>
+      </div>
+
+ <div class="hero-body ct-body"></div>
+      
+    </section>
+    <section class="ct-body">
+      <div class="container">
+          <div class="columns is-variable bd-klmn-columns is-4 is-centered">
+              <div class="column is-four-fifths">
+                  <div class="post-body single-content">
+                    
+                    <h1 class="title">
+                            Java Concurrency   
+                      </h1>
+                     
+                    
+                      <div class="media">
+                            
+                            <figure class="media-left">
+                              <p class="image is-48x48">
+                                
+                                  <img class="is-rounded" src="https://i.loli.net/2019/02/20/5c6cf0e7a42f9.jpg">
+                                
+                              </p>
+                            </figure>
+                            
+                            <div class="media-content">
+                              <div class="content">
+                                <p>
+                                 <span class="date">2022/12/04 11:18 AM</span>
+                                  <span class="tran-posted-in">posted in</span>&nbsp; 
+                                  
+                                      <span class="posted-in"><a href='CS121.html'>CS121</a></span>
+                                         
+                                  
+                                    &nbsp;&nbsp;<a href="16701706809499.html#disqus_thread"><span class="tran-disqus-comments">comments</span></a>
+                                  
+
+                                   
+                                      
+                                  <br />
+                                  <span class="tran-tags">Tags:</span>&nbsp;
+                                  
+                                    <a class="tag is-link is-light" href='tag_CS-121.html'>#CS-121</a>
+                                     
+
+                                </p>
+                              </div>
+                            </div>
+                         
+                    </div>
+                </div>
+                  <article class="markdown-body single-content">
+                    <blockquote>
+<p>Concurrent programming is when programs have multiple threads of control, that could be interleaved or cound even happen simultaneously.</p>
+</blockquote>
+<p>Moore's law, every 18 months, transistor density would double.</p>
+<p>Dennard scaling,  the power usage is about the same, and everything was getting smaller, it was getting faster.</p>
+<p>When you run CPUs today, dissipating the heat from the CPU is the stumbling block. That will prevent CPUs from getting faster. We cannot get the heat out them fast enough. So we need to move to multi-core CPUs.</p>
+<h2><a id="concurrency-in-the-os" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Concurrency in the OS</h2>
+<p>Each process is isolated from the others. Each processes cannot directly interfere with each others' memory.<br />
+In contrast, threads live within a process and share memory. They may interfere with each other.</p>
+<h2><a id="why-not-concurrency" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Why not Concurrency?</h2>
+<ul>
+<li>Concurrent software is harder to think about</li>
+<li>Concurrency adds overhead</li>
+</ul>
+<h2><a id="basic-threads-in-java" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Basic Threads in Java</h2>
+<ul>
+<li>sleep(n) waits n milliseconds</li>
+<li>t.join() blocks until thread t finishes</li>
+</ul>
+<p><img src="media/16701706809499/16702063711361.jpg" alt="" class="mw_img_center" style="width:550px;display: block; clear:both; margin: 0 auto;" /></p>
+<ul>
+<li>Within threads, ordering applies</li>
+<li>Across threads, only ordered when
+<ul>
+<li>One thread starts another</li>
+<li>One thread waits for another fo finish(join)</li>
+</ul>
+</li>
+</ul>
+<h2><a id="ways-to-create-threads" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Ways to Create Threads</h2>
+<h3><a id="approach-1-subclass-thread-and-implement-run" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Approach 1: Subclass Thread and implement run():</h3>
+<pre><code class="language-java">public class Tick extends Thread {
+ public void run() {
+   for (int i=0; i&lt;10; i++) {
+     System.out.println(&quot;tick &quot; + i);
+     try { sleep(1000); }
+catch (InterruptedException e) { } }}}
+public class Main {
+ public static void main(String[] args) {
+Thread t = new Tick();
+t.start(); // t doesn’t run until started! try { t.join(); }
+catch (InterruptedException e) { } System.out.println(“Main thread exit”);
+}}}
+</code></pre>
+<h3><a id="approach-2-anonymous-inner-class" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Approach 2: Anonymous inner class</h3>
+<pre><code class="language-java">Thread t = new Thread() {
+  public void run() { ... };
+}
+</code></pre>
+<h3><a id="approach3-implement-runnable" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Approach3:Implement Runnable</h3>
+<pre><code class="language-java">public class Tick implements Runnable {
+   public void run() { ... }
+}
+public class Main {
+  public static void main(String[] args) {
+    Thread t = new Thread(new Tick());
+    ...
+}}
+</code></pre>
+<h2><a id="data-races" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Data Races</h2>
+<pre><code class="language-java">public class Racer extends Thread {
+  private static int cnt = 0;
+  public void run() { int y = cnt; cnt = y+1; }
+}
+public class Main {
+  public static void main(String[] args) {
+    Thread t1 = new Racer();
+    Thread t2 = new Racer();
+    t1.start(); t2.start();
+}}2
+</code></pre>
+<p>No guaranteed order among the reads and writes of cnt across threads.</p>
+<p>JVM can execute statements with any schedule</p>
+<ul>
+<li>A schedule is the sequence in which threads are interleaved</li>
+<li>Any schedule compatible with happens before is allowed.</li>
+</ul>
+<p>The JVM may execute the same code with different schedules on different runs</p>
+<p><strong>Once is not an atomic operation, data races will happen.</strong></p>
+<h2><a id="mutual-exclusion-with-locks" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Mutual Exclusion with Locks</h2>
+<p>We need a way to guarantee<br />
+{ int y = cnt; cnt = y+1; }<br />
+runs without any other thread interfering</p>
+<p>Most basic way to achieve this: locks</p>
+<pre><code class="language-java">public interface Lock  {
+  void lock();
+  void  unlock();
+  // some other stuff
+}
+public class ReentrantLock implements Lock { ... }
+</code></pre>
+<p>Only one thread can hold a lock at once.</p>
+<h2><a id="avoiding-data-taces-with-locks" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Avoiding Data Taces with Locks</h2>
+<pre><code class="language-java">public class Racer extends Thread {
+  private static int cnt = 0;
+  private static Lock lock = new ReentrantLock()
+  public void run() {
+    lock.lock();
+    int y = cnt;
+    cnt = y+1;
+    lock.unlock();
+}}
+</code></pre>
+<h2><a id="basic-locking-design-pattern" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Basic Locking Design Pattern</h2>
+<ul>
+<li>Identify memory that is <strong>shared</strong> between threads
+<ul>
+<li>Non-shared memory doesn’t need locks</li>
+<li>(In Java, local variables are never thread-shared!)</li>
+</ul>
+</li>
+<li>Check whether that memory might be <strong>written</strong> to whilc it is shared
+<ul>
+<li>If never written, then sharing is perfectly safe!</li>
+</ul>
+</li>
+<li>For written, shared memory, create a lock or reuse an existing one</li>
+<li>Wrap <strong>critical sections</strong> for that variable with lock acquire and release
+<ul>
+<li>Critical section = code blocks that must be atomic, i.e., not interfered with by other threads manipulating memory.</li>
+</ul>
+</li>
+</ul>
+<pre><code class="language-java">public class A extends Thread {
+  private static int cnt = 0;
+  public void run() { cnt++; }
+}
+public class Main {
+  public static void main(String[] args) {
+    Thread t1 = new A();
+    Thread t2 = new A();
+    t1.start(); t2.start();
+}}
+</code></pre>
+<p>In this example, <strong>cnt</strong> is thread-shared and writable.</p>
+<h2><a id="different-locks-do-not-interact" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Different Locks Do not Interact</h2>
+<pre><code class="language-java">Lock l = new ReentrantLock();
+Lock m = new ReentrantLock();
+int cnt;
+
+Thread 1
+  l.lock();
+  cnt++;
+  l.unlock();
+  
+Thread 2
+  m.lock();
+  cnt++;
+  m.unlock();
+</code></pre>
+<p>Above is shorthand for creating shared two reentrant locks and one shared field, and then running th ecode shown in two concurrent threads</p>
+<ul>
+<li>This program has a data race
+<ul>
+<li>Threads only block if they try to acquire a lock held by another thread</li>
+</ul>
+</li>
+</ul>
+<h2><a id="reentrant-lock-example" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Reentrant Lock Example</h2>
+<pre><code class="language-java">public class Shared {
+  static int cnt;
+  static Lock l = new ReentrantLock();
+  void inc() { l.lock(); cnt++; l.unlock(); }
+  int retAndInc() { l.lock(); int temp=cnt;
+    inc(); l.unlock(); return cnt; }
+}
+Shared s = new Shared();
+</code></pre>
+<p>Here <strong>retAndInc</strong> calls inc, and both get same lock.</p>
+<p>Without reentrant locks, call to inc would block.</p>
+<h2><a id="deadlock" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Deadlock</h2>
+<blockquote>
+<p>Deadlock occurs when some set of threads can never be scheduled because thet are all waiting for a lock that will never be released</p>
+</blockquote>
+<p><img src="media/16701706809499/16702135882875.jpg" alt="" class="mw_img_center" style="width:550px;display: block; clear:both; margin: 0 auto;" /></p>
+<h2><a id="avoiding-deadlock" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Avoiding Deadlock</h2>
+<ul>
+<li>Basic principle: Don’t get fancy with lock design
+<ul>
+<li>Fewer locks = less potential for deadlocks</li>
+<li>But, less concurrency, since more mutual exclusion</li>
+</ul>
+</li>
+<li>Standard (bad) pattern in development of concurrent software
+<ul>
+<li>First, assume program will be sequential</li>
+<li>Then, realize it needs to be made concurrent</li>
+<li>Add a single global lock for all shared memory</li>
+<li>Realize performance is bad, start refactoring into smaller locks</li>
+<li>Make a lot of mistakes and introduce data races</li>
+<li>Assume data races are benign until years later when this assumption comes back to cause headaches</li>
+</ul>
+</li>
+</ul>
+<h2><a id="another-case-of-deadlock" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Another Case of Deadlock</h2>
+<pre><code class="language-java">static Lock l = new ReentrantLock();
+void fileAccess() throws Exception {
+l.lock();
+FileInputStream f = new FileInputStream(“foo.txt”); // do something with f
+f.close();
+l.unlock();
+}
+</code></pre>
+<p>What happens if exception related to f raised?</p>
+<ul>
+<li>l will never be released!</li>
+<li>Will likely cause deadlock</li>
+</ul>
+<h2><a id="finally-unlock" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Finally Unlock</h2>
+<p>Solution:use finally block</p>
+<pre><code class="language-java">static Lock l = new ReentrantLock();
+void fileAccess() throws Exception {
+  l.lock();
+  try  {
+     FileInputStream f = new FileInputStream(“foo.txt”);
+    // do something with f
+f.close();
+} finally {
+l.unlock(); }}
+</code></pre>
+<p>(Ignore whether f.close should be in the finally block...)</p>
+<h2><a id="java-synchronized-keyword" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Java Synchronized Keyword</h2>
+<ul>
+<li>Super common pattern in Java:
+<ul>
+<li>Acqurie lock at beginning of block, do something, then release lock(even if exception raised)</li>
+</ul>
+</li>
+<li>Java has a language construct for this pattern <code>synchronized(obj) { body }</code>
+<ul>
+<li>Obtains lock associated with obj
+<ul>
+<li>Every Java object has an implicit associated lock</li>
+<li>The lock is not the same as the object! The object is just a way to name the lock.</li>
+</ul>
+</li>
+<li>Executes body</li>
+<li>Release lock when stmts exists
+<ul>
+<li>Even if there's a return or exception</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2><a id="synchronized-example" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Synchronized Example</h2>
+<pre><code class="language-java">static object obj = new Object();
+void foo() throws Exception {
+  synchronized(obj)  {
+     FileInputStream f = new FileInputStream(“foo.txt”);
+     // do something with f
+     f.close();
+} }
+</code></pre>
+<h2><a id="object-vs-its-lock" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Object vs. Its Lock</h2>
+<ul>
+<li>An object and its associated lock are different!
+<ul>
+<li>Holding a lock on an object does not affect what you can do with that object</li>
+</ul>
+</li>
+</ul>
+<h2><a id="synchronizing-on-this" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Synchronizing on this</h2>
+<p><img src="media/16701706809499/16702211673380.jpg" alt="" class="mw_img_center" style="width:550px;display: block; clear:both; margin: 0 auto;" /></p>
+<p><img src="media/16701706809499/16702213307893.jpg" alt="" class="mw_img_center" style="width:550px;display: block; clear:both; margin: 0 auto;" /></p>
+<h2><a id="synchronized-methods" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Synchronized Methods</h2>
+<blockquote>
+<p>Markingamethodassynchronizedisthesameas synchronizing on this in its body</p>
+</blockquote>
+<p>The following two programs are the same</p>
+<pre><code class="language-java">class C {
+  int cnt;
+  void inc() { synchronized(this) { cnt++; } }
+}
+class C {
+  int cnt;
+  synchronized void inc() { cnt++; }
+}
+</code></pre>
+<h2><a id="synchronized-static-methods" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Synchronized Static Methods</h2>
+<p><img src="media/16701706809499/16702216647412.jpg" alt="" class="mw_img_center" style="width:550px;display: block; clear:both; margin: 0 auto;" /></p>
+<h2><a id="common-synchronized-patterns" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Common Synchronized Patterns</h2>
+<p>For a typical, thread-shared data structure</p>
+<ul>
+<li>Make the fields private
+<ul>
+<li>No code other than the class’s methods can access them directly</li>
+</ul>
+</li>
+<li>Make all instance methods sychronized
+<ul>
+<li>Avoids data races, method bodies are typically atomic</li>
+<li>Each instance has its own lock, but also its own fields</li>
+</ul>
+</li>
+<li>Watch out for class (static) methods and fields
+<ul>
+<li>Won’t synchronize on the same object as instance methods</li>
+<li>Class fields shared across instances, so synchronized instance methods won’t share a lock when accessing them</li>
+</ul>
+</li>
+<li>Or...
+<ul>
+<li>Make class instances immutable!</li>
+<li>If fields are not written after objects are shared, no possible</li>
+</ul>
+</li>
+</ul>
+<h2><a id="producerconsumer-pattern" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Producer/Consumer Pattern</h2>
+<ul>
+<li>Threads often want to communicate through some kind of shared buffer
+<ul>
+<li>A producer puts data into the buffer</li>
+<li>A consumer pulls data out of the buffer</li>
+</ul>
+</li>
+<li>Examples
+<ul>
+<li>Server gets stream of requests, passes to consumer threads.</li>
+<li>Worker threads share data with each othere</li>
+</ul>
+</li>
+<li>Goals
+<ul>
+<li>Support one or more producers, one or more consumers Buffer is fixed size, so it might become empty or full</li>
+<li><strong>Producer should block on full buffer; consumer should block on empty buffer</strong></li>
+<li>No busy waiting (threads should block rather than poll)</li>
+</ul>
+</li>
+</ul>
+<h2><a id="broken-producerconsumer" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Broken Producer/Consumer</h2>
+<pre><code class="language-java">class Buffer {
+  Object buf;
+  void produce(Object val) { buf = val; }
+  Object consume() { return buf;  }
+}
+Buffer b = new Buffer();
+
+// Thread 1
+b.produce(42);
+
+// Thread 2
+Object o = b.consume();
+</code></pre>
+<ul>
+<li>Data race because buf accessed across threds with no locks</li>
+<li>Will only work if Thread scheduled before Thread 2</li>
+<li>Completely broken if more than one profucer of consumer, since buffer only holds one element and gets overwritten.</li>
+</ul>
+<h2><a id="conditions" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Conditions</h2>
+<pre><code class="language-java">interface Lock { Condition newCondition();. ... }
+interface Condition { void await();
+                      void signalAll();  ... }
+</code></pre>
+<ul>
+<li><strong>Condition</strong> created from a <strong>Lock</strong>.</li>
+<li><strong>await</strong> must be called with its lock held.
+<ul>
+<li>Releases the lock
+<ul>
+<li>But not any other locks held by this thread</li>
+</ul>
+</li>
+<li>Adds this thread to wait set for lock</li>
+<li>Block the thread</li>
+</ul>
+</li>
+<li><strong>signalAll</strong> called with its lock held
+<ul>
+<li>Resume all threads on lock's wait set</li>
+<li>Those threads must reacquire lock before continuing.
+<ul>
+<li>This a part of await; you don't need to do it explicitly.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2><a id="producerconsumer-with-conditions" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Producer/Consumer with Conditions</h2>
+<pre><code class="language-java">class Buffer {
+Object buf; // null if empty
+Lock l = new ReentrantLock(); 
+Condition c = lock.newCondition();
+
+void produce(Object val) {
+  l.lock();
+  while (buf != null) { c.await(); }
+  buf = val;
+  c.signalAll();
+  l.unlock();
+}
+
+Object consume() {
+  l.lock();
+  while (buf == null) {c.await(); }
+  Object o = buf;
+  buf = null;
+  c.signalAll();
+  l.unlock();
+  return o;
+}
+</code></pre>
+<p><img src="media/16701706809499/16704389935013.jpg" alt="" class="mw_img_center" style="width:600px;display: block; clear:both; margin: 0 auto;" /></p>
+
+                  </article>
+                  <div class="comments-wrap">
+                    <div class="share-comments">
+                      
+
+                      
+                        <div id="disqus_thread"></div>
+                      
+
+                      
+                    </div>
+                  </div><!-- end comments wrap -->
+              </div>
+            </div><!-- end columns -->
+      </div><!-- end container -->
+    </section>
+
+
+
+    <footer class="footer">
+        <div class="content has-text-centered">
+          <p>
+              Copyright &copy; 2019
+              Powered by <a target="_blank" href="http://www.mweb.im">MWeb</a>,&nbsp; 
+              Theme used <a target="_blank" href="https://bulma.io/">Bulma CSS</a>.
+          </p>
+        </div>
+      </footer>
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="asset/prism.js"></script>
+
+
+
+
+<script type="text/javascript">
+    var disqus_shortname = 'chiyuanye'; 
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+
+<script type="text/javascript">
+var disqus_shortname = 'chiyuanye'; 
+
+(function () {
+var s = document.createElement('script'); s.async = true;
+s.type = 'text/javascript';
+s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+(document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+}());
+</script>
+  
+    
+
+
+
+
+  </body>
+</html>
