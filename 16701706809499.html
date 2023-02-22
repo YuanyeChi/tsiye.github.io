@@ -85,6 +85,12 @@
           <div class="columns is-variable bd-klmn-columns is-4 is-centered">
               <div class="column is-four-fifths">
                   <div class="post-body single-content">
+                              
+                    <div class="card-image">
+                        <figure class="image">
+                          <img src="./media/16701706809499/16704503500655.jpg">
+                        </figure>
+                    </div>
                     
                     <h1 class="title">
                             Java Concurrency   
@@ -104,7 +110,7 @@
                             <div class="media-content">
                               <div class="content">
                                 <p>
-                                 <span class="date">2022/12/04 11:18 AM</span>
+                                 <span class="date">2022/12/05 00:18 AM</span>
                                   <span class="tran-posted-in">posted in</span>&nbsp; 
                                   
                                       <span class="posted-in"><a href='CS121.html'>CS121</a></span>
@@ -507,6 +513,9 @@ interface Condition { void await();
 </li>
 </ul>
 <h2><a id="producerconsumer-with-conditions" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Producer/Consumer with Conditions</h2>
+<blockquote>
+<p>Correct code!</p>
+</blockquote>
 <pre><code class="language-java">class Buffer {
 Object buf; // null if empty
 Lock l = new ReentrantLock(); 
@@ -531,6 +540,331 @@ Object consume() {
 }
 </code></pre>
 <p><img src="media/16701706809499/16704389935013.jpg" alt="" class="mw_img_center" style="width:600px;display: block; clear:both; margin: 0 auto;" /></p>
+<h2><a id="need-for-while-loop" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Need for While Loop</h2>
+<ul>
+<li>Handles case of more than one producer or consumer
+<ul>
+<li>E.g., consider one producer, two consumers Suppose both consumers reach await() call</li>
+<li>Both will be in wait set</li>
+<li>Now one producer fills buffer</li>
+<li>Both consumers woken up</li>
+<li>But only one can read from buffer</li>
+</ul>
+</li>
+<li>Alternative to avoid:Condition#signal
+<ul>
+<li>Only wakes up one awaiter</li>
+<li>Tricky to use correctly—all waiters must be equal, and exceptions must be handled correctly</li>
+<li>Easier to use signalAll and a loop</li>
+</ul>
+</li>
+</ul>
+<h2><a id="synchronized-waitnotifyall" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Synchronized Wait/NotifyAll</h2>
+<p><code>obj.wait() //like await()</code></p>
+<ul>
+<li><strong>Must hold lock associated with obj</strong></li>
+<li>Releases that lock (and no other locks)</li>
+<li>Adds current thread to wait set for lock</li>
+<li>Blocks the thread</li>
+</ul>
+<p><code>obj.notifyAll() //like signalAll()</code></p>
+<ul>
+<li><strong>Must hold lock associated with obj</strong></li>
+<li>Resumes all threads in lock's wait set</li>
+<li>Those threads must reacquire lock before continuing
+<ul>
+<li>(As with signalAll, this is part of notifyAll, you don’t do this explicitly)</li>
+</ul>
+</li>
+</ul>
+<h2><a id="producerconcumer-with-wait" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Producer/Concumer with Wait</h2>
+<blockquote>
+<p>Correct code!</p>
+</blockquote>
+<pre><code class="language-java">class Buffer {
+Object buf; // null if empty
+  synchronized void produce(Object o) {
+    while (buf != null) { wait(); }
+    buf = o;
+    notifyAll();
+  }
+  synchronized Object consume(){
+    while (buf == null) { wait();  }
+    Object tmp = buf;
+    buf = null;
+    notifyAll();
+return tmp; }
+</code></pre>
+<h2><a id="thread-cancellation" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Thread Cancellation</h2>
+<ul>
+<li>What if we need to stop a thread in the middle?
+<ul>
+<li>E.g., User clicks the &quot;cancel button&quot;</li>
+<li>E.g., Thread's computation no longer needed</li>
+</ul>
+</li>
+<li>A not great idea: kill the thread immediately
+<ul>
+<li>What if thread is holding a lock or other resource?</li>
+<li>What if shared data is in an inconsistent state?</li>
+</ul>
+</li>
+<li>A better idea: politely ask the thread to kill itself.
+<ul>
+<li>Thread#interrupt() — set thread’s interrupted flag</li>
+<li>Thread#isInterrupted() — check if interrupted flag set</li>
+</ul>
+</li>
+</ul>
+<h2><a id="handling-cancellation" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Handling Cancellation</h2>
+<pre><code class="language-java">public class Processor extends Thread {
+  public void process() {
+    while (!Thread.interrupted()) {
+      // do some amount of work
+}
+    // do clean up here before exiting
+  }
+}
+</code></pre>
+<h2><a id="pop-quiz" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Pop Quiz</h2>
+<pre><code class="language-java">int x = 0;
+int y = 0;
+
+//Thread 1
+x=1 
+j=y
+
+//Thread 2
+y=1
+i=x
+</code></pre>
+<p>It is possible for i=j=0! How?</p>
+<h3><a id="write-buffering" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Write Buffering</h3>
+<blockquote>
+<p>On multi-core processors, there may be a write buffer between a thread and main memory:</p>
+</blockquote>
+<p><img src="media/16701706809499/16704447217271.jpg" alt="" class="mw_img_center" style="width:600px;display: block; clear:both; margin: 0 auto;" /></p>
+<ul>
+<li>Assignment x = 1 from Thread 1 gets written to buffer</li>
+<li>Main memory still has old value 0 for x</li>
+<li>At some point later, buffer gets copied into main memory</li>
+</ul>
+<p><strong>Buffer only guaranteed to be visible to Thread 2 if</strong> Thread 1 releases a lock that Thread 2 then acquires.</p>
+<p>That is, locking guarantees visibility of writes</p>
+<h3><a id="visibility-via-locking" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Visibility via Locking</h3>
+<p><img src="media/16701706809499/16704456775201.jpg" alt="" class="mw_img_center" style="width:500px;display: block; clear:both; margin: 0 auto;" /></p>
+<p>If Thread 1 releases lock that Thread 2 acquires, then all shared variables written by thread 1 before the unlock are guaranteed visible to thread 2 after the lock.</p>
+<h3><a id="code-reordering" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Code Reordering</h3>
+<ul>
+<li>Even without write buffers, schedule above possible
+<ul>
+<li>Reason: compiler optimization</li>
+</ul>
+</li>
+<li>Observe no dependency between x=1; j=y;
+<ul>
+<li>Thus, compiler can reorder them to j=y; x=1;</li>
+<li>Similarly with thread 2, yielding bad order</li>
+</ul>
+</li>
+</ul>
+<h2><a id="volatile" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Volatile</h2>
+<blockquote>
+<p>A shared field marked can be accessed with locks. Writes can be visible across threads.</p>
+</blockquote>
+<pre><code class="language-java">volatile int x = 0;
+</code></pre>
+<p>No atomicity!</p>
+<p>Generally, use locking instead of volatile unless you are an expert.</p>
+<h2><a id="futures" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Futures</h2>
+<ul>
+<li>Create a parallel task
+<ul>
+<li>Sometimes called an asynchronous task</li>
+</ul>
+</li>
+<li>Continue the current thread</li>
+<li>Sometime in the future, wait for task's result
+<ul>
+<li>But main thread does work in the meantime.</li>
+</ul>
+</li>
+<li>Useful for Latency Hiding</li>
+</ul>
+<h2><a id="thread-pools" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Thread Pools</h2>
+<ul>
+<li>In theory, can create a thread whenever needed
+<ul>
+<li>In practice, threads on most OSs are not super lightweight</li>
+<li>Creating hundreds or thousands of threads won't work
+<ul>
+<li>OS will slow to a crawl, spending all its time context switching</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Practical solution: create a fixed pool of threads
+<ul>
+<li>Size of poll based on knowledge of system resources
+<ul>
+<li>E.g. number of available cores</li>
+<li>Typically a configuration option for the program.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Most basic policy for using a pool:
+<ul>
+<li>If we need to do work, grab an available thread to do it.</li>
+<li>If no thread is available, block</li>
+</ul>
+</li>
+</ul>
+<h2><a id="worker-threads" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Worker Threads</h2>
+<ul>
+<li>Thread pool us a set of workers that can do tasks
+<ul>
+<li>Main thread creats tasks and feeds the into a queue</li>
+<li>Free worker thread pulls next task from the queue.
+<ul>
+<li>Worker threads block if no tasks available.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><img src="media/16701706809499/16704499724452.jpg" alt="" class="mw_img_center" style="width:500px;display: block; clear:both; margin: 0 auto;" /></p>
+<h2><a id="thread-pools-in-java" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Thread Pools in Java</h2>
+<pre><code class="language-java">class Executors {
+  // Create a fixed size thread pool
+  static ExecutorService newFixedThreadPool(int nThreads);
+}
+interface ExecutorService {
+  // submit a task for execution
+  &lt;T&gt; Future&lt;T&gt; submit(Callable&lt;T&gt; task); // with result
+  Future&lt;?&gt; submit(Runnable task);
+}
+interface Callable&lt;V&gt; {
+V call(); }
+interface Runnable {
+  void run();
+}
+</code></pre>
+<h2><a id="blocking-queue" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Blocking Queue</h2>
+<blockquote>
+<p>No need to implement producer-consumer yourself!</p>
+</blockquote>
+<pre><code class="language-java">interface BlockingQueue&lt;E&gt; {
+  // add/remove from queue, blocking if not possible
+  void put(E e);
+  E take();
+  // add/remove from queue, returning immediately
+  // whether possible or not
+  boolean offer(E e); // true if success
+  E poll(); // null if empty
+  // as above, but with timeouts
+  boolean offer(E e, long timeout, TimeUnit unit);
+  E poll(long timeout, TimeUnit unit);
+}
+</code></pre>
+<h2><a id="barriers" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Barriers</h2>
+<ul>
+<li>Common numerical computation pattern</li>
+<li>All threads block at key points to exchange info
+<ul>
+<li>E.g., weather simulation needs to exchange info at boundaries between geographic areas.</li>
+</ul>
+</li>
+</ul>
+<p><img src="media/16701706809499/16704501370137.jpg" alt="" class="mw_img_center" style="width:600px;display: block; clear:both; margin: 0 auto;" /></p>
+<h2><a id="message-passing" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Message Passing</h2>
+<ul>
+<li>Threads in Java are shared memory concurrency</li>
+<li>Another model: message passing concurrency
+<ul>
+<li>Threads do not have access to the same memory</li>
+<li>Threads send messages to each other to exchange data
+<ul>
+<li>Using fancies version of <strong>BlockingQueue</strong></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Pros
+<ul>
+<li>More natural for many supercomputer architectures and distributed systems</li>
+<li>No possibility of data races</li>
+</ul>
+</li>
+<li>Cons
+<ul>
+<li>Atomicity still problematic</li>
+<li>Inefficient to exchange large amonts of data.</li>
+</ul>
+</li>
+</ul>
+<h1><a id="multithreading-review-session" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Multithreading Review Session</h1>
+<h2><a id="concurrency-vs-parallelism" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Concurrency vs. Parallelism</h2>
+<ul>
+<li>
+<p>Concurrency</p>
+<ul>
+<li>Multiple threads can execute</li>
+<li>They can take turns, or run in parallel<br />
+<img src="media/16701706809499/16706124575116.jpg" alt="" class="mw_img_center" style="width:500px;display: block; clear:both; margin: 0 auto;" /></li>
+</ul>
+</li>
+<li>
+<p>Parallelism(one form of concurrency)</p>
+<ul>
+<li>Threads truly run in parallel<br />
+<img src="media/16701706809499/16706124668917.jpg" alt="" class="mw_img_center" style="width:500px;display: block; clear:both; margin: 0 auto;" /></li>
+</ul>
+</li>
+</ul>
+<h2><a id="which-of-these-thread-orderings-can-happen%EF%BC%9F" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Which of these thread orderings can happen？</h2>
+<p><img src="media/16701706809499/16706129135605.jpg" alt="" class="mw_img_center" style="width:500px;display: block; clear:both; margin: 0 auto;" /></p>
+<p>All of them! Threads can run in order, out of order, or simultaneously.</p>
+<h2><a id="what-is-a-data-race" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>What is a data race?</h2>
+<h3><a id="three-conditions" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Three Conditions</h3>
+<ol>
+<li>Shared memory</li>
+<li>
+<blockquote>
+<p>1 access is a write</p>
+</blockquote>
+</li>
+<li>No lock protecting data</li>
+</ol>
+<p>The following example has data race.<br />
+<img src="media/16701706809499/16706359143148.jpg" alt="" class="mw_img_center" style="width:500px;display: block; clear:both; margin: 0 auto;" /></p>
+<p>The following code also has a data race. Thread t1 and t2 has their own lock. They lock nothing on the static variable.<br />
+If change <code>this</code> to <code>Counter.class</code>, then there will be no data race.<br />
+<img src="media/16701706809499/16706361468845.jpg" alt="" class="mw_img_center" style="width:500px;display: block; clear:both; margin: 0 auto;" /></p>
+<pre><code class="language-java">public synchronized void run() {
+    cnt++;
+}
+will be the same as 
+
+public void run(){
+    synchronized(this){
+        cnt++;
+    }
+}
+</code></pre>
+<p>But this system cannot work in a pruducer/consumer model because the dead lock will cause the application break down.<br />
+Like the board and deboard situation.</p>
+<p><img src="media/16701706809499/16706384505235.jpg" alt="" class="mw_img_center" style="width:500px;display: block; clear:both; margin: 0 auto;" /></p>
+<p>Between <code>while(b.occupied)</code> and <code>b.occupied=true</code>. All threads could pass this while loop and do following stuff, which could cause the data race.  Multiple people can occupy the bathroom at once.</p>
+<p><strong>In java, you cannot simulate a lock by yourself.</strong></p>
+<p>Synchromized could protect this(Person) but not bathroom.<br />
+<img src="media/16701706809499/16706399652485.jpg" alt="" class="mw_img_center" style="width:500px;display: block; clear:both; margin: 0 auto;" /></p>
+<p><strong>This time, there is no data race on bathroom!</strong></p>
+<p><img src="media/16701706809499/16706402591300.jpg" alt="" class="mw_img_center" style="width:500px;display: block; clear:both; margin: 0 auto;" /></p>
+<h2><a id="awaitsignalall" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Await/signalAll</h2>
+<p><img src="media/16701706809499/16706407694900.jpg" alt="" class="mw_img_center" style="width:600px;display: block; clear:both; margin: 0 auto;" /></p>
+<p>Inside the lock, there is still wait and signal happening</p>
+<p>Once call await, jvm will put  that thread into sleep until signalAll happen to wake up threads that fall into sleep.</p>
 
                   </article>
                   <div class="comments-wrap">

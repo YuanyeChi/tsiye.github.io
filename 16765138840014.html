@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>
+      
+    Tutorial 3 Component Overview - Yuanye Chi's Blog
+    
+    </title>
+    <link rel="shortcut icon" href="https://i.loli.net/2019/02/20/5c6cf0555ffe6.jpeg" type="image/png" />
+
+    
+    
+    <link href="atom.xml" rel="alternate" title="Yuanye Chi's Blog" type="application/atom+xml">
+    <link rel="stylesheet" href="asset/css/style.min.css">
+    <link rel="stylesheet" href="asset/css/doc.css">
+    <script src="asset/app.js"></script>
+</head>
+  <body>
+    <section class="hero">
+      <div class="hero-head">
+          <nav class="navbar" role="navigation" aria-label="main navigation">
+              <div class="container">
+              <div class="navbar-brand">
+                
+                <a target="_self" class="navbar-item " href="index.html">Home</a>
+                
+                <a target="_self" class="navbar-item " href="archives.html">Archives</a>
+                
+                <a target="_self" class="navbar-item " href="about.html">About</a>
+                
+                <a target="_self" class="navbar-item " href="https://chiyuanye-com-old-site.onrender.com/">OldSite</a>
+                
+
+                <a role="button" id="navbarSNSRssSwitchBtn" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarSNSRssButtons">
+                  <span aria-hidden="true"></span>
+                  <span aria-hidden="true"></span>
+                  <span aria-hidden="true"></span>
+                </a>
+              </div>
+            
+              <div id="navbarSNSRssButtons" class="navbar-menu">
+                <div class="navbar-start">
+                  
+                </div>
+            
+                <div class="navbar-end">
+                  <div class="navbar-item">
+                    <!--buttons start-->
+                    <div class="buttons">
+                      
+                        
+                        
+                        
+                        <a href="https://github.com/tsiye" target="_blank" title="github">
+                            <span class="icon is-large has-text-grey-darker">
+                               <svg class="svg-inline--fa fa-github fa-w-16 fa-lg" aria-hidden="true" focusable="false" data-prefix="fab" data-icon="github" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512" data-fa-i2svg=""><path fill="currentColor" d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"></path></svg><!-- <i class="fab fa-github fa-lg"></i> -->
+                            </span>
+                          </a>
+                        
+                        
+                      
+                      <a href="atom.xml" target="_blank" title="RSS">
+                          <span class="icon is-large has-text-black-bis">
+                              <svg class="svg-inline--fa fa-rss fa-w-14 fa-lg" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="rss" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" data-fa-i2svg=""><path fill="currentColor" d="M128.081 415.959c0 35.369-28.672 64.041-64.041 64.041S0 451.328 0 415.959s28.672-64.041 64.041-64.041 64.04 28.673 64.04 64.041zm175.66 47.25c-8.354-154.6-132.185-278.587-286.95-286.95C7.656 175.765 0 183.105 0 192.253v48.069c0 8.415 6.49 15.472 14.887 16.018 111.832 7.284 201.473 96.702 208.772 208.772.547 8.397 7.604 14.887 16.018 14.887h48.069c9.149.001 16.489-7.655 15.995-16.79zm144.249.288C439.596 229.677 251.465 40.445 16.503 32.01 7.473 31.686 0 38.981 0 48.016v48.068c0 8.625 6.835 15.645 15.453 15.999 191.179 7.839 344.627 161.316 352.465 352.465.353 8.618 7.373 15.453 15.999 15.453h48.068c9.034-.001 16.329-7.474 16.005-16.504z"></path></svg><!-- <i class="fas fa-rss fa-lg"></i> -->
+                          </span>
+                      </a>
+                    </div>
+                    <!--buttons end-->
+
+                  </div>
+                </div>
+                </div>
+              </div>
+            </nav>
+      </div>
+
+ <div class="hero-body ct-body"></div>
+      
+    </section>
+    <section class="ct-body">
+      <div class="container">
+          <div class="columns is-variable bd-klmn-columns is-4 is-centered">
+              <div class="column is-four-fifths">
+                  <div class="post-body single-content">
+                    
+                    <h1 class="title">
+                            Tutorial 3 Component Overview   
+                      </h1>
+                     
+                    
+                      <div class="media">
+                            
+                            <figure class="media-left">
+                              <p class="image is-48x48">
+                                
+                                  <img class="is-rounded" src="https://i.loli.net/2019/02/20/5c6cf0e7a42f9.jpg">
+                                
+                              </p>
+                            </figure>
+                            
+                            <div class="media-content">
+                              <div class="content">
+                                <p>
+                                 <span class="date">2023/02/16 10:18 AM</span>
+                                  <span class="tran-posted-in">posted in</span>&nbsp; 
+                                  
+                                      <span class="posted-in"><a href='Coding%20Notes.html'>Coding Notes</a></span>
+                                         
+                                  
+                                    &nbsp;&nbsp;<a href="16765138840014.html#disqus_thread"><span class="tran-disqus-comments">comments</span></a>
+                                  
+
+                                   
+                                      
+                                  <br />
+                                  <span class="tran-tags">Tags:</span>&nbsp;
+                                  
+                                    <a class="tag is-link is-light" href='tag_Panel.html'>#Panel</a>
+                                     
+
+                                </p>
+                              </div>
+                            </div>
+                         
+                    </div>
+                </div>
+                  <article class="markdown-body single-content">
+                    <blockquote>
+<p>Pane objects allow wrapping external viewable items like Bokeh, Plotly, Vega, or HoloViews plots, so they can be embedded in a panel.<br />
+Widget objects provide controls that can trigger Python or JavaScript events.<br />
+Panel layout objects allow combining plots into a Row, Column, Tabs or a Grid.</p>
+</blockquote>
+<p><strong>To display any panel objects in a notebook environment ensure you load the extension first:</strong></p>
+<pre><code class="language-py">import panel as pn
+pn.extension()
+</code></pre>
+<p>Note that to use certain components such as Vega, LaTeX, and Plotly plots in a notebook, the models must be loaded using the extension. E.g.:</p>
+<pre><code class="language-py">pn.extension('vega', 'katex')
+</code></pre>
+<h2><a id="parameterized-components" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Parameterized Components</h2>
+<h3><a id="class-level" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Class Level</h3>
+<pre><code class="language-py">pn.widgets.Select.sizing_mode = 'stretch_both'
+</code></pre>
+<h3><a id="or-on-each-instance" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>or on each instance:</h3>
+<pre><code class="language-py">pn.widgets.Select(sizing_mode='stretch_both')
+</code></pre>
+<h2><a id="panes" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Panes</h2>
+<blockquote>
+<p>Pane objects can display and arrange <strong>plots</strong>, <strong>images</strong>, <strong>markup languages</strong>.</p>
+</blockquote>
+<h3><a id="explicitly-construct-a-pane" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Explicitly Construct a Pane</h3>
+<pre><code class="language-py">pn.pane.Markdown('''
+# H1
+## H2
+### H3
+''')
+</code></pre>
+<h3><a id="convenient-helper-function-that-will-convert-objects-into-a-pane-or-panel" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Convenient helper function that will convert objects into a Pane or Panel</h3>
+<pre><code class="language-py">png = pn.panel('https://upload.wikimedia.org/wikipedia/commons/4/47/PNG_transparency_demonstration_1.png', width=500)
+
+png
+</code></pre>
+<p>To see the type of the pane use the print function, which works with any Widget, Pane, or (perhaps most usefully) Panel:</p>
+<pre><code class="language-py">print(png)
+PNG(str, width=500)
+</code></pre>
+<h2><a id="widgets" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Widgets</h2>
+<blockquote>
+<p>Widgets have <em>name</em>, <em>value</em>, and other parameters specific to each widget.</p>
+</blockquote>
+<pre><code class="language-py">widget = pn.widgets.TextInput(name='A widget', value='A string')
+widget
+# In this way the widget values can easily be accessed and set:
+
+widget.value = '3'
+widget.width = 100
+# As well as linked to other objects:
+
+string = pn.pane.Str()
+
+widget.jslink(string, value='object')
+
+pn.Row(widget, string)
+</code></pre>
+<h2><a id="panels" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Panels</h2>
+<blockquote>
+<p>Panels allow arranging widget and pane objects into fixed-size or responsively resizing layouts, building simple apps or complex dashboards.<br />
+There are four main types of panels:</p>
+</blockquote>
+<ol>
+<li>Row: A Row arranges a list of components horizontally.</li>
+<li>Column: A Column arranges a list of components vertically.</li>
+<li>Tabs: A Tabs object lays out a list of components as selectable tabs.</li>
+<li>GridSpec: A GridSpec lays out components on a grid.</li>
+</ol>
+<h3><a id="row-column" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Row &amp; Column</h3>
+<blockquote>
+<p>The Row, Column, and Tabs Panels all behave very similarly. All of them are <strong>list-like</strong>.</p>
+</blockquote>
+<p>Row and Column can be initialized as empty or with the objects to be displayed as arguments. I<strong>f each of the object(s) provided is not already a Widget, Pane, or Panel, the panel will internaly call the pn.panel function to convert it to a displayable representation</strong> (typically a Pane).</p>
+<pre><code class="language-py"># To start with, we will declare a Column and populate it with a title and a widget:
+column = pn.Column('# A title', pn.widgets.FloatSlider())
+# Next we add another bit of markdown:
+column.append('* Item 1\n* Item 2')
+# Then we add a few more widgets:
+column.extend([pn.widgets.TextInput(), pn.widgets.Checkbox(name='Tick this!')])
+# and finally we change our mind and replace the Checkbox with a button:(title is also counted)
+column[3] = pn.widgets.Button(name='Click here')
+column
+</code></pre>
+<h3><a id="tabs" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Tabs</h3>
+<pre><code class="language-py">from bokeh.plotting import figure
+
+p1 = figure(width=300, height=300)
+p1.line([1, 2, 3], [1, 2, 3])
+
+tabs = pn.Tabs(p1)
+
+# Add a tab
+tabs.append(('Slider', pn.widgets.FloatSlider()))
+
+# Add multiple tabs
+tabs.extend([
+    ('Text', pn.widgets.TextInput()),
+    ('Color', pn.widgets.ColorPicker())
+])
+
+tabs
+</code></pre>
+<p><strong>Append:</strong> add one tab.<br />
+<strong>Extend:</strong> add multiple tabs.</p>
+<p><img src="media/16765138840014/16765434143760.jpg" alt="" class="mw_img_center" style="width:500px;display: block; clear:both; margin: 0 auto;" /></p>
+<h3><a id="gridspec" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>GridSpec</h3>
+<blockquote>
+<p>It is more like a 2D-array to arrange elements.</p>
+</blockquote>
+<pre><code class="language-py">import holoviews as hv
+import holoviews.plotting.bokeh
+
+from bokeh.plotting import figure
+
+fig = figure()
+fig.scatter([0, 1, 2, 3, 4, 5, 6, 7, 8, 9], [0, 1, 2, 3, 2, 1, 0, -1, -2, -3])
+
+gspec = pn.GridSpec(sizing_mode='stretch_both', max_height=800)
+
+gspec[0, :3] = pn.Spacer(background='#FF0000')
+gspec[1:3, 0] = pn.Spacer(background='#0000FF')
+gspec[1:3, 1:3] = fig
+gspec[3:5, 0] = hv.Curve([1, 2, 3])
+gspec[3:5, 1] = 'https://upload.wikimedia.org/wikipedia/commons/4/47/PNG_transparency_demonstration_1.png'
+gspec[4:5, 2] = pn.Column(
+    pn.widgets.FloatSlider(),
+    pn.widgets.ColorPicker(),
+    pn.widgets.Toggle(name='Toggle Me!'))
+
+gspec
+</code></pre>
+<p><img src="media/16765138840014/16765433817036.jpg" alt="" class="mw_img_center" style="width:550px;display: block; clear:both; margin: 0 auto;" /></p>
+
+                  </article>
+                  <div class="comments-wrap">
+                    <div class="share-comments">
+                      
+
+                      
+                        <div id="disqus_thread"></div>
+                      
+
+                      
+                    </div>
+                  </div><!-- end comments wrap -->
+              </div>
+            </div><!-- end columns -->
+      </div><!-- end container -->
+    </section>
+
+
+
+    <footer class="footer">
+        <div class="content has-text-centered">
+          <p>
+              Copyright &copy; 2019
+              Powered by <a target="_blank" href="http://www.mweb.im">MWeb</a>,&nbsp; 
+              Theme used <a target="_blank" href="https://bulma.io/">Bulma CSS</a>.
+          </p>
+        </div>
+      </footer>
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="asset/prism.js"></script>
+
+
+
+
+<script type="text/javascript">
+    var disqus_shortname = 'chiyuanye'; 
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+
+<script type="text/javascript">
+var disqus_shortname = 'chiyuanye'; 
+
+(function () {
+var s = document.createElement('script'); s.async = true;
+s.type = 'text/javascript';
+s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+(document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+}());
+</script>
+  
+    
+
+
+
+
+  </body>
+</html>
