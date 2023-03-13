@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>
       
-    Tutorial 12 Performance and Debugging - Yuanye Chi's Blog
+    Panel | Tutorial 12 Performance and Debugging (Multithreading Unfinished) - Yuanye Chi's Blog
     
     </title>
     <link rel="shortcut icon" href="https://i.loli.net/2019/02/20/5c6cf0555ffe6.jpeg" type="image/png" />
@@ -87,7 +87,7 @@
                   <div class="post-body single-content">
                     
                     <h1 class="title">
-                            Tutorial 12 Performance and Debugging   
+                            Panel | Tutorial 12 Performance and Debugging (Multithreading Unfinished)   
                       </h1>
                      
                     
@@ -104,7 +104,7 @@
                             <div class="media-content">
                               <div class="content">
                                 <p>
-                                 <span class="date">2023/02/21 22:05 PM</span>
+                                 <span class="date">2023/02/21 09:05 AM</span>
                                   <span class="tran-posted-in">posted in</span>&nbsp; 
                                   
                                       <span class="posted-in"><a href='Coding%20Notes.html'>Coding Notes</a></span>
@@ -128,7 +128,47 @@
                     </div>
                 </div>
                   <article class="markdown-body single-content">
-                    
+                    <blockquote>
+<p>some of the best practices to debug your applications and profile your application to maximize performance.</p>
+</blockquote>
+<h2><a id="caching" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Caching</h2>
+<blockquote>
+<p>Panel's global state object, can be directly assigned to <code>pn.state.cache</code>. using the <code>pn.state.as_cached</code> helper function or the <code>pn.cache</code> decorator.</p>
+</blockquote>
+<h3><a id="manual-usage" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Manual Usage</h3>
+<pre><code class="language-py">if 'data' in pn.state.cache:
+    data = pn.state.cache['data']
+else:
+    pn.state.cache['data'] = data = ... # Load some data or perform an expensive computation
+</code></pre>
+<h3><a id="pn-cache-decorator" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>pn.cache Decorator</h3>
+<pre><code class="language-py">@pn.cache(max_items=10, policy='LRU')
+def load_data(path):
+    return ... # Load some data
+</code></pre>
+<h4><a id="caching-in-memory" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Caching in Memory</h4>
+<pre><code class="language-py">select = pn.widgets.Select(options={
+    'Penguins': 'https://raw.githubusercontent.com/mwaskom/seaborn-data/master/penguins.csv',
+    'Diamonds': 'https://raw.githubusercontent.com/mwaskom/seaborn-data/master/diamonds.csv',
+    'Titanic': 'https://raw.githubusercontent.com/mwaskom/seaborn-data/master/titanic.csv',
+    'MPG': 'https://raw.githubusercontent.com/mwaskom/seaborn-data/master/mpg.csv'
+})
+
+# The pn.cache decorator can easily be combined with pn.bind 
+@pn.cache
+def fetch_data(url):
+    return pd.read_csv(url)
+
+pn.Column(select, pn.bind(pn.widgets.Tabulator, pn.bind(fetch_data, select), page_size=10))
+</code></pre>
+<h4><a id="disk-caching" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Disk Caching</h4>
+<blockquote>
+<p>Make use of disck caching if server will be restarted.<br />
+setting <code>to_disk=True</code></p>
+</blockquote>
+<h4><a id="clear-the-cache" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Clear the Cache</h4>
+<p>Once a function has been decorated with <code>pn.cache</code> you can easily clear the cache by calling .<code>clear()</code> on that function, e.g. in the example above you could call <code>load_data.clear()</code>. If you want to clear all caches you may also call <code>pn.state.clear_caches()</code>.</p>
+
                   </article>
                   <div class="comments-wrap">
                     <div class="share-comments">
@@ -173,6 +213,8 @@
 
 
 
+
+<script src="asset/prism.js"></script>
 
 
 
