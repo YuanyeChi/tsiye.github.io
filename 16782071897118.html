@@ -137,6 +137,36 @@ This method is useful for both regular untargeted metabolomics and stable isotop
 <li>The assignment of measured ions to their original compounds. (pre-annotation)</li>
 <li>Establishing the identity of the compounds.</li>
 </ol>
+<p>Those from the same original compound should have the same retention time in chromatography.</p>
+<p>Most pre-annotation tools use a network representation of degenerate peaks.<br />
+The <strong>main challenge</strong> remains to resolve how all peaks are generated from the same original compound, which requires:</p>
+<ol>
+<li>Inferring the neutral mass of the original compound</li>
+<li>Establish the relationship of all peaks to the original compound.</li>
+</ol>
+<h2><a id="result" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Result</h2>
+<p>The adducts can be represented as a tree, using the neutral form as the root. Using isotopes as leaves to the adducts.<br />
+<img src="media/16782071897118/16788296714913.jpg" alt="" class="mw_img_center" style="width:500px;display: block; clear:both; margin: 0 auto;" /></p>
+<p>Therefore, the combination of isotopes and adducts, as exemplified in Table 1, can be represented as a 2-tier tree. The tree can either use adducts as tier 1 or isotopes as tier 1.<br />
+<img src="media/16782071897118/16788300835294.jpg" alt="" class="mw_img_center" style="width:700px;display: block; clear:both; margin: 0 auto;" /></p>
+<h2><a id="algorithm-converting-a-mass-distance-network-to-a-2-tier-tree" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Algorithm converting a mass distance network to a 2-tier tree</h2>
+<blockquote>
+<p>One key observation is that all ions connected by isotopic edges belong to the same adduct. Thus. subnetwork per adduct can be defined from a mass distance network.<br />
+<img src="media/16782071897118/16788310961829.jpg" alt="" class="mw_img_center" style="width:500px;display: block; clear:both; margin: 0 auto;" /></p>
+</blockquote>
+<p>Once these isotopic subnetworks are abstracted into individual network nodes, we can find the best alignment between this abstracted network and the adduct tree.<br />
+Two steps:</p>
+<ol>
+<li>Obtain a tree with optimal number of ions explained in the alignment of adduct trees.</li>
+<li>Then in the alignment of isotopes.<br />
+Results:<br />
+<img src="media/16782071897118/16788312491290.jpg" alt="" class="mw_img_center" style="width:400px;display: block; clear:both; margin: 0 auto;" /></li>
+</ol>
+<p>To match ths 2-tier tree structure, the networks have to become DAG.Erroneous edges are weeded out because they do not satisfied DAG and a rooted tree.<br />
+Based on the matched m/z values, the neutral mass of M0 compound is obtained by a regression model.<br />
+Once the core structure of a tree is established, additional adducts and fragments can be searched in the data.</p>
+<p><img src="media/16782071897118/16788319534736.jpg" alt="" class="mw_img_center" style="width:500px;display: block; clear:both; margin: 0 auto;" /></p>
+<p>A is a &quot;khipu&quot; for one empirical compound. B is the first &quot;rope&quot; of A.</p>
 
                   </article>
                   <div class="comments-wrap">

@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>
       
-    R | Issue Comes up with MetaboAnalystR Installation on Mac - Yuanye Chi's Blog
+     - Yuanye Chi's Blog
     
     </title>
     <link rel="shortcut icon" href="https://i.loli.net/2019/02/20/5c6cf0555ffe6.jpeg" type="image/png" />
@@ -87,7 +87,7 @@
                   <div class="post-body single-content">
                     
                     <h1 class="title">
-                            R | Issue Comes up with MetaboAnalystR Installation on Mac   
+                               
                       </h1>
                      
                     
@@ -104,13 +104,13 @@
                             <div class="media-content">
                               <div class="content">
                                 <p>
-                                 <span class="date">2023/03/10 16:13 PM</span>
+                                 <span class="date">2023/03/14 14:57 PM</span>
                                   <span class="tran-posted-in">posted in</span>&nbsp; 
                                   
                                       <span class="posted-in"><a href='Coding%20Notes.html'>Coding Notes</a></span>
                                          
                                   
-                                    &nbsp;&nbsp;<a href="16784828011786.html#disqus_thread"><span class="tran-disqus-comments">comments</span></a>
+                                    &nbsp;&nbsp;<a href="16788202621974.html#disqus_thread"><span class="tran-disqus-comments">comments</span></a>
                                   
 
                                    
@@ -118,7 +118,7 @@
                                   <br />
                                   <span class="tran-tags">Tags:</span>&nbsp;
                                   
-                                    <a class="tag is-link is-light" href='tag_R.html'>#R</a>
+                                    <a class="tag is-link is-light" href='tag_AngularJS.html'>#AngularJS</a>
                                      
 
                                 </p>
@@ -128,29 +128,7 @@
                     </div>
                 </div>
                   <article class="markdown-body single-content">
-                    <p><a href="https://stackoverflow.com/questions/6302209/building-r-package-and-error-ld-cannot-find-lgfortran">https://stackoverflow.com/questions/6302209/building-r-package-and-error-ld-cannot-find-lgfortran</a></p>
-<blockquote>
-<p>ld: library not found for -lgfortran</p>
-</blockquote>
-<h2><a id="reason-fortran-version-is-not-compatible-with-gcc-and-g" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Reason Fortran Version is not Compatible with gcc and g++</h2>
-<h2><a id="solution" class="anchor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Solution</h2>
-<ol>
-<li>Install Homebrew and run:</li>
-</ol>
-<pre><code class="language-shell">brew install gcc
-</code></pre>
-<ol>
-<li>Check the gcc version under <code>/usr/local/Cellar/gcc/</code></li>
-<li>Create a file ~/.R/Makevars with the contents (being mindful that this corresponded to gcc version 9.1.0):</li>
-</ol>
-<pre><code class="language-plain_text">VER=-12
-CC=gcc$(VER)
-CXX=g++$(VER)
-CFLAGS=-mtune=native -g -O2 -Wall -pedantic -Wconversion
-CXXFLAGS=-mtune=native -g -O2 -Wall -pedantic -Wconversion
-FLIBS=-L/usr/local/Cellar/gcc/12.2.0/lib/gcc/12
-</code></pre>
-
+                    
                   </article>
                   <div class="comments-wrap">
                     <div class="share-comments">
@@ -195,8 +173,6 @@ FLIBS=-L/usr/local/Cellar/gcc/12.2.0/lib/gcc/12
 
 
 
-
-<script src="asset/prism.js"></script>
 
 
 
